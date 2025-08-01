@@ -51,6 +51,14 @@ typedef struct
     int bias;      // 偏差
 } servo_t;
 
+typedef struct
+{
+    uint16_t aim;  // 执行目标
+    float cur;     // 当前值
+    float inc;     // 偏差增量
+} pid_t;
+
+extern pid_t pid_doing[DJ_NUM];
 extern servo_t duoji_doing[DJ_NUM];
 
 void PwmServoInit(void);                             /* 舵机引脚初始化 */

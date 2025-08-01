@@ -4,7 +4,7 @@
 #include <math.h>
 // ========================= 全局变量 =========================
 servo_t duoji_doing[DJ_NUM];   // 保存 0~7 号舵机的“运行中”参数（目标值、当前值、增量、执行时间、偏差等）
-
+pid_t pid_doing[DJ_NUM];
 // ========================= 函数实现 =========================
 
 /*----------------------------------------------------------
@@ -63,7 +63,6 @@ void PwmServo_PinSet(u8 index, BitAction level)
         case 4: SERVO4_PIN_SET(level); break;
         case 5: SERVO5_PIN_SET(level); break;
         case 6: SERVO6_PIN_SET(level); break;
-//        case 7: SERVO7_PIN_SET(level); break;
         default: break;
     }
 }

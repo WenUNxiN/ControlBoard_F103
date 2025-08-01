@@ -36,7 +36,6 @@ void ServoState_Init(void);  //舵机上电初始位置
 void setup_run_action(void); //执行开机动作组
 extern void Buzzer_times(u32 time, u32 count);
 
-
 /*
 	主循环函数声明
 */

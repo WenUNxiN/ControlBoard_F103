@@ -31,3 +31,4 @@
 ..\objects\pwmservo.o: ..\Library\stm32f10x_wwdg.h
 ..\objects\pwmservo.o: ..\Library\misc.h
 ..\objects\pwmservo.o: ..\App\Global.h
+..\objects\pwmservo.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
