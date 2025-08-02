@@ -243,6 +243,7 @@ void Parse_Group_Cmd(char *cmd)
         获取应答信号：        $GETA!
         获取智能信号：        $SMODE1!
         $KINEMATICS:x,y,z,time! //坐标单位mm，时间单位ms
+        设置角度：$Angle:%d,%f,%f!   舵机号 角度 舵机最大角度
 */
 // 命令解析函数
 /***********************************************
@@ -255,6 +256,7 @@ void Parse_Cmd(char *cmd)
 {
     int pos = 0, index = 0, int1 = 0, int4 = 0;
     float kinematics_x = 0, kinematics_y = 0, kinematics_z = 0;
+    float angle = 0, Servo_angle = 0;
     // uart1_send_str(cmd);
     if (pos = Str_Contain_Str(cmd, "$DRS!"), pos)
     {
@@ -370,6 +372,16 @@ void Parse_Cmd(char *cmd)
                 SetPrintfUart(1);
                 printf("Can't find best pos!!!");
             }
+        }
+    }
+    else if (pos = Str_Contain_Str(cmd, "$Angle:"), pos)
+    {
+        if (sscanf((char *)cmd, "$Angle:%d,%f,%f!", &index, &angle, &Servo_angle))
+        {
+            SetPrintfUart(1);
+            printf("Angle   Angle\r\n");
+            PwmServo_SetAngle(index, angle, Servo_angle); 
+            
         }
     }
     else if (pos = Str_Contain_Str(cmd, "$BEEP!"), pos)

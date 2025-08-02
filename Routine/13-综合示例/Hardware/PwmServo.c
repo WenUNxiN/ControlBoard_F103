@@ -185,17 +185,29 @@ void PwmServoStop(u8 index)
     }
 }
 
+// 舵机输出修正系数（0.99 表示最终角度按 99% 缩放，用于微调舵机实际行程）
 float fix_raio = 0.99;
 /**********************************************************
- * @brief 设置舵机角度
- * @param angle: float -> [0, 180]
+ * @brief  设置指定舵机角度
+ * @param  index        : 舵机编号（0 开始计数）
+ * @param  angle        : 目标角度，单位 °，范围 [0, Servo_angle]
+ * @param  Servo_angle  : 当前舵机的最大标称角度（例如 180°、270°）
+ * @retval 无
  **********************************************************/
-void PwmServo_SetAngle(uint8_t index, float angle,float Servo_angle){ 
+void PwmServo_SetAngle(uint8_t index, float angle, float Servo_angle)
+{
+    /* 1. 角度限幅：防止超界损坏硬件 */
     angle = fmax(0, fmin(angle, Servo_angle));
 
+    /* 2. 行程微调：乘以修正系数，适配实际机械 0°~最大角度 */
     angle *= fix_raio;
 
-    float duty = 500 + (angle/Servo_angle)*2000;
-    
+    /* 3. 线性映射：0° -> 500 μs，Servo_angle -> 2500 μs */
+    // angle / Servo_angle	把角度 归一化 到 0.0 ~ 1.0 区间。
+    // ... * 2000.0f	把归一化值放大到 0 ~ 2000 μs 区间。
+    // 500.0f + ...	再整体平移 500 μs，使最小值落在 500 μs，最大值落在 2500 μs。
+    float duty = 500.0f + (angle / Servo_angle) * 2000.0f;
+
+    /* 4. 舵机PWM 设置函数：舵机号、占空比、时间 */
     PwmServo_DoingSet(index, duty, 1000);
 }
