@@ -43,8 +43,8 @@ int main(void)
 
     OLED_DrawBMP(0, 0, 128, 8, BMP);  // 画位图
 
-    Delay_ms(300); // 等待模块初始化完成
-    GY33T_Write_Byte(0xA4, 0x02, td); // 设置更新频率
+    // 设置更新频率 4：10ms 3：24ms 2：100ms(默认) 1：154ms 0：700ms 
+    GY33T_Write_Byte(0xA4, 0x02, 0); 
     switch (td)
     {
     case 0:

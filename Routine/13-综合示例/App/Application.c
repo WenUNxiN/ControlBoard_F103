@@ -27,9 +27,11 @@ void setup_app(void)
 	Uart1_Print("$APP_START!");
 	Buzzer_times(200, 3);
 	setup_run_action();
+    
 
-	setup_kinematics(150, 120, 110, 125, &kinematics);
-	//setup_kinematics(135, 130, 130, 150, &kinematics);
+
+//	setup_kinematics(150, 120, 110, 125, &kinematics);
+//	setup_kinematics(135, 130, 130, 150, &kinematics);
 }
 
 void loop_app(void)
@@ -80,11 +82,13 @@ void setup_run_action(void)
 // 舵机上电初始位置
 void ServoState_Init(void)
 {
+
 	for (u8 i = 0; i < DJ_NUM; i++)
 	{
 		duoji_doing[i].aim = eeprom_info.servo_init_pos[i] + eeprom_info.dj_bias_pwm[i];
 		duoji_doing[i].cur = eeprom_info.servo_init_pos[i] + eeprom_info.dj_bias_pwm[i];
 		duoji_doing[i].inc = 0;
+        duoji_doing[i].time = 5000;
 	}
 }
 

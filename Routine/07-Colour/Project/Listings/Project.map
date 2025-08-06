@@ -12,8 +12,8 @@ Section Cross References
     main.o(i.main) refers to oled.o(i.OLED_Init) for OLED_Init
     main.o(i.main) refers to oled.o(i.OLED_Clear) for OLED_Clear
     main.o(i.main) refers to oled.o(i.OLED_DrawBMP) for OLED_DrawBMP
-    main.o(i.main) refers to systick.o(i.Delay_ms) for Delay_ms
     main.o(i.main) refers to gy33t.o(i.GY33T_Write_Byte) for GY33T_Write_Byte
+    main.o(i.main) refers to systick.o(i.Delay_ms) for Delay_ms
     main.o(i.main) refers to gy33t.o(i.GY33T_Read) for GY33T_Read
     main.o(i.main) refers to printf5.o(i.__0printf$5) for __2printf
     main.o(i.main) refers to main.o(.data) for BMP
@@ -1291,9 +1291,9 @@ Image Symbol Table
     __scatterload_null                       0x08001397   Thumb Code     2  handlers.o(i.__scatterload_null)
     __scatterload_zeroinit                   0x08001399   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
     fputc                                    0x08001669   Thumb Code    24  uart.o(i.fputc)
-    main                                     0x08001685   Thumb Code   280  main.o(i.main)
-    Region$$Table$$Base                      0x08001810   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x08001830   Number         0  anon$$obj.o(Region$$Table)
+    main                                     0x08001685   Thumb Code   272  main.o(i.main)
+    Region$$Table$$Base                      0x08001808   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x08001828   Number         0  anon$$obj.o(Region$$Table)
     BMP                                      0x20000000   Data        1024  main.o(.data)
     SystemCoreClock                          0x20000404   Data           4  system_stm32f10x.o(.data)
     AHBPrescTable                            0x20000408   Data          16  system_stm32f10x.o(.data)
@@ -1308,9 +1308,9 @@ Memory Map of the image
 
   Image Entry point : 0x080000ed
 
-  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00001c64, Max: 0x00010000, ABSOLUTE, COMPRESSED[0x0000192c])
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00001c5c, Max: 0x00010000, ABSOLUTE, COMPRESSED[0x00001924])
 
-    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00001830, Max: 0x00010000, ABSOLUTE)
+    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00001828, Max: 0x00010000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -1401,11 +1401,11 @@ Memory Map of the image
     0x080013a6   0x080013a6   0x00000002   PAD
     0x080013a8   0x080013a8   0x000002c0   Code   RO         3635    i._printf_core      mc_w.l(printf5.o)
     0x08001668   0x08001668   0x0000001c   Code   RO         3389    i.fputc             uart.o
-    0x08001684   0x08001684   0x0000018c   Code   RO            2    i.main              main.o
-    0x08001810   0x08001810   0x00000020   Data   RO         3796    Region$$Table       anon$$obj.o
+    0x08001684   0x08001684   0x00000184   Code   RO            2    i.main              main.o
+    0x08001808   0x08001808   0x00000020   Data   RO         3796    Region$$Table       anon$$obj.o
 
 
-    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x08001830, Size: 0x00000c38, Max: 0x00005000, ABSOLUTE, COMPRESSED[0x000000fc])
+    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x08001828, Size: 0x00000c38, Max: 0x00005000, ABSOLUTE, COMPRESSED[0x000000fc])
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -1428,23 +1428,23 @@ Image component sizes
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
          0          0          0          0          0         32   core_cm3.o
-        48          0          0          0          0       1500   gy33t.o
-       398        122          0       1024          0     234646   main.o
-       112         12          0          0          0        940   misc.o
-       484          0          0          0          0       3112   oled.o
-        94          0          0          0          0        503   rcc.o
-      1022         34          0          0          0       5901   soft_i2c.o
-        36          8        236          0       1024        800   startup_stm32f10x_md.o
-       454          6          0          0          0       4337   stm32f10x_gpio.o
-       728         98          0         20          0      10547   stm32f10x_rcc.o
-       594         28          0          0          0       5983   stm32f10x_usart.o
-        24          4          0          0          0     202163   sys.o
-       328         28          0         20          0       2209   system_stm32f10x.o
-       184         16          0          4          0      17441   systick.o
-       332         26          0          4       1024       2293   uart.o
+        48          0          0          0          0       1556   gy33t.o
+       390        122          0       1024          0     234834   main.o
+       112         12          0          0          0        980   misc.o
+       484          0          0          0          0       3224   oled.o
+        94          0          0          0          0        523   rcc.o
+      1022         34          0          0          0       6089   soft_i2c.o
+        36          8        236          0       1024        820   startup_stm32f10x_md.o
+       454          6          0          0          0       4445   stm32f10x_gpio.o
+       728         98          0         20          0      10883   stm32f10x_rcc.o
+       594         28          0          0          0       6127   stm32f10x_usart.o
+        24          4          0          0          0     202199   sys.o
+       328         28          0         20          0       2301   system_stm32f10x.o
+       184         16          0          4          0      17561   systick.o
+       332         26          0          4       1024       2393   uart.o
 
     ----------------------------------------------------------------------
-      4852        382        268       1072       2052     492407   Object Totals
+      4844        382        268       1072       2052     493967   Object Totals
          0          0         32          0          0          0   (incl. Generated)
         14          0          0          0          4          0   (incl. Padding)
 
@@ -1489,15 +1489,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      5924        454        268       1076       2052     490103   Grand Totals
-      5924        454        268        252       2052     490103   ELF Image Totals (compressed)
-      5924        454        268        252          0          0   ROM Totals
+      5916        454        268       1076       2052     491663   Grand Totals
+      5916        454        268        252       2052     491663   ELF Image Totals (compressed)
+      5916        454        268        252          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                 6192 (   6.05kB)
+    Total RO  Size (Code + RO Data)                 6184 (   6.04kB)
     Total RW  Size (RW Data + ZI Data)              3128 (   3.05kB)
-    Total ROM Size (Code + RO Data + RW Data)       6444 (   6.29kB)
+    Total ROM Size (Code + RO Data + RW Data)       6436 (   6.29kB)
 
 ==============================================================================
 

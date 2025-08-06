@@ -661,13 +661,13 @@ Removing Unused input sections from the image.
     Removing stm32f10x_wwdg.o(i.WWDG_SetWindowValue), (40 bytes).
     Removing pwmservo.o(i.PwmServoStop), (92 bytes).
     Removing pwmservo.o(i.PwmServo_BiasSet), (36 bytes).
-    Removing pwmservo.o(i.PwmServo_SetAngle), (128 bytes).
+    Removing pwmservo.o(i.PwmServo_SetAngle), (136 bytes).
     Removing pwmservo.o(.data), (4 bytes).
     Removing f2d.o(.text), (38 bytes).
     Removing d2f.o(.text), (56 bytes).
     Removing dcmp4.o(.text), (96 bytes).
 
-470 unused section(s) (total 19468 bytes) removed from the image.
+470 unused section(s) (total 19476 bytes) removed from the image.
 
 ==============================================================================
 
@@ -960,9 +960,9 @@ Image Symbol Table
     __scatterload_null                       0x08000fdb   Thumb Code     2  handlers.o(i.__scatterload_null)
     __scatterload_zeroinit                   0x08000fdd   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
     abs_float                                0x08000feb   Thumb Code    24  global.o(i.abs_float)
-    main                                     0x08001003   Thumb Code    86  main.o(i.main)
-    Region$$Table$$Base                      0x08001058   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x08001078   Number         0  anon$$obj.o(Region$$Table)
+    main                                     0x08001003   Thumb Code    88  main.o(i.main)
+    Region$$Table$$Base                      0x0800105c   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x0800107c   Number         0  anon$$obj.o(Region$$Table)
     SystemCoreClock                          0x20000008   Data           4  system_stm32f10x.o(.data)
     AHBPrescTable                            0x2000000c   Data          16  system_stm32f10x.o(.data)
     duoji_doing                              0x20000020   Data         128  pwmservo.o(.bss)
@@ -976,9 +976,9 @@ Memory Map of the image
 
   Image Entry point : 0x080000ed
 
-  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00001098, Max: 0x00010000, ABSOLUTE)
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x0000109c, Max: 0x00010000, ABSOLUTE)
 
-    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00001078, Max: 0x00010000, ABSOLUTE)
+    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x0000107c, Max: 0x00010000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -1052,20 +1052,21 @@ Memory Map of the image
     0x08000fda   0x08000fda   0x00000002   Code   RO         3474    i.__scatterload_null  mc_w.l(handlers.o)
     0x08000fdc   0x08000fdc   0x0000000e   Code   RO         3475    i.__scatterload_zeroinit  mc_w.l(handlers.o)
     0x08000fea   0x08000fea   0x00000018   Code   RO          144    i.abs_float         global.o
-    0x08001002   0x08001002   0x00000056   Code   RO            1    i.main              main.o
-    0x08001058   0x08001058   0x00000020   Data   RO         3471    Region$$Table       anon$$obj.o
+    0x08001002   0x08001002   0x00000058   Code   RO            1    i.main              main.o
+    0x0800105a   0x0800105a   0x00000002   PAD
+    0x0800105c   0x0800105c   0x00000020   Data   RO         3471    Region$$Table       anon$$obj.o
 
 
-    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x08001078, Size: 0x000004a0, Max: 0x00005000, ABSOLUTE)
+    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x0800107c, Size: 0x000004a0, Max: 0x00005000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000   0x08001078   0x00000004   Data   RW          257    .data               systick.o
-    0x20000004   0x0800107c   0x00000002   Data   RW          301    .data               timer.o
-    0x20000006   0x0800107e   0x00000002   PAD
-    0x20000008   0x08001080   0x00000014   Data   RW          340    .data               system_stm32f10x.o
-    0x2000001c   0x08001094   0x00000002   Data   RW         3339    .data               key.o
-    0x2000001e   0x08001096   0x00000002   PAD
+    0x20000000   0x0800107c   0x00000004   Data   RW          257    .data               systick.o
+    0x20000004   0x08001080   0x00000002   Data   RW          301    .data               timer.o
+    0x20000006   0x08001082   0x00000002   PAD
+    0x20000008   0x08001084   0x00000014   Data   RW          340    .data               system_stm32f10x.o
+    0x2000001c   0x08001098   0x00000002   Data   RW         3339    .data               key.o
+    0x2000001e   0x0800109a   0x00000002   PAD
     0x20000020        -       0x00000080   Zero   RW         3375    .bss                pwmservo.o
     0x200000a0        -       0x00000400   Zero   RW          329    STACK               startup_stm32f10x_md.o
 
@@ -1078,26 +1079,26 @@ Image component sizes
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
          0          0          0          0          0         32   core_cm3.o
-        24          0          0          0          0     202276   global.o
-       100         20          0          2          0       1010   key.o
-        56          6          0          0          0        475   led.o
-        86          0          0          0          0     245803   main.o
-       112         12          0          0          0        952   misc.o
-       756         48          0          0        128       4789   pwmservo.o
-        94          0          0          0          0        507   rcc.o
-        36          8        236          0       1024        804   startup_stm32f10x_md.o
-       454          6          0          0          0       4365   stm32f10x_gpio.o
-       484         72          0          0          0       9154   stm32f10x_rcc.o
-       270         42          0          0          0       3901   stm32f10x_tim.o
-        24          4          0          0          0        435   sys.o
-       328         28          0         20          0       2241   system_stm32f10x.o
-       112         16          0          4          0      16391   systick.o
-       262         12          0          2          0       1222   timer.o
+        24          0          0          0          0     202312   global.o
+       100         20          0          2          0       1050   key.o
+        56          6          0          0          0        495   led.o
+        88          0          0          0          0     245911   main.o
+       112         12          0          0          0        988   misc.o
+       756         48          0          0        128       4909   pwmservo.o
+        94          0          0          0          0        527   rcc.o
+        36          8        236          0       1024        824   startup_stm32f10x_md.o
+       454          6          0          0          0       4481   stm32f10x_gpio.o
+       484         72          0          0          0       9414   stm32f10x_rcc.o
+       270         42          0          0          0       4037   stm32f10x_tim.o
+        24          4          0          0          0        455   sys.o
+       328         28          0         20          0       2329   system_stm32f10x.o
+       112         16          0          4          0      16467   systick.o
+       262         12          0          2          0       1258   timer.o
 
     ----------------------------------------------------------------------
-      3202        274        268         32       1152     494357   Object Totals
+      3206        274        268         32       1152     495489   Object Totals
          0          0         32          0          0          0   (incl. Generated)
-         4          0          0          4          0          0   (incl. Padding)
+         6          0          0          4          0          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -1145,15 +1146,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      3948        290        268         32       1152     492997   Grand Totals
-      3948        290        268         32       1152     492997   ELF Image Totals
-      3948        290        268         32          0          0   ROM Totals
+      3952        290        268         32       1152     494129   Grand Totals
+      3952        290        268         32       1152     494129   ELF Image Totals
+      3952        290        268         32          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                 4216 (   4.12kB)
+    Total RO  Size (Code + RO Data)                 4220 (   4.12kB)
     Total RW  Size (RW Data + ZI Data)              1184 (   1.16kB)
-    Total ROM Size (Code + RO Data + RW Data)       4248 (   4.15kB)
+    Total ROM Size (Code + RO Data + RW Data)       4252 (   4.15kB)
 
 ==============================================================================
 

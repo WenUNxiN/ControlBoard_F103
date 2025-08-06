@@ -1,0 +1,420 @@
+{
+  "name": "Project",
+  "type": "ARM",
+  "dependenceList": [],
+  "srcDirs": [],
+  "virtualFolder": {
+    "name": "<virtual_root>",
+    "files": [],
+    "folders": [
+      {
+        "name": "User",
+        "files": [
+          {
+            "path": "../User/main.c"
+          },
+          {
+            "path": "../User/main.h"
+          }
+        ],
+        "folders": []
+      },
+      {
+        "name": "App",
+        "files": [
+          {
+            "path": "../App/Global.c"
+          },
+          {
+            "path": "../App/Application.c"
+          },
+          {
+            "path": "../App/Action.c"
+          },
+          {
+            "path": "../App/App_Ps2.c"
+          },
+          {
+            "path": "../App/Protocol.c"
+          },
+          {
+            "path": "../App/ServoPID.c"
+          },
+          {
+            "path": "../App/Kinematics.c"
+          },
+          {
+            "path": "../App/Function.c"
+          }
+        ],
+        "folders": []
+      },
+      {
+        "name": "BSP",
+        "files": [
+          {
+            "path": "../BSP/OLED.c"
+          },
+          {
+            "path": "../BSP/bmp.h"
+          },
+          {
+            "path": "../BSP/OLED.h"
+          },
+          {
+            "path": "../BSP/OLEDFont.h"
+          },
+          {
+            "path": "../BSP/Ultrasonic.c"
+          },
+          {
+            "path": "../BSP/GY33T.c"
+          }
+        ],
+        "folders": []
+      },
+      {
+        "name": "Hardware",
+        "files": [
+          {
+            "path": "../Hardware/PwmServo.c"
+          },
+          {
+            "path": "../Hardware/Uart.c"
+          },
+          {
+            "path": "../Hardware/Beep.c"
+          },
+          {
+            "path": "../Hardware/Key.c"
+          },
+          {
+            "path": "../Hardware/Led.c"
+          },
+          {
+            "path": "../Hardware/Ps2.c"
+          },
+          {
+            "path": "../Hardware/SPI_Flash.c"
+          },
+          {
+            "path": "../Hardware/Soft_I2C.c"
+          },
+          {
+            "path": "../Hardware/Soft_I2C.h"
+          }
+        ],
+        "folders": []
+      },
+      {
+        "name": "System",
+        "files": [
+          {
+            "path": "../System/rcc.c"
+          },
+          {
+            "path": "../System/sys.c"
+          },
+          {
+            "path": "../System/SysTick.c"
+          },
+          {
+            "path": "../System/Timer.c"
+          }
+        ],
+        "folders": []
+      },
+      {
+        "name": "Start",
+        "files": [
+          {
+            "path": "../Library/Start/core_cm3.c"
+          },
+          {
+            "path": "../Library/Start/startup_stm32f10x_md.s"
+          },
+          {
+            "path": "../Library/Start/system_stm32f10x.c"
+          }
+        ],
+        "folders": []
+      },
+      {
+        "name": "Library",
+        "files": [
+          {
+            "path": "../Library/misc.c"
+          },
+          {
+            "path": "../Library/stm32f10x_adc.c"
+          },
+          {
+            "path": "../Library/stm32f10x_bkp.c"
+          },
+          {
+            "path": "../Library/stm32f10x_can.c"
+          },
+          {
+            "path": "../Library/stm32f10x_cec.c"
+          },
+          {
+            "path": "../Library/stm32f10x_crc.c"
+          },
+          {
+            "path": "../Library/stm32f10x_dac.c"
+          },
+          {
+            "path": "../Library/stm32f10x_dbgmcu.c"
+          },
+          {
+            "path": "../Library/stm32f10x_dma.c"
+          },
+          {
+            "path": "../Library/stm32f10x_exti.c"
+          },
+          {
+            "path": "../Library/stm32f10x_flash.c"
+          },
+          {
+            "path": "../Library/stm32f10x_fsmc.c"
+          },
+          {
+            "path": "../Library/stm32f10x_gpio.c"
+          },
+          {
+            "path": "../Library/stm32f10x_i2c.c"
+          },
+          {
+            "path": "../Library/stm32f10x_iwdg.c"
+          },
+          {
+            "path": "../Library/stm32f10x_pwr.c"
+          },
+          {
+            "path": "../Library/stm32f10x_rcc.c"
+          },
+          {
+            "path": "../Library/stm32f10x_rtc.c"
+          },
+          {
+            "path": "../Library/stm32f10x_sdio.c"
+          },
+          {
+            "path": "../Library/stm32f10x_spi.c"
+          },
+          {
+            "path": "../Library/stm32f10x_tim.c"
+          },
+          {
+            "path": "../Library/stm32f10x_usart.c"
+          },
+          {
+            "path": "../Library/stm32f10x_wwdg.c"
+          }
+        ],
+        "folders": []
+      }
+    ]
+  },
+  "outDir": "build",
+  "deviceName": null,
+  "packDir": null,
+  "miscInfo": {
+    "uid": "68accea9743cf6fd38f2c9415e3be958"
+  },
+  "targets": {
+    "Target 1": {
+      "excludeList": [],
+      "toolchain": "AC5",
+      "compileConfig": {
+        "cpuType": "Cortex-M3",
+        "archExtensions": "",
+        "floatingPointHardware": "none",
+        "scatterFilePath": "",
+        "useCustomScatterFile": false,
+        "storageLayout": {
+          "RAM": [
+            {
+              "tag": "RAM",
+              "id": 1,
+              "mem": {
+                "startAddr": "0x0",
+                "size": "0x0"
+              },
+              "isChecked": false,
+              "noInit": false
+            },
+            {
+              "tag": "RAM",
+              "id": 2,
+              "mem": {
+                "startAddr": "0x0",
+                "size": "0x0"
+              },
+              "isChecked": false,
+              "noInit": false
+            },
+            {
+              "tag": "RAM",
+              "id": 3,
+              "mem": {
+                "startAddr": "0x0",
+                "size": "0x0"
+              },
+              "isChecked": false,
+              "noInit": false
+            },
+            {
+              "tag": "IRAM",
+              "id": 1,
+              "mem": {
+                "startAddr": "0x20000000",
+                "size": "0x5000"
+              },
+              "isChecked": true,
+              "noInit": false
+            },
+            {
+              "tag": "IRAM",
+              "id": 2,
+              "mem": {
+                "startAddr": "0x0",
+                "size": "0x0"
+              },
+              "isChecked": false,
+              "noInit": false
+            }
+          ],
+          "ROM": [
+            {
+              "tag": "ROM",
+              "id": 1,
+              "mem": {
+                "startAddr": "0x0",
+                "size": "0x0"
+              },
+              "isChecked": false,
+              "isStartup": false
+            },
+            {
+              "tag": "ROM",
+              "id": 2,
+              "mem": {
+                "startAddr": "0x0",
+                "size": "0x0"
+              },
+              "isChecked": false,
+              "isStartup": false
+            },
+            {
+              "tag": "ROM",
+              "id": 3,
+              "mem": {
+                "startAddr": "0x0",
+                "size": "0x0"
+              },
+              "isChecked": false,
+              "isStartup": false
+            },
+            {
+              "tag": "IROM",
+              "id": 1,
+              "mem": {
+                "startAddr": "0x8000000",
+                "size": "0x10000"
+              },
+              "isChecked": true,
+              "isStartup": true
+            },
+            {
+              "tag": "IROM",
+              "id": 2,
+              "mem": {
+                "startAddr": "0x0",
+                "size": "0x0"
+              },
+              "isChecked": false,
+              "isStartup": false
+            }
+          ]
+        },
+        "options": "null"
+      },
+      "uploader": "JLink",
+      "uploadConfig": {
+        "bin": "",
+        "baseAddr": "",
+        "cpuInfo": {
+          "vendor": "null",
+          "cpuName": "null"
+        },
+        "proType": 1,
+        "speed": 8000,
+        "otherCmds": ""
+      },
+      "uploadConfigMap": {},
+      "custom_dep": {
+        "name": "default",
+        "incList": [
+          "../Library",
+          "../Library/Start",
+          "../System",
+          "../User",
+          "../App",
+          "../BSP",
+          "../Hardware",
+          ".cmsis/include",
+          "RTE/_Target 1"
+        ],
+        "libList": [],
+        "defineList": [
+          "STM32F10X_MD",
+          "USE_STDPERIPH_DRIVER"
+        ]
+      },
+      "builderOptions": {
+        "AC5": {
+          "version": 4,
+          "beforeBuildTasks": [],
+          "afterBuildTasks": [
+            {
+              "name": "[Copy linker output for Keil User Commands]",
+              "command": "mkdir ${KEIL_OUTPUT_DIR} & copy \"${OutDir}\\${ProjectName}.axf\" \"${KEIL_OUTPUT_DIR}\\${ProjectName}.axf\"",
+              "disable": false,
+              "abortAfterFailed": true
+            },
+            {
+              "name": "D:\\Company_Project\\课程资料\\ControlBoard_F103\\Routine\\13-综合示例\\Project\\keil5_disp_size_bar.exe",
+              "command": "D:\\Company_Project\\课程资料\\ControlBoard_F103\\Routine\\13-综合示例\\Project\\keil5_disp_size_bar.exe",
+              "disable": false,
+              "abortAfterFailed": true
+            }
+          ],
+          "global": {
+            "use-microLIB": true,
+            "output-debug-info": "enable"
+          },
+          "c/cpp-compiler": {
+            "optimization": "level-0",
+            "one-elf-section-per-function": true,
+            "c99-mode": true,
+            "C_FLAGS": "--diag_suppress=1 --diag_suppress=1295",
+            "CXX_FLAGS": "--diag_suppress=1 --diag_suppress=1295",
+            "warnings": "all-warnings"
+          },
+          "asm-compiler": {},
+          "linker": {
+            "$outputTaskExcludes": [
+              ".bin"
+            ],
+            "output-format": "elf",
+            "xo-base": "",
+            "ro-base": "0x08000000",
+            "rw-base": "0x20000000"
+          }
+        }
+      }
+    }
+  },
+  "version": "3.6"
+}
