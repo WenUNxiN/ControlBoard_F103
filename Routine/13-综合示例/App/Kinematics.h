@@ -2,6 +2,7 @@
 #define _KINEMATICS__H_
 
 #include "Application.h"
+#include <math.h>
 
 typedef struct {
 	float L0;

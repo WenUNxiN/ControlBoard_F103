@@ -34,7 +34,8 @@ void setup_app(void)
 	Buzzer_times(200, 3);
 	setup_run_action();
     
-    
+//    setup_kinematics(150, 120, 130, 150, &kinematics);
+//    setup_kinematics(125, 130, 130, 180, &kinematics);
     
 }
 
@@ -242,7 +243,7 @@ void LoopMode(void) {
 	case 2: // 超声波
 
 		break;
-	case 3: 
+	case 3: // 声音触摸
         SoundTouchTask();
 		break;
     case 4: // 摇杆
@@ -263,33 +264,28 @@ void Uart_Init(void)
 	Uart3_Init(115200);
 }
 
-/***********************************************
-
-  ***********************************************/
+/*----------------- 串口数据解析调度 -----------------*/
+/*----------------- 串口数据解析调度 -----------------*/
 void Loop_Uart(void)
 {
-	if (Uart_GetOK)
-	{
-		if (Uart_Mode == 1)
-		{
-			//
-			Parse_Group_Cmd(Uart_ReceiveBuf);
-			Parse_Cmd(Uart_ReceiveBuf);
-		}
-		else if (Uart_Mode == 2)
-		{
-			//
-			Parse_Action(Uart_ReceiveBuf);
-		}
-		else if (Uart_Mode == 3)
-		{
-			Parse_Action(Uart_ReceiveBuf);
-		}
-		else if (Uart_Mode == 4)
-		{
-			Save_Action(Uart_ReceiveBuf);
-		}
-		Uart_Mode = 0;
-		Uart_GetOK = 0;
-	}
+    // 检查是否有完整数据包需要处理
+    if (Uart_GetOK)
+    {
+        switch (Uart_Mode)
+        {
+            case 1: Parse_Group_Cmd(Uart_ReceiveBuf);
+                    Parse_Cmd(Uart_ReceiveBuf);
+                    break;
+            case 2: Parse_Action(Uart_ReceiveBuf);
+                    break;
+            case 3: Parse_Action(Uart_ReceiveBuf);
+                    break;
+            case 4: Save_Action(Uart_ReceiveBuf);
+                    break;
+        }
+        
+        // 复位状态机
+        Uart_Mode = 0;
+        Uart_GetOK = 0;
+    }
 }
