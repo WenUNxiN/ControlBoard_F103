@@ -301,6 +301,7 @@ void USART3_IRQHandler(void)
         {
             for (int i = 0; i < Uart_ReceiveCount; i++) {
                 Uart_DataParse(Uart3_DMA_RX_BUF[i]);
+                USART_SendData(USART1, Uart3_DMA_RX_BUF[i]);// 回显
             }
         }
 

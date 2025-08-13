@@ -34,7 +34,8 @@ void Parse_Action(char *Uart_ReceiveBuf)
     u16 index, time, i = 0;
     int bias, len;
     float pwm;
-    // UartAll_Printf(Uart_ReceiveBuf);
+    
+    UartAll_Printf(Uart_ReceiveBuf); // 所有串口发送
 
     // 调整偏差指令
     if (Uart_ReceiveBuf[0] == '#' && Uart_ReceiveBuf[4] == 'P' && Uart_ReceiveBuf[5] == 'S' && Uart_ReceiveBuf[6] == 'C' && Uart_ReceiveBuf[7] == 'K' && Uart_ReceiveBuf[12] == '!') // 带入偏差调节
@@ -140,8 +141,8 @@ void Parse_Action(char *Uart_ReceiveBuf)
             pwm += eeprom_info.dj_bias_pwm[index];
             PwmServo_DoingSet(index, pwm, time);
 
-//            SetPrintfUart(1);
-//            printf("\r\nindex:%d,pwm:%g,time:%d\r\n", index, pwm, time); // 返回解析的数据
+            SetPrintfUart(1);
+            printf("\r\nindex:%d,pwm:%g,time:%d\r\n", index, pwm, time); // 返回解析的数据
 
             SetPrintfUart(2);
             printf("#%03dP%04dT%04d!", (u16)index, (u16)pwm, (u16)time); // 总线发送
@@ -242,7 +243,7 @@ void Parse_Group_Cmd(char *cmd)
         所有舵机复位命令：    $DJR!
         获取应答信号：        $GETA!
         获取智能信号：        $SMODE1!
-        $KMS:x,y,z,time! //坐标单位mm，时间单位ms
+        $KINEMATICS:x,y,z,time! //坐标单位mm，时间单位ms
         设置角度：$Angle:%d,%f,%f!   舵机号 角度 舵机最大角度
 */
 // 命令解析函数
@@ -257,7 +258,7 @@ void Parse_Cmd(char *cmd)
     int pos = 0, index = 0, int1 = 0, int4 = 0;
     float kinematics_x = 0, kinematics_y = 0, kinematics_z = 0;
     float angle = 0, Servo_angle = 0;
-    // uart1_send_str(cmd);
+
     if (pos = Str_Contain_Str(cmd, "$DRS!"), pos)
     {
         SetPrintfUart(1);
@@ -397,5 +398,7 @@ void Parse_Cmd(char *cmd)
         BUZZER_OFF();
         Delay_ms(30);
         BUZZER_ON();
+        Delay_ms(30);
+        BUZZER_OFF();
     }
 }

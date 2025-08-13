@@ -1,7 +1,7 @@
 /**
   ******************************************************************************
   * @file    Uart.c
-  * @author  xxx
+  * @author  IMSY
   * @brief   多串口驱动 + 简易协议解析
   *          - 串口1：USB-CDC/调试口，普通中断接收
   *          - 串口2：RS-485 半双工，普通中断接收
@@ -301,6 +301,7 @@ void USART3_IRQHandler(void)
         {
             for (int i = 0; i < Uart_ReceiveCount; i++) {
                 Uart_DataParse(Uart3_DMA_RX_BUF[i]);
+                USART_SendData(USART1, Uart3_DMA_RX_BUF[i]);
             }
         }
 

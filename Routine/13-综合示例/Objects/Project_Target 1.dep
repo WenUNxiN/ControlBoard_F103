@@ -226,7 +226,7 @@ I (C:\Keil_v5\ARM\ARMCC\include\math.h)(0x599ECD2E)
 I (C:\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x599ECD2A)
 I (..\App\Global.h)(0x68847919)
 I (..\App\Protocol.h)(0x68342C43)
-F (..\App\Protocol.c)(0x6891A60B)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\Library -I ..\Library\Start -I ..\System -I ..\User -I ..\App -I ..\BSP -I ..\Hardware-IC:\Keil_v5\Pack\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="541" -DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o ..\objects\protocol.o --omf_browse ..\objects\protocol.crf --depend ..\objects\protocol.d)
+F (..\App\Protocol.c)(0x689BFB59)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\Library -I ..\Library\Start -I ..\System -I ..\User -I ..\App -I ..\BSP -I ..\Hardware-IC:\Keil_v5\Pack\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="541" -DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o ..\objects\protocol.o --omf_browse ..\objects\protocol.crf --depend ..\objects\protocol.d)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599ECD2C)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x599ECD2C)
 I (..\App\Application.h)(0x688C8D47)
@@ -516,7 +516,7 @@ I (..\Library\stm32f10x_wwdg.h)(0x4D783BB4)
 I (..\Library\misc.h)(0x4D783BB4)
 I (..\App\Global.h)(0x68847919)
 I (C:\Keil_v5\ARM\ARMCC\include\math.h)(0x599ECD2E)
-F (..\Hardware\Uart.c)(0x6895AD8E)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\Library -I ..\Library\Start -I ..\System -I ..\User -I ..\App -I ..\BSP -I ..\Hardware-IC:\Keil_v5\Pack\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="541" -DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o ..\objects\uart.o --omf_browse ..\objects\uart.crf --depend ..\objects\uart.d)
+F (..\Hardware\Uart.c)(0x689BFA5F)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\Library -I ..\Library\Start -I ..\System -I ..\User -I ..\App -I ..\BSP -I ..\Hardware-IC:\Keil_v5\Pack\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="541" -DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o ..\objects\uart.o --omf_browse ..\objects\uart.crf --depend ..\objects\uart.d)
 I (..\Hardware\Uart.h)(0x6895ABA0)
 I (..\User\main.h)(0x688884F5)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599ECD2C)

@@ -6,7 +6,7 @@
 [Found keyword]: ----------Execution Region----------
 [name]:  ER_IROM1 
 [Exec base]: 0x8000000
-[Size]: 0x6d10
+[Size]: 0x6d40
 [Max]: 0x10000
 [Found keyword]: ----------Execution Region----------
 [name]:  RW_IRAM1 
@@ -17,7 +17,7 @@
   RW_IRAM1 :0x20000000
    20.00 KB :|¡ö¡ö¡ö¡ö¡ö¡ö¡ö¡ö¡ö___________|   48.95 % (    9.79 KB /    20.00 KB) [10456 B]
   ER_IROM1 :0x8000000
-   64.00 KB :|¡ö¡ö¡ö¡ö¡ö¡ö¡ö¡ö____________|   42.60 % (   27.27 KB /    64.00 KB) [37616 B]
+   64.00 KB :|¡ö¡ö¡ö¡ö¡ö¡ö¡ö¡ö____________|   42.68 % (   27.31 KB /    64.00 KB) [37568 B]
 [export csv]: ./Project_sort_by_flash.csv
 [export csv]: ./Project_sort_by_ram.csv
 [export xlsx]: Project_analysis.xlsx
