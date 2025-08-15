@@ -21,6 +21,7 @@
 /*------------- 全局变量 -------------*/
 u8  SW_Uart = 1;                        /* printf 重定向目标：1-UART1 2-UART2 3-UART3 */
 char Uart_ReceiveBuf[UART_BUF_SIZE];    /* 统一解析缓冲区 */
+uint8_t Uart1_DMA_RX_BUF[UART1_DMA_RX_BUF_SIZE];   // DMA 双缓冲
 uint8_t Uart3_DMA_RX_BUF[UART3_DMA_RX_BUF_SIZE];  /* DMA 双缓冲 */
 u16 Uart_ReceiveCount = 0;              /* DMA 已接收字节数 */
 u16 Uart_GetOK = 0;                     /* 接收完成标志 */
@@ -33,16 +34,18 @@ u8  Uart_Mode = 0;                      /* 解析状态机 0空闲 1~4对应四�
  *============================================================================*/
 void Uart1_Init(u32 baud)
 {
-    USART_InitTypeDef USART_InitStructure;
     GPIO_InitTypeDef  GPIO_InitStructure;
+    USART_InitTypeDef USART_InitStructure;
     NVIC_InitTypeDef  NVIC_InitStructure;
+    DMA_InitTypeDef   DMA_InitStructure;
 
     /* 1. 时钟 */
     RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA | RCC_APB2Periph_USART1, ENABLE);
+    RCC_AHBPeriphClockCmd(RCC_AHBPeriph_DMA1, ENABLE);
 
     USART_DeInit(USART1);
 
-    /* 2. GPIO  TX=PA9(复用推挽)  RX=PA10(浮空输入) */
+    /* 2. GPIO  TX=PA9  RX=PA10 */
     GPIO_InitStructure.GPIO_Pin   = GPIO_Pin_9;
     GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_AF_PP;
     GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
@@ -61,18 +64,35 @@ void Uart1_Init(u32 baud)
     USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
     USART_Init(USART1, &USART_InitStructure);
 
-    /* 4. NVIC 优先级分组 1,0 */
+    /* 4. DMA1 Channel5 → USART1_RX  循环模式 */
+    DMA_DeInit(DMA1_Channel5);
+    DMA_InitStructure.DMA_PeripheralBaseAddr = (uint32_t)&USART1->DR;
+    DMA_InitStructure.DMA_MemoryBaseAddr     = (uint32_t)Uart1_DMA_RX_BUF;
+    DMA_InitStructure.DMA_DIR                = DMA_DIR_PeripheralSRC;
+    DMA_InitStructure.DMA_BufferSize         = UART1_DMA_RX_BUF_SIZE;
+    DMA_InitStructure.DMA_PeripheralInc      = DMA_PeripheralInc_Disable;
+    DMA_InitStructure.DMA_MemoryInc          = DMA_MemoryInc_Enable;
+    DMA_InitStructure.DMA_PeripheralDataSize = DMA_PeripheralDataSize_Byte;
+    DMA_InitStructure.DMA_MemoryDataSize     = DMA_MemoryDataSize_Byte;
+    DMA_InitStructure.DMA_Mode               = DMA_Mode_Circular;
+    DMA_InitStructure.DMA_Priority           = DMA_Priority_Medium;
+    DMA_InitStructure.DMA_M2M                = DMA_M2M_Disable;
+    DMA_Init(DMA1_Channel5, &DMA_InitStructure);
+
+    DMA_Cmd(DMA1_Channel5, ENABLE);
+    USART_DMACmd(USART1, USART_DMAReq_Rx, ENABLE);
+
+    /* 5. 空闲中断 */
+    USART_ITConfig(USART1, USART_IT_IDLE, ENABLE);
+
+    /* 6. NVIC */
     NVIC_InitStructure.NVIC_IRQChannel                   = USART1_IRQn;
     NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1;
     NVIC_InitStructure.NVIC_IRQChannelSubPriority        = 0;
     NVIC_InitStructure.NVIC_IRQChannelCmd                = ENABLE;
     NVIC_Init(&NVIC_InitStructure);
 
-    /* 5. 开接收中断，关发送中断 */
-    USART_ITConfig(USART1, USART_IT_RXNE, ENABLE);
-    USART_ITConfig(USART1, USART_IT_TXE,  DISABLE);
-
-    /* 6. 使能串口 */
+    /* 7. 使能串口 */
     USART_Cmd(USART1, ENABLE);
 }
 
@@ -256,11 +276,30 @@ void Uart1_Print(char *str)
  *============================================================================*/
 void USART1_IRQHandler(void)
 {
-    if (USART_GetFlagStatus(USART1, USART_IT_RXNE) == SET)
+    if (USART_GetITStatus(USART1, USART_IT_IDLE) != RESET)
     {
-        char rx_data = USART_ReceiveData(USART1);
-        Uart_DataParse(rx_data);          // 统一解析入口
-        USART_ClearITPendingBit(USART1, USART_IT_RXNE);
+        /* 1. 清 IDLE 标志 */
+        volatile uint32_t tmp;
+        tmp = USART1->SR;
+        tmp = USART1->DR;
+        (void)tmp;
+
+        /* 2. 关 DMA 计算已收字节数 */
+        DMA_Cmd(DMA1_Channel5, DISABLE);
+        uint16_t recv_len = UART1_DMA_RX_BUF_SIZE - DMA_GetCurrDataCounter(DMA1_Channel5);
+
+        /* 3. 逐字节解析并回显 */
+        if (recv_len > 0 && recv_len <= UART_BUF_SIZE)
+        {
+            for (uint16_t i = 0; i < recv_len; i++)
+            {
+                Uart_DataParse(Uart1_DMA_RX_BUF[i]);
+            }
+        }
+
+        /* 4. 重新装载 DMA */
+        DMA_SetCurrDataCounter(DMA1_Channel5, UART1_DMA_RX_BUF_SIZE);
+        DMA_Cmd(DMA1_Channel5, ENABLE);
     }
 }
 
@@ -301,7 +340,7 @@ void USART3_IRQHandler(void)
         {
             for (int i = 0; i < Uart_ReceiveCount; i++) {
                 Uart_DataParse(Uart3_DMA_RX_BUF[i]);
-                USART_SendData(USART1, Uart3_DMA_RX_BUF[i]);// 回显
+//                USART_SendData(USART1, Uart3_DMA_RX_BUF[i]);// 回显
             }
         }
 

@@ -4,7 +4,7 @@
 #include "Application.h"
 
 // 摇杆一次动作多少
-#define SERVO_STEP 10
+#define SERVO_STEP 5
 
 // 颜色任务
 void ColorTask(uint32_t interval_ms);

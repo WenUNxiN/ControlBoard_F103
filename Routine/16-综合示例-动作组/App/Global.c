@@ -1,7 +1,7 @@
 #include "Global.h"
 
 /***********************************************
-    函数名称:u16 My_Str_Contain_Str(char *str,char *str2)
+    函数名称:u16 Str_Contain_Str(char *str,char *str2)
     功能介绍:	判断子串是否包含
     函数参数:	*str：字符串一
                 *str2：字符串2
@@ -90,7 +90,7 @@ float abs_float(float value)
 }
 
 /***********************************************
-    函数名称:int My_Abs_Int(int int1)
+    函数名称:int Abs_Int(int int1)
     功能介绍:	/字符串中的字符替代函数 把str字符串中所有的ch1换成ch2
     函数参数:*str：字符串
                 ch1：字符1

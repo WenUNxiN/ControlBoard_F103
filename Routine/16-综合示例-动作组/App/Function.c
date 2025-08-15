@@ -9,10 +9,21 @@ typedef struct
     char cmd[32];
 } ColorMap_t;
 
+/*
+    0x01 "红色"                
+    0x02 "黄色"                
+    0x04 "粉色"                
+    0x08 "白色"                
+    0x10 "黑色"                
+    0x20 "绿色"                
+    0x40 "深蓝色"              
+    0x80 "蓝色"
+*/
+
 static const ColorMap_t color_map[] = {
-    {0x01, "$DGT:1-8,1!"},    // 红色
-    {0x02, "$DGT:9-16,1!"},   // 黄色
-    {0x20, "$DGT:17-24,1!"},  // 绿色
+    {0x01, "$DGT:1-10,1!"},    // 红色
+    {0x20, "$DGT:11-20,1!"},   // 黄色
+    {0x40, "$DGT:21-30,1!"},   // 蓝色
 };
 
 /* 颜色识别主循环
@@ -44,6 +55,7 @@ void ColorTask(uint32_t interval_ms)
         {
             if (num == color_map[i].color)
             {
+                Buzzer_times(200, 3);   // 蜂鸣器提示
                 Parse_Group_Cmd((char *)color_map[i].cmd);
                 state = LOCKED; // 立即锁定，直到动作完成
                 break;
@@ -97,7 +109,7 @@ void SoundTouchTask(void)
 
     case KEY_PRESSED:
         Buzzer_times(200, 3);
-        Parse_Group_Cmd("$DGT:25-31,1!");
+        Parse_Group_Cmd("$DGT:31-39,1!");
         action_state = LOCKED; // 立即锁定，直到动作完成
         state = KEY_WAIT_RELEASE;
         break;
@@ -117,9 +129,9 @@ void SoundTouchTask(void)
 void JoystickTask(void)
 {
     static u32 joystick_tick_bak = 0;
-    static u16 xpwm = 1500; // 初始 PWM 值
-    static u16 ypwm = 1500;
-    static u16 ypwm1 = 1500;
+    static int kms_x = 150; 
+    static int kms_y = 0;
+
 
     /* 每 50 ms 扫描一次 */
     if (Millis() - joystick_tick_bak < 50) return; 
@@ -133,50 +145,30 @@ void JoystickTask(void)
         break;
 
     case POS_UP:
-        printf("Up\n");
-        if (ypwm < 2100) 
-        {
-            ypwm += SERVO_STEP;
-        }
-        PwmServo_DoingSet(1, ypwm, 1000);
-        if (ypwm1 > 500) 
-        {
-            ypwm1 -= SERVO_STEP + 10;
-        }
-        PwmServo_DoingSet(3, ypwm1, 1000);
+        printf("Up\n"); // 向上
+        kms_x += SERVO_STEP;  
+        if(kms_x >= 250) {kms_x = 250;}
         break;
 
-    case POS_DOWN:
+    case POS_DOWN: // 向下
         printf("Down\n");
-        if (ypwm > 900) 
-        {
-            ypwm -= SERVO_STEP;
-        }
-        PwmServo_DoingSet(1, ypwm, 1000);
-        if (ypwm1 < 1700) 
-        {
-            ypwm1 += SERVO_STEP + 10;
-        }
-        PwmServo_DoingSet(3, ypwm1, 1000);
+        kms_x -= SERVO_STEP;  
+        if(kms_x <= -250) {kms_x = -250;}
         break;
 
-    case POS_LEFT:
+    case POS_LEFT: // 向左
         printf("Left\n");
-        if (xpwm < 2500) 
-        {
-            xpwm += SERVO_STEP;
-        }
-        PwmServo_DoingSet(0, xpwm, 1000);
+        kms_y += SERVO_STEP;  
+        if(kms_y >= 250) {kms_y = 250;}
         break;
 
-    case POS_RIGHT:
+    case POS_RIGHT: // 向右
         printf("Right\n");
-        if (xpwm > 500) 
-        {
-            xpwm -= SERVO_STEP;
-        }
-        PwmServo_DoingSet(0, xpwm, 1000);
+        kms_y -= SERVO_STEP;  
+        if(kms_y <= -250) {kms_y = -250;}
         break;
     }
+    sprintf((char *)cmd_return, "$KMS:%03d,%03d,100,1000!\r\n", (int)kms_x, (int)kms_y);
+    Parse_Cmd(cmd_return);
 }
 

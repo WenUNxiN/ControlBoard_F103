@@ -3,7 +3,7 @@
 <title>Static Call Graph - [..\Objects\Project.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ..\Objects\Project.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Fri Aug 15 11:54:06 2025
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Fri Aug 15 15:24:22 2025
 <BR><P>
 <H3>Maximum Stack Usage =        696 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -297,12 +297,12 @@ Global Symbols
 <P><STRONG><a name="[a]"></a>WWDG_IRQHandler</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_stm32f10x_md.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_md.o(RESET)
 </UL>
-<P><STRONG><a name="[ab]"></a>__aeabi_memcpy</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, memcpya.o(.text))
+<P><STRONG><a name="[aa]"></a>__aeabi_memcpy</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, memcpya.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ParsePsx_Buf
 </UL>
 
 <P><STRONG><a name="[b7]"></a>__aeabi_memcpy4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memcpya.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Cmd
+<BR><BR>[Called By]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Cmd
 <LI><a href="#[139]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setup_app
 </UL>
 
@@ -327,7 +327,7 @@ Global Symbols
 <P><STRONG><a name="[b5]"></a>__aeabi_memclr4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;inverseKinematics
 <LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Save_Action
-<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Cmd
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Cmd
 </UL>
 
 <P><STRONG><a name="[147]"></a>__aeabi_memclr8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
@@ -343,7 +343,7 @@ Global Symbols
 <LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_Print
 </UL>
 
-<P><STRONG><a name="[ae]"></a>strcpy</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, strcpy.o(.text))
+<P><STRONG><a name="[ad]"></a>strcpy</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, strcpy.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ParsePsx_Buf
 <LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Save_Action
 <LI><a href="#[13c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setup_run_action
@@ -355,7 +355,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__vfscanf_char
 </UL>
 <BR>[Called By]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Group_Cmd
-<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Cmd
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Cmd
 </UL>
 
 <P><STRONG><a name="[45]"></a>_scanf_int</STRONG> (Thumb, 332 bytes, Stack size 56 bytes, _scanf_int.o(.text))
@@ -388,7 +388,7 @@ Global Symbols
 <LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PwmServo_SetAngle
 <LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;angle_to_PWM
 <LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;inverseKinematics
-<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PwmServo_DoingSet
+<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PwmServo_DoingSet
 <LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Action
 <LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
 <LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PwmServo_IncOffset
@@ -405,7 +405,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fadd
 </UL>
 <BR>[Called By]<UL><LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;inverseKinematics
-<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PwmServo_DoingSet
+<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PwmServo_DoingSet
 <LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Action
 <LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PwmServo_IncOffset
 <LI><a href="#[131]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sinf
@@ -451,7 +451,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PwmServo_SetAngle
 <LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;angle_to_PWM
 <LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;inverseKinematics
-<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PwmServo_DoingSet
+<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PwmServo_DoingSet
 <LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Get_Joystick_Percentage_value
 <LI><a href="#[12b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;atan2f
 <LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_flt_invalid
@@ -524,8 +524,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_float_epilogue
 </UL>
-<BR>[Called By]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PwmServo_DoingSet
-<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Cmd
+<BR>[Called By]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PwmServo_DoingSet
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Cmd
 <LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Action
 <LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ServoState_Init
 <LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PwmServo_IncOffset
@@ -553,16 +553,16 @@ Global Symbols
 <P><STRONG><a name="[91]"></a>__aeabi_f2iz</STRONG> (Thumb, 50 bytes, Stack size 0 bytes, ffixi.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PwmServo_SetAngle
 <LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;angle_to_PWM
-<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PwmServo_DoingSet
+<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PwmServo_DoingSet
 <LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Action
 <LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Get_Joystick_Percentage_value
 <LI><a href="#[131]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sinf
 <LI><a href="#[12f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cosf
 </UL>
 
-<P><STRONG><a name="[af]"></a>__aeabi_f2uiz</STRONG> (Thumb, 40 bytes, Stack size 0 bytes, ffixui.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PwmServoStop
-<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PwmServo_DoingSet
+<P><STRONG><a name="[ae]"></a>__aeabi_f2uiz</STRONG> (Thumb, 40 bytes, Stack size 0 bytes, ffixui.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PwmServoStop
+<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PwmServo_DoingSet
 <LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Action
 <LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
 </UL>
@@ -570,7 +570,7 @@ Global Symbols
 <P><STRONG><a name="[b9]"></a>__aeabi_f2d</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, f2d.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PwmServo_SetAngle
 <LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;inverseKinematics
-<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Cmd
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Cmd
 <LI><a href="#[139]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setup_app
 </UL>
 
@@ -585,17 +585,17 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[c0]"></a>__aeabi_cfcmpeq</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, cfcmple.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PwmServo_DoingSet
+<BR><BR>[Called By]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PwmServo_DoingSet
 <LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PwmServo_IncOffset
 </UL>
 
-<P><STRONG><a name="[b3]"></a>__aeabi_cfcmple</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, cfcmple.o(.text))
+<P><STRONG><a name="[b2]"></a>__aeabi_cfcmple</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, cfcmple.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;inverseKinematics
 <LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Action
 <LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PwmServo_IncOffset
 </UL>
 
-<P><STRONG><a name="[b2]"></a>__aeabi_cfrcmple</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, cfrcmple.o(.text))
+<P><STRONG><a name="[b1]"></a>__aeabi_cfrcmple</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, cfrcmple.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;inverseKinematics
 <LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Action
 <LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;abs_float
@@ -907,41 +907,49 @@ Global Symbols
 <LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
 <LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay_ms
 </UL>
-<BR>[Called By]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SoundTouchTask
+<BR>[Called By]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SoundTouchTask
+<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ColorTask
 <LI><a href="#[139]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setup_app
 </UL>
 
-<P><STRONG><a name="[7f]"></a>ColorTask</STRONG> (Thumb, 118 bytes, Stack size 16 bytes, function.o(i.ColorTask))
+<P><STRONG><a name="[7f]"></a>ColorTask</STRONG> (Thumb, 126 bytes, Stack size 16 bytes, function.o(i.ColorTask))
 <BR><BR>[Stack]<UL><LI>Max Depth = 296<LI>Call Chain = ColorTask &rArr; Parse_Group_Cmd &rArr; __0sscanf &rArr; __vfscanf_char &rArr; __vfscanf &rArr; _scanf_real
 </UL>
 <BR>[Calls]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GY33T_Read
 <LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Group_Cmd
+<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Buzzer_times
 <LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Millis
 </UL>
-<BR>[Called By]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoopMode
+<BR>[Called By]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoopMode
 </UL>
 
-<P><STRONG><a name="[ff]"></a>DMA_Cmd</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, stm32f10x_dma.o(i.DMA_Cmd))
-<BR><BR>[Called By]<UL><LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart3_Init
+<P><STRONG><a name="[fb]"></a>DMA_Cmd</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, stm32f10x_dma.o(i.DMA_Cmd))
+<BR><BR>[Called By]<UL><LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart3_Init
+<LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart1_Init
 <LI><a href="#[31]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART3_IRQHandler
+<LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_IRQHandler
 </UL>
 
-<P><STRONG><a name="[110]"></a>DMA_DeInit</STRONG> (Thumb, 324 bytes, Stack size 0 bytes, stm32f10x_dma.o(i.DMA_DeInit))
-<BR><BR>[Called By]<UL><LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart3_Init
+<P><STRONG><a name="[10b]"></a>DMA_DeInit</STRONG> (Thumb, 324 bytes, Stack size 0 bytes, stm32f10x_dma.o(i.DMA_DeInit))
+<BR><BR>[Called By]<UL><LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart3_Init
+<LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart1_Init
 </UL>
 
-<P><STRONG><a name="[100]"></a>DMA_GetCurrDataCounter</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, stm32f10x_dma.o(i.DMA_GetCurrDataCounter))
+<P><STRONG><a name="[fc]"></a>DMA_GetCurrDataCounter</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, stm32f10x_dma.o(i.DMA_GetCurrDataCounter))
 <BR><BR>[Called By]<UL><LI><a href="#[31]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART3_IRQHandler
+<LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_IRQHandler
 </UL>
 
-<P><STRONG><a name="[111]"></a>DMA_Init</STRONG> (Thumb, 60 bytes, Stack size 8 bytes, stm32f10x_dma.o(i.DMA_Init))
+<P><STRONG><a name="[10c]"></a>DMA_Init</STRONG> (Thumb, 60 bytes, Stack size 8 bytes, stm32f10x_dma.o(i.DMA_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = DMA_Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart3_Init
+<BR>[Called By]<UL><LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart3_Init
+<LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart1_Init
 </UL>
 
-<P><STRONG><a name="[101]"></a>DMA_SetCurrDataCounter</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f10x_dma.o(i.DMA_SetCurrDataCounter))
+<P><STRONG><a name="[fe]"></a>DMA_SetCurrDataCounter</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f10x_dma.o(i.DMA_SetCurrDataCounter))
 <BR><BR>[Called By]<UL><LI><a href="#[31]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART3_IRQHandler
+<LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_IRQHandler
 </UL>
 
 <P><STRONG><a name="[7e]"></a>Delay_ms</STRONG> (Thumb, 32 bytes, Stack size 12 bytes, systick.o(i.Delay_ms))
@@ -949,7 +957,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay_us
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Cmd
+<BR>[Called By]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Cmd
 <LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_Init
 <LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Buzzer_times
 </UL>
@@ -976,15 +984,15 @@ Global Symbols
 <LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr
 </UL>
 <BR>[Called By]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Group_Cmd
-<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Cmd
-<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Loop_Action
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Cmd
+<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Loop_Action
 </UL>
 
 <P><STRONG><a name="[6e]"></a>GPIO_Init</STRONG> (Thumb, 278 bytes, Stack size 24 bytes, stm32f10x_gpio.o(i.GPIO_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = GPIO_Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart3_Init
-<LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart2_Init
+<BR>[Called By]<UL><LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart3_Init
+<LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart2_Init
 <LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart1_Init
 <LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;US_Init
 <LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SpiFlash_Init
@@ -992,8 +1000,8 @@ Global Symbols
 <LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SoftI2C_init
 <LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PwmServoInit
 <LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Ps2_Init
-<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Init
-<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Key_Init
+<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Init
+<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Key_Init
 <LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Buzzer_Init
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Joystick_Init
 <LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Wait_Ack
@@ -1013,7 +1021,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[be]"></a>GPIO_ReadInputDataBit</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f10x_gpio.o(i.GPIO_ReadInputDataBit))
-<BR><BR>[Called By]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SoundTouchTask
+<BR><BR>[Called By]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SoundTouchTask
 <LI><a href="#[137]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;loop_key
 <LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;loop_Joystick_key
 <LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Wait_Ack
@@ -1021,12 +1029,12 @@ Global Symbols
 <LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Ps2_Transfer
 </UL>
 
-<P><STRONG><a name="[99]"></a>GPIO_ReadOutputDataBit</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f10x_gpio.o(i.GPIO_ReadOutputDataBit))
-<BR><BR>[Called By]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Led_Blink
+<P><STRONG><a name="[9a]"></a>GPIO_ReadOutputDataBit</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f10x_gpio.o(i.GPIO_ReadOutputDataBit))
+<BR><BR>[Called By]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Led_Blink
 </UL>
 
 <P><STRONG><a name="[7b]"></a>GPIO_ResetBits</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f10x_gpio.o(i.GPIO_ResetBits))
-<BR><BR>[Called By]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Cmd
+<BR><BR>[Called By]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Cmd
 <LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Buzzer_Init
 <LI><a href="#[137]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;loop_key
 <LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;loop_Joystick_key
@@ -1036,20 +1044,20 @@ Global Symbols
 <P><STRONG><a name="[7d]"></a>GPIO_SetBits</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f10x_gpio.o(i.GPIO_SetBits))
 <BR><BR>[Called By]<UL><LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SpiFlash_Init
 <LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SoftI2C_init
-<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Cmd
-<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Init
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Cmd
+<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Init
 <LI><a href="#[137]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;loop_key
 <LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;loop_Joystick_key
 <LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Buzzer_times
 <LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Joystick_LED_Init
 </UL>
 
-<P><STRONG><a name="[9a]"></a>GPIO_WriteBit</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, stm32f10x_gpio.o(i.GPIO_WriteBit))
+<P><STRONG><a name="[9b]"></a>GPIO_WriteBit</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, stm32f10x_gpio.o(i.GPIO_WriteBit))
 <BR><BR>[Called By]<UL><LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SpiFlash_Erase_Sector
 <LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Ps2_WriteRead
 <LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SpiFlash_Read
 <LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Ps2_Init
-<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Led_Blink
+<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Led_Blink
 <LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Wait_Ack
 <LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Stop
 <LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Start
@@ -1116,15 +1124,16 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;JoystickTask
 </UL>
 
-<P><STRONG><a name="[93]"></a>JoystickTask</STRONG> (Thumb, 302 bytes, Stack size 8 bytes, function.o(i.JoystickTask))
-<BR><BR>[Stack]<UL><LI>Max Depth = 100<LI>Call Chain = JoystickTask &rArr; JoystickStatus &rArr; Get_Joystick_Percentage_value &rArr; Get_Adc_Joystick_Value &rArr; ADC_RegularChannelConfig
+<P><STRONG><a name="[93]"></a>JoystickTask</STRONG> (Thumb, 210 bytes, Stack size 8 bytes, function.o(i.JoystickTask))
+<BR><BR>[Stack]<UL><LI>Max Depth = 664<LI>Call Chain = JoystickTask &rArr; Parse_Cmd &rArr; inverseKinematics &rArr; sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dsub &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;JoystickStatus
-<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PwmServo_DoingSet
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Cmd
 <LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Millis
+<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
 <LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoopMode
+<BR>[Called By]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoopMode
 </UL>
 
 <P><STRONG><a name="[6c]"></a>Joystick_Key_Init</STRONG> (Thumb, 34 bytes, Stack size 8 bytes, joystick.o(i.Joystick_Key_Init))
@@ -1146,7 +1155,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Joystick_Init
 </UL>
 
-<P><STRONG><a name="[96]"></a>Key_Init</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, key.o(i.Key_Init))
+<P><STRONG><a name="[97]"></a>Key_Init</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, key.o(i.Key_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = Key_Init &rArr; GPIO_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
@@ -1155,7 +1164,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[139]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setup_app
 </UL>
 
-<P><STRONG><a name="[97]"></a>LED_Init</STRONG> (Thumb, 50 bytes, Stack size 8 bytes, led.o(i.LED_Init))
+<P><STRONG><a name="[98]"></a>LED_Init</STRONG> (Thumb, 50 bytes, Stack size 8 bytes, led.o(i.LED_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = LED_Init &rArr; GPIO_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
@@ -1165,20 +1174,20 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[139]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setup_app
 </UL>
 
-<P><STRONG><a name="[98]"></a>Led_Blink</STRONG> (Thumb, 60 bytes, Stack size 16 bytes, application.o(i.Led_Blink))
+<P><STRONG><a name="[99]"></a>Led_Blink</STRONG> (Thumb, 60 bytes, Stack size 16 bytes, application.o(i.Led_Blink))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = Led_Blink
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_WriteBit
-<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadOutputDataBit
+<BR>[Calls]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_WriteBit
+<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadOutputDataBit
 <LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Millis
 </UL>
 <BR>[Called By]<UL><LI><a href="#[136]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;loop_app
 </UL>
 
-<P><STRONG><a name="[9b]"></a>LoopMode</STRONG> (Thumb, 80 bytes, Stack size 8 bytes, application.o(i.LoopMode))
-<BR><BR>[Stack]<UL><LI>Max Depth = 304<LI>Call Chain = LoopMode &rArr; SoundTouchTask &rArr; Parse_Group_Cmd &rArr; __0sscanf &rArr; __vfscanf_char &rArr; __vfscanf &rArr; _scanf_real
+<P><STRONG><a name="[9c]"></a>LoopMode</STRONG> (Thumb, 80 bytes, Stack size 8 bytes, application.o(i.LoopMode))
+<BR><BR>[Stack]<UL><LI>Max Depth = 672<LI>Call Chain = LoopMode &rArr; JoystickTask &rArr; Parse_Cmd &rArr; inverseKinematics &rArr; sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dsub &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SoundTouchTask
+<BR>[Calls]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SoundTouchTask
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;JoystickTask
 <LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ColorTask
 <LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Millis
@@ -1186,45 +1195,45 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[136]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;loop_app
 </UL>
 
-<P><STRONG><a name="[9d]"></a>Loop_Action</STRONG> (Thumb, 192 bytes, Stack size 8 bytes, action.o(i.Loop_Action))
+<P><STRONG><a name="[9e]"></a>Loop_Action</STRONG> (Thumb, 192 bytes, Stack size 8 bytes, action.o(i.Loop_Action))
 <BR><BR>[Stack]<UL><LI>Max Depth = 116<LI>Call Chain = Loop_Action &rArr; DoGroup_Once &rArr; Parse_Action &rArr; PwmServo_DoingSet &rArr; __aeabi_fsub &rArr; __aeabi_fadd &rArr; _float_epilogue
 </UL>
 <BR>[Calls]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DoGroup_Once
-<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart1_Print
+<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart1_Print
 <LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Millis
 </UL>
 <BR>[Called By]<UL><LI><a href="#[136]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;loop_app
 </UL>
 
-<P><STRONG><a name="[9f]"></a>Loop_Uart</STRONG> (Thumb, 82 bytes, Stack size 8 bytes, application.o(i.Loop_Uart))
+<P><STRONG><a name="[a0]"></a>Loop_Uart</STRONG> (Thumb, 82 bytes, Stack size 8 bytes, application.o(i.Loop_Uart))
 <BR><BR>[Stack]<UL><LI>Max Depth = 664<LI>Call Chain = Loop_Uart &rArr; Parse_Cmd &rArr; inverseKinematics &rArr; sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dsub &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Save_Action
 <LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Group_Cmd
-<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Cmd
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Cmd
 <LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Action
 </UL>
 <BR>[Called By]<UL><LI><a href="#[136]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;loop_app
 </UL>
 
 <P><STRONG><a name="[77]"></a>Millis</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, systick.o(i.Millis))
-<BR><BR>[Called By]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SoundTouchTask
-<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Loop_Action
+<BR><BR>[Called By]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SoundTouchTask
+<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Loop_Action
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;JoystickTask
 <LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ColorTask
 <LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AppPs2Run
 <LI><a href="#[137]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;loop_key
 <LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;loop_Joystick_key
-<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoopMode
-<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Led_Blink
+<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoopMode
+<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Led_Blink
 <LI><a href="#[138]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;loop_oled
 </UL>
 
 <P><STRONG><a name="[f5]"></a>NVIC_Init</STRONG> (Thumb, 100 bytes, Stack size 16 bytes, misc.o(i.NVIC_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = NVIC_Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart3_Init
-<LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart2_Init
+<BR>[Called By]<UL><LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart3_Init
+<LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart2_Init
 <LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart1_Init
 <LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_Init
 <LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_Init
@@ -1292,9 +1301,9 @@ Global Symbols
 <P><STRONG><a name="[a9]"></a>Parameter_Init</STRONG> (Thumb, 164 bytes, Stack size 32 bytes, application.o(i.Parameter_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = Parameter_Init &rArr; SpiFlash_Read &rArr; Spi_WriteRead
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart1_Print
+<BR>[Calls]<UL><LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart1_Print
 <LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SpiFlash_Read
-<LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
+<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[139]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setup_app
 </UL>
@@ -1302,14 +1311,14 @@ Global Symbols
 <P><STRONG><a name="[79]"></a>ParsePsx_Buf</STRONG> (Thumb, 552 bytes, Stack size 24 bytes, app_ps2.o(i.ParsePsx_Buf))
 <BR><BR>[Stack]<UL><LI>Max Depth = 680<LI>Call Chain = ParsePsx_Buf &rArr; Parse_Cmd &rArr; inverseKinematics &rArr; sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dsub &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_ITConfig
-<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Cmd
+<BR>[Calls]<UL><LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_ITConfig
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Cmd
 <LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Action
-<LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Str_Contain_Str
-<LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strcpy
+<LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Str_Contain_Str
+<LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strcpy
 <LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strlen
 <LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr
-<LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
+<LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
 </UL>
 <BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AppPs2Run
 </UL>
@@ -1319,67 +1328,68 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2f
 <LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_frsub
-<LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2uiz
+<LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2uiz
 <LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2iz
-<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfcmple
-<LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PwmServoStop
+<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfcmple
+<LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PwmServoStop
 <LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2f
-<LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetPrintfUart
-<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PwmServo_DoingSet
+<LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetPrintfUart
+<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PwmServo_DoingSet
 <LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
 <LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
 <LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fadd
-<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfrcmple
+<LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfrcmple
 <LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strlen
 <LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ParsePsx_Buf
 <LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DoGroup_Once
-<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Cmd
-<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Loop_Uart
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Cmd
+<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Loop_Uart
 </UL>
 
-<P><STRONG><a name="[a0]"></a>Parse_Cmd</STRONG> (Thumb, 932 bytes, Stack size 88 bytes, protocol.o(i.Parse_Cmd))
+<P><STRONG><a name="[96]"></a>Parse_Cmd</STRONG> (Thumb, 932 bytes, Stack size 88 bytes, protocol.o(i.Parse_Cmd))
 <BR><BR>[Stack]<UL><LI>Max Depth = 656<LI>Call Chain = Parse_Cmd &rArr; inverseKinematics &rArr; sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dsub &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UartAll_Printf
 <LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Soft_Reset
 <LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PwmServo_SetAngle
-<LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PwmServoStop
+<LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PwmServoStop
 <LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;angle_to_PWM
 <LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DoGroup_Once
 <LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;inverseKinematics
 <LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2f
 <LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
-<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart1_Print
-<LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetPrintfUart
-<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PwmServo_DoingSet
+<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart1_Print
+<LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetPrintfUart
+<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PwmServo_DoingSet
 <LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Action
 <LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
 <LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
 <LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay_ms
-<LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Str_Contain_Str
+<LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Str_Contain_Str
 <LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
 <LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
 <LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__0sscanf
-<LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
+<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
 <LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ParsePsx_Buf
-<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Loop_Uart
+<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;JoystickTask
+<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Loop_Uart
 </UL>
 
 <P><STRONG><a name="[81]"></a>Parse_Group_Cmd</STRONG> (Thumb, 88 bytes, Stack size 16 bytes, protocol.o(i.Parse_Group_Cmd))
 <BR><BR>[Stack]<UL><LI>Max Depth = 280<LI>Call Chain = Parse_Group_Cmd &rArr; __0sscanf &rArr; __vfscanf_char &rArr; __vfscanf &rArr; _scanf_real
 </UL>
 <BR>[Calls]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DoGroup_Once
-<LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Str_Contain_Str
+<LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Str_Contain_Str
 <LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__0sscanf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SoundTouchTask
+<BR>[Called By]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SoundTouchTask
 <LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ColorTask
 <LI><a href="#[13c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setup_run_action
-<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Loop_Uart
+<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Loop_Uart
 </UL>
 
 <P><STRONG><a name="[13b]"></a>PidInit</STRONG> (Thumb, 52 bytes, Stack size 0 bytes, servopid.o(i.PidInit))
@@ -1389,7 +1399,7 @@ Global Symbols
 <P><STRONG><a name="[bc]"></a>Ps2_Init</STRONG> (Thumb, 122 bytes, Stack size 8 bytes, ps2.o(i.Ps2_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = Ps2_Init &rArr; GPIO_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_WriteBit
+<BR>[Calls]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_WriteBit
 <LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
 <LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
 </UL>
@@ -1399,7 +1409,7 @@ Global Symbols
 <P><STRONG><a name="[bd]"></a>Ps2_Transfer</STRONG> (Thumb, 104 bytes, Stack size 24 bytes, ps2.o(i.Ps2_Transfer))
 <BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = Ps2_Transfer &rArr; Delay_us
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_WriteBit
+<BR>[Calls]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_WriteBit
 <LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadInputDataBit
 <LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay_us
 </UL>
@@ -1409,7 +1419,7 @@ Global Symbols
 <P><STRONG><a name="[78]"></a>Ps2_WriteRead</STRONG> (Thumb, 114 bytes, Stack size 8 bytes, ps2.o(i.Ps2_WriteRead))
 <BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = Ps2_WriteRead &rArr; Ps2_Transfer &rArr; Delay_us
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_WriteBit
+<BR>[Calls]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_WriteBit
 <LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Ps2_Transfer
 </UL>
 <BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AppPs2Run
@@ -1424,19 +1434,19 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[139]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setup_app
 </UL>
 
-<P><STRONG><a name="[b1]"></a>PwmServoStop</STRONG> (Thumb, 88 bytes, Stack size 8 bytes, pwmservo.o(i.PwmServoStop))
+<P><STRONG><a name="[b0]"></a>PwmServoStop</STRONG> (Thumb, 88 bytes, Stack size 8 bytes, pwmservo.o(i.PwmServoStop))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = PwmServoStop
 </UL>
-<BR>[Calls]<UL><LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2uiz
+<BR>[Calls]<UL><LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2uiz
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Cmd
+<BR>[Called By]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Cmd
 <LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Action
 </UL>
 
-<P><STRONG><a name="[95]"></a>PwmServo_DoingSet</STRONG> (Thumb, 242 bytes, Stack size 32 bytes, pwmservo.o(i.PwmServo_DoingSet))
+<P><STRONG><a name="[b3]"></a>PwmServo_DoingSet</STRONG> (Thumb, 242 bytes, Stack size 32 bytes, pwmservo.o(i.PwmServo_DoingSet))
 <BR><BR>[Stack]<UL><LI>Max Depth = 52<LI>Call Chain = PwmServo_DoingSet &rArr; __aeabi_fsub &rArr; __aeabi_fadd &rArr; _float_epilogue
 </UL>
-<BR>[Calls]<UL><LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2uiz
+<BR>[Calls]<UL><LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2uiz
 <LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2iz
 <LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2f
 <LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
@@ -1445,16 +1455,15 @@ Global Symbols
 <LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfcmpeq
 </UL>
 <BR>[Called By]<UL><LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PwmServo_SetAngle
-<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Cmd
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Cmd
 <LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Action
-<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;JoystickTask
 <LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;loop_Joystick_key
 </UL>
 
 <P><STRONG><a name="[c1]"></a>PwmServo_IncOffset</STRONG> (Thumb, 176 bytes, Stack size 32 bytes, pwmservo.o(i.PwmServo_IncOffset))
 <BR><BR>[Stack]<UL><LI>Max Depth = 52<LI>Call Chain = PwmServo_IncOffset &rArr; __aeabi_fsub &rArr; __aeabi_fadd &rArr; _float_epilogue
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfcmple
+<BR>[Calls]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfcmple
 <LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2f
 <LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
 <LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
@@ -1468,7 +1477,7 @@ Global Symbols
 <P><STRONG><a name="[c3]"></a>PwmServo_PinSet</STRONG> (Thumb, 116 bytes, Stack size 16 bytes, pwmservo.o(i.PwmServo_PinSet))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = PwmServo_PinSet
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_WriteBit
+<BR>[Calls]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_WriteBit
 </UL>
 <BR>[Called By]<UL><LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
 </UL>
@@ -1479,27 +1488,28 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2f
 <LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2iz
 <LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
-<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PwmServo_DoingSet
+<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PwmServo_DoingSet
 <LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
 <LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fdiv
 <LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fadd
 <LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fmin
 <LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fmax
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Cmd
+<BR>[Called By]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Cmd
 </UL>
 
 <P><STRONG><a name="[70]"></a>RCC_ADCCLKConfig</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f10x_rcc.o(i.RCC_ADCCLKConfig))
 <BR><BR>[Called By]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Joystick_Init
 </UL>
 
-<P><STRONG><a name="[10f]"></a>RCC_AHBPeriphClockCmd</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, stm32f10x_rcc.o(i.RCC_AHBPeriphClockCmd))
-<BR><BR>[Called By]<UL><LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart3_Init
+<P><STRONG><a name="[10a]"></a>RCC_AHBPeriphClockCmd</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, stm32f10x_rcc.o(i.RCC_AHBPeriphClockCmd))
+<BR><BR>[Called By]<UL><LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart3_Init
+<LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart1_Init
 </UL>
 
 <P><STRONG><a name="[e8]"></a>RCC_APB1PeriphClockCmd</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, stm32f10x_rcc.o(i.RCC_APB1PeriphClockCmd))
-<BR><BR>[Called By]<UL><LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart3_Init
-<LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart2_Init
+<BR><BR>[Called By]<UL><LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart3_Init
+<LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart2_Init
 <LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_Init
 <LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_Init
 <LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SpiFlash_Init
@@ -1511,8 +1521,8 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[6d]"></a>RCC_APB2PeriphClockCmd</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, stm32f10x_rcc.o(i.RCC_APB2PeriphClockCmd))
-<BR><BR>[Called By]<UL><LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart3_Init
-<LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart2_Init
+<BR><BR>[Called By]<UL><LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart3_Init
+<LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart2_Init
 <LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart1_Init
 <LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;US_Init
 <LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SpiFlash_Init
@@ -1521,8 +1531,8 @@ Global Symbols
 <LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SWJGpio_Init
 <LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PwmServoInit
 <LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Ps2_Init
-<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Init
-<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Key_Init
+<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Init
+<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Key_Init
 <LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Buzzer_Init
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Joystick_Init
 <LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Joystick_LED_Init
@@ -1611,7 +1621,7 @@ Global Symbols
 <P><STRONG><a name="[d2]"></a>Read</STRONG> (Thumb, 102 bytes, Stack size 16 bytes, soft_i2c.o(i.Read))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = Read &rArr; GPIO_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_WriteBit
+<BR>[Calls]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_WriteBit
 <LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadInputDataBit
 <LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
 <LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay_us
@@ -1671,19 +1681,19 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SpiFlash_Write_No_Check
 <LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SpiFlash_Erase_Sector
 <LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Rewrite_Eeprom
-<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart1_Print
+<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart1_Print
 <LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Replace_Char
-<LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strcpy
+<LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strcpy
 <LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strlen
 <LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
 </UL>
-<BR>[Called By]<UL><LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Loop_Uart
+<BR>[Called By]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Loop_Uart
 </UL>
 
 <P><STRONG><a name="[da]"></a>Send</STRONG> (Thumb, 114 bytes, Stack size 16 bytes, soft_i2c.o(i.Send))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = Send &rArr; GPIO_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_WriteBit
+<BR>[Calls]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_WriteBit
 <LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
 <LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay_us
 </UL>
@@ -1694,7 +1704,7 @@ Global Symbols
 <P><STRONG><a name="[db]"></a>Send_Ack</STRONG> (Thumb, 128 bytes, Stack size 16 bytes, soft_i2c.o(i.Send_Ack))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = Send_Ack &rArr; GPIO_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_WriteBit
+<BR>[Calls]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_WriteBit
 <LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
 <LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay_us
 </UL>
@@ -1709,9 +1719,9 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[139]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setup_app
 </UL>
 
-<P><STRONG><a name="[b0]"></a>SetPrintfUart</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, uart.o(i.SetPrintfUart))
+<P><STRONG><a name="[af]"></a>SetPrintfUart</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, uart.o(i.SetPrintfUart))
 <BR><BR>[Called By]<UL><LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UartAll_Printf
-<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Cmd
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Cmd
 <LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Action
 <LI><a href="#[139]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setup_app
 </UL>
@@ -1752,10 +1762,10 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[b6]"></a>Soft_Reset</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, sys.o(i.Soft_Reset))
-<BR><BR>[Called By]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Cmd
+<BR><BR>[Called By]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Cmd
 </UL>
 
-<P><STRONG><a name="[9c]"></a>SoundTouchTask</STRONG> (Thumb, 182 bytes, Stack size 16 bytes, function.o(i.SoundTouchTask))
+<P><STRONG><a name="[9d]"></a>SoundTouchTask</STRONG> (Thumb, 182 bytes, Stack size 16 bytes, function.o(i.SoundTouchTask))
 <BR><BR>[Stack]<UL><LI>Max Depth = 296<LI>Call Chain = SoundTouchTask &rArr; Parse_Group_Cmd &rArr; __0sscanf &rArr; __vfscanf_char &rArr; __vfscanf &rArr; _scanf_real
 </UL>
 <BR>[Calls]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Group_Cmd
@@ -1763,7 +1773,7 @@ Global Symbols
 <LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Buzzer_times
 <LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Millis
 </UL>
-<BR>[Called By]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoopMode
+<BR>[Called By]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoopMode
 </UL>
 
 <P><STRONG><a name="[e3]"></a>Sound_Touch_Key_Init</STRONG> (Thumb, 64 bytes, Stack size 8 bytes, key.o(i.Sound_Touch_Key_Init))
@@ -1778,7 +1788,7 @@ Global Symbols
 <P><STRONG><a name="[d4]"></a>SpiFlash_Erase_Sector</STRONG> (Thumb, 70 bytes, Stack size 8 bytes, spi_flash.o(i.SpiFlash_Erase_Sector))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = SpiFlash_Erase_Sector &rArr; SpiFlash_Wait_Busy &rArr; SpiFlash_Read_SR &rArr; Spi_WriteRead
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_WriteBit
+<BR>[Calls]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_WriteBit
 <LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Spi_WriteRead
 <LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SpiFlash_Write_Enable
 <LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SpiFlash_Wait_Busy
@@ -1806,7 +1816,7 @@ Global Symbols
 <P><STRONG><a name="[84]"></a>SpiFlash_Read</STRONG> (Thumb, 84 bytes, Stack size 24 bytes, spi_flash.o(i.SpiFlash_Read))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = SpiFlash_Read &rArr; Spi_WriteRead
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_WriteBit
+<BR>[Calls]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_WriteBit
 <LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Spi_WriteRead
 </UL>
 <BR>[Called By]<UL><LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SpiFlash_Write_S
@@ -1817,7 +1827,7 @@ Global Symbols
 <P><STRONG><a name="[ec]"></a>SpiFlash_Read_SR</STRONG> (Thumb, 44 bytes, Stack size 8 bytes, spi_flash.o(i.SpiFlash_Read_SR))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = SpiFlash_Read_SR &rArr; Spi_WriteRead
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_WriteBit
+<BR>[Calls]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_WriteBit
 <LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Spi_WriteRead
 </UL>
 <BR>[Called By]<UL><LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SpiFlash_Wait_Busy
@@ -1835,7 +1845,7 @@ Global Symbols
 <P><STRONG><a name="[e4]"></a>SpiFlash_Write_Enable</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, spi_flash.o(i.SpiFlash_Write_Enable))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = SpiFlash_Write_Enable &rArr; Spi_WriteRead
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_WriteBit
+<BR>[Calls]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_WriteBit
 <LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Spi_WriteRead
 </UL>
 <BR>[Called By]<UL><LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SpiFlash_Erase_Sector
@@ -1854,7 +1864,7 @@ Global Symbols
 <P><STRONG><a name="[ed]"></a>SpiFlash_Write_Page</STRONG> (Thumb, 102 bytes, Stack size 24 bytes, spi_flash.o(i.SpiFlash_Write_Page))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = SpiFlash_Write_Page &rArr; SpiFlash_Wait_Busy &rArr; SpiFlash_Read_SR &rArr; Spi_WriteRead
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_WriteBit
+<BR>[Calls]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_WriteBit
 <LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Spi_WriteRead
 <LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SpiFlash_Write_Enable
 <LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SpiFlash_Wait_Busy
@@ -1899,7 +1909,7 @@ Global Symbols
 <P><STRONG><a name="[e0]"></a>Start</STRONG> (Thumb, 106 bytes, Stack size 8 bytes, soft_i2c.o(i.Start))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = Start &rArr; GPIO_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_WriteBit
+<BR>[Calls]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_WriteBit
 <LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
 <LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay_us
 </UL>
@@ -1910,7 +1920,7 @@ Global Symbols
 <P><STRONG><a name="[e2]"></a>Stop</STRONG> (Thumb, 88 bytes, Stack size 8 bytes, soft_i2c.o(i.Stop))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = Stop &rArr; GPIO_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_WriteBit
+<BR>[Calls]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_WriteBit
 <LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
 <LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay_us
 </UL>
@@ -1919,12 +1929,12 @@ Global Symbols
 <LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SoftI2C_read
 </UL>
 
-<P><STRONG><a name="[ac]"></a>Str_Contain_Str</STRONG> (Thumb, 74 bytes, Stack size 16 bytes, global.o(i.Str_Contain_Str))
+<P><STRONG><a name="[ab]"></a>Str_Contain_Str</STRONG> (Thumb, 74 bytes, Stack size 16 bytes, global.o(i.Str_Contain_Str))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = Str_Contain_Str
 </UL>
 <BR>[Called By]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ParsePsx_Buf
 <LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Group_Cmd
-<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Cmd
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Cmd
 </UL>
 
 <P><STRONG><a name="[13a]"></a>SysTickInit</STRONG> (Thumb, 84 bytes, Stack size 12 bytes, systick.o(i.SysTickInit))
@@ -1959,7 +1969,7 @@ Global Symbols
 <P><STRONG><a name="[26]"></a>TIM2_IRQHandler</STRONG> (Thumb, 148 bytes, Stack size 8 bytes, timer.o(i.TIM2_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 60<LI>Call Chain = TIM2_IRQHandler &rArr; PwmServo_IncOffset &rArr; __aeabi_fsub &rArr; __aeabi_fadd &rArr; _float_epilogue
 </UL>
-<BR>[Calls]<UL><LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2uiz
+<BR>[Calls]<UL><LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2uiz
 <LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_GetITStatus
 <LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ClearITPendingBit
 <LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PwmServo_PinSet
@@ -2011,52 +2021,53 @@ Global Symbols
 <LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USTimer_Init
 </UL>
 
-<P><STRONG><a name="[2f]"></a>USART1_IRQHandler</STRONG> (Thumb, 44 bytes, Stack size 8 bytes, uart.o(i.USART1_IRQHandler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = USART1_IRQHandler &rArr; USART_ClearITPendingBit
+<P><STRONG><a name="[2f]"></a>USART1_IRQHandler</STRONG> (Thumb, 102 bytes, Stack size 16 bytes, uart.o(i.USART1_IRQHandler))
+<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = USART1_IRQHandler &rArr; USART_GetITStatus
 </UL>
-<BR>[Calls]<UL><LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_ReceiveData
-<LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_GetFlagStatus
-<LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_ClearITPendingBit
-<LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart_DataParse
+<BR>[Calls]<UL><LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_GetITStatus
+<LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_SetCurrDataCounter
+<LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_GetCurrDataCounter
+<LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Cmd
+<LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart_DataParse
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_md.o(RESET)
 </UL>
 <P><STRONG><a name="[30]"></a>USART2_IRQHandler</STRONG> (Thumb, 44 bytes, Stack size 8 bytes, uart.o(i.USART2_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = USART2_IRQHandler &rArr; USART_ClearITPendingBit
 </UL>
-<BR>[Calls]<UL><LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_ReceiveData
-<LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_GetFlagStatus
-<LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_ClearITPendingBit
-<LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart_DataParse
+<BR>[Calls]<UL><LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_ReceiveData
+<LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_GetFlagStatus
+<LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_ClearITPendingBit
+<LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart_DataParse
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_md.o(RESET)
 </UL>
 <P><STRONG><a name="[31]"></a>USART3_IRQHandler</STRONG> (Thumb, 114 bytes, Stack size 16 bytes, uart.o(i.USART3_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = USART3_IRQHandler &rArr; USART_GetITStatus
 </UL>
-<BR>[Calls]<UL><LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_GetITStatus
-<LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_SetCurrDataCounter
-<LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_GetCurrDataCounter
-<LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Cmd
-<LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart_DataParse
+<BR>[Calls]<UL><LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_GetITStatus
+<LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_SetCurrDataCounter
+<LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_GetCurrDataCounter
+<LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Cmd
+<LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart_DataParse
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_md.o(RESET)
 </UL>
-<P><STRONG><a name="[fd]"></a>USART_ClearITPendingBit</STRONG> (Thumb, 30 bytes, Stack size 8 bytes, stm32f10x_usart.o(i.USART_ClearITPendingBit))
+<P><STRONG><a name="[101]"></a>USART_ClearITPendingBit</STRONG> (Thumb, 30 bytes, Stack size 8 bytes, stm32f10x_usart.o(i.USART_ClearITPendingBit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = USART_ClearITPendingBit
 </UL>
 <BR>[Called By]<UL><LI><a href="#[30]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART2_IRQHandler
-<LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_IRQHandler
 </UL>
 
-<P><STRONG><a name="[10a]"></a>USART_Cmd</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, stm32f10x_usart.o(i.USART_Cmd))
-<BR><BR>[Called By]<UL><LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart3_Init
-<LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart2_Init
+<P><STRONG><a name="[10e]"></a>USART_Cmd</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, stm32f10x_usart.o(i.USART_Cmd))
+<BR><BR>[Called By]<UL><LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart3_Init
+<LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart2_Init
 <LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart1_Init
 </UL>
 
-<P><STRONG><a name="[112]"></a>USART_DMACmd</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f10x_usart.o(i.USART_DMACmd))
-<BR><BR>[Called By]<UL><LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart3_Init
+<P><STRONG><a name="[10d]"></a>USART_DMACmd</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f10x_usart.o(i.USART_DMACmd))
+<BR><BR>[Called By]<UL><LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart3_Init
+<LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart1_Init
 </UL>
 
 <P><STRONG><a name="[102]"></a>USART_DeInit</STRONG> (Thumb, 134 bytes, Stack size 8 bytes, stm32f10x_usart.o(i.USART_DeInit))
@@ -2068,28 +2079,28 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart1_Init
 </UL>
 
-<P><STRONG><a name="[fa]"></a>USART_GetFlagStatus</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, stm32f10x_usart.o(i.USART_GetFlagStatus))
-<BR><BR>[Called By]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart1_Print
+<P><STRONG><a name="[ff]"></a>USART_GetFlagStatus</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, stm32f10x_usart.o(i.USART_GetFlagStatus))
+<BR><BR>[Called By]<UL><LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart1_Print
 <LI><a href="#[30]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART2_IRQHandler
-<LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_IRQHandler
 </UL>
 
-<P><STRONG><a name="[fe]"></a>USART_GetITStatus</STRONG> (Thumb, 84 bytes, Stack size 16 bytes, stm32f10x_usart.o(i.USART_GetITStatus))
+<P><STRONG><a name="[fa]"></a>USART_GetITStatus</STRONG> (Thumb, 84 bytes, Stack size 16 bytes, stm32f10x_usart.o(i.USART_GetITStatus))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = USART_GetITStatus
 </UL>
 <BR>[Called By]<UL><LI><a href="#[31]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART3_IRQHandler
+<LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_IRQHandler
 </UL>
 
-<P><STRONG><a name="[10d]"></a>USART_HalfDuplexCmd</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, stm32f10x_usart.o(i.USART_HalfDuplexCmd))
-<BR><BR>[Called By]<UL><LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart2_Init
+<P><STRONG><a name="[111]"></a>USART_HalfDuplexCmd</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, stm32f10x_usart.o(i.USART_HalfDuplexCmd))
+<BR><BR>[Called By]<UL><LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart2_Init
 </UL>
 
-<P><STRONG><a name="[ad]"></a>USART_ITConfig</STRONG> (Thumb, 74 bytes, Stack size 20 bytes, stm32f10x_usart.o(i.USART_ITConfig))
+<P><STRONG><a name="[ac]"></a>USART_ITConfig</STRONG> (Thumb, 74 bytes, Stack size 20 bytes, stm32f10x_usart.o(i.USART_ITConfig))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = USART_ITConfig
 </UL>
 <BR>[Called By]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ParsePsx_Buf
-<LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart3_Init
-<LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart2_Init
+<LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart3_Init
+<LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart2_Init
 <LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart1_Init
 </UL>
 
@@ -2098,18 +2109,17 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_GetClocksFreq
 </UL>
-<BR>[Called By]<UL><LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart3_Init
-<LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart2_Init
+<BR>[Called By]<UL><LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart3_Init
+<LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart2_Init
 <LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart1_Init
 </UL>
 
-<P><STRONG><a name="[fb]"></a>USART_ReceiveData</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, stm32f10x_usart.o(i.USART_ReceiveData))
+<P><STRONG><a name="[100]"></a>USART_ReceiveData</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, stm32f10x_usart.o(i.USART_ReceiveData))
 <BR><BR>[Called By]<UL><LI><a href="#[30]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART2_IRQHandler
-<LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_IRQHandler
 </UL>
 
-<P><STRONG><a name="[10b]"></a>USART_SendData</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, stm32f10x_usart.o(i.USART_SendData))
-<BR><BR>[Called By]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart1_Print
+<P><STRONG><a name="[10f]"></a>USART_SendData</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, stm32f10x_usart.o(i.USART_SendData))
+<BR><BR>[Called By]<UL><LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart1_Print
 </UL>
 
 <P><STRONG><a name="[107]"></a>USTimer_Init</STRONG> (Thumb, 44 bytes, Stack size 16 bytes, ultrasonic.o(i.USTimer_Init))
@@ -2131,42 +2141,47 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[139]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setup_app
 </UL>
 
-<P><STRONG><a name="[109]"></a>Uart1_Init</STRONG> (Thumb, 174 bytes, Stack size 32 bytes, uart.o(i.Uart1_Init))
-<BR><BR>[Stack]<UL><LI>Max Depth = 100<LI>Call Chain = Uart1_Init &rArr; USART_Init &rArr; RCC_GetClocksFreq
+<P><STRONG><a name="[109]"></a>Uart1_Init</STRONG> (Thumb, 248 bytes, Stack size 80 bytes, uart.o(i.Uart1_Init))
+<BR><BR>[Stack]<UL><LI>Max Depth = 148<LI>Call Chain = Uart1_Init &rArr; USART_Init &rArr; RCC_GetClocksFreq
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_ITConfig
+<BR>[Calls]<UL><LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_ITConfig
 <LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Init
 <LI><a href="#[102]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_DeInit
-<LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Cmd
+<LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_DMACmd
+<LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Cmd
+<LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_AHBPeriphClockCmd
 <LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_Init
+<LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Init
+<LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_DeInit
+<LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Cmd
 <LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
 <LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart_Init
 </UL>
 
-<P><STRONG><a name="[9e]"></a>Uart1_Print</STRONG> (Thumb, 38 bytes, Stack size 8 bytes, uart.o(i.Uart1_Print))
+<P><STRONG><a name="[9f]"></a>Uart1_Print</STRONG> (Thumb, 38 bytes, Stack size 8 bytes, uart.o(i.Uart1_Print))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = Uart1_Print
 </UL>
-<BR>[Calls]<UL><LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_SendData
-<LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_GetFlagStatus
+<BR>[Calls]<UL><LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_SendData
+<LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_GetFlagStatus
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Save_Action
-<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Cmd
-<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Loop_Action
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Cmd
+<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Loop_Action
 <LI><a href="#[137]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;loop_key
 <LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;loop_Joystick_key
 <LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parameter_Init
 <LI><a href="#[139]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setup_app
 </UL>
 
-<P><STRONG><a name="[10c]"></a>Uart2_Init</STRONG> (Thumb, 158 bytes, Stack size 32 bytes, uart.o(i.Uart2_Init))
+<P><STRONG><a name="[110]"></a>Uart2_Init</STRONG> (Thumb, 158 bytes, Stack size 32 bytes, uart.o(i.Uart2_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 100<LI>Call Chain = Uart2_Init &rArr; USART_Init &rArr; RCC_GetClocksFreq
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_ITConfig
+<BR>[Calls]<UL><LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_ITConfig
 <LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Init
-<LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_HalfDuplexCmd
-<LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Cmd
+<LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_HalfDuplexCmd
+<LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Cmd
 <LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_Init
 <LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
 <LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
@@ -2175,18 +2190,18 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart_Init
 </UL>
 
-<P><STRONG><a name="[10e]"></a>Uart3_Init</STRONG> (Thumb, 248 bytes, Stack size 80 bytes, uart.o(i.Uart3_Init))
+<P><STRONG><a name="[112]"></a>Uart3_Init</STRONG> (Thumb, 248 bytes, Stack size 80 bytes, uart.o(i.Uart3_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 148<LI>Call Chain = Uart3_Init &rArr; USART_Init &rArr; RCC_GetClocksFreq
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_ITConfig
+<BR>[Calls]<UL><LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_ITConfig
 <LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Init
-<LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_DMACmd
-<LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Cmd
-<LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_AHBPeriphClockCmd
+<LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_DMACmd
+<LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Cmd
+<LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_AHBPeriphClockCmd
 <LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_Init
-<LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Init
-<LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_DeInit
-<LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Cmd
+<LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Init
+<LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_DeInit
+<LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Cmd
 <LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
 <LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
 <LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
@@ -2197,13 +2212,13 @@ Global Symbols
 <P><STRONG><a name="[b4]"></a>UartAll_Printf</STRONG> (Thumb, 48 bytes, Stack size 8 bytes, uart.o(i.UartAll_Printf))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = UartAll_Printf &rArr; __2printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetPrintfUart
+<BR>[Calls]<UL><LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetPrintfUart
 <LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Cmd
+<BR>[Called By]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Cmd
 </UL>
 
-<P><STRONG><a name="[fc]"></a>Uart_DataParse</STRONG> (Thumb, 178 bytes, Stack size 0 bytes, uart.o(i.Uart_DataParse))
+<P><STRONG><a name="[fd]"></a>Uart_DataParse</STRONG> (Thumb, 178 bytes, Stack size 0 bytes, uart.o(i.Uart_DataParse))
 <BR><BR>[Called By]<UL><LI><a href="#[31]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART3_IRQHandler
 <LI><a href="#[30]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART2_IRQHandler
 <LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_IRQHandler
@@ -2212,8 +2227,8 @@ Global Symbols
 <P><STRONG><a name="[113]"></a>Uart_Init</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, application.o(i.Uart_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 156<LI>Call Chain = Uart_Init &rArr; Uart3_Init &rArr; USART_Init &rArr; RCC_GetClocksFreq
 </UL>
-<BR>[Calls]<UL><LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart3_Init
-<LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart2_Init
+<BR>[Calls]<UL><LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart3_Init
+<LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart2_Init
 <LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart1_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[139]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setup_app
@@ -2222,7 +2237,7 @@ Global Symbols
 <P><STRONG><a name="[e1]"></a>Wait_Ack</STRONG> (Thumb, 148 bytes, Stack size 16 bytes, soft_i2c.o(i.Wait_Ack))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = Wait_Ack &rArr; Stop &rArr; GPIO_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_WriteBit
+<BR>[Calls]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_WriteBit
 <LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadInputDataBit
 <LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Stop
 <LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
@@ -2243,7 +2258,7 @@ Global Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UartAll_Printf
 <LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;inverseKinematics
-<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Cmd
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Cmd
 <LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Action
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;JoystickTask
 <LI><a href="#[137]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;loop_key
@@ -2261,10 +2276,11 @@ Global Symbols
 
 <P><STRONG><a name="[156]"></a>__1sprintf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printfa.o(i.__0sprintf), UNUSED)
 
-<P><STRONG><a name="[aa]"></a>__2sprintf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printfa.o(i.__0sprintf))
+<P><STRONG><a name="[95]"></a>__2sprintf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printfa.o(i.__0sprintf))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = __2sprintf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Cmd
+<BR>[Called By]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Cmd
+<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;JoystickTask
 <LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parameter_Init
 </UL>
 
@@ -2432,7 +2448,7 @@ Global Symbols
 <P><STRONG><a name="[c2]"></a>abs_float</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, global.o(i.abs_float))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = abs_float
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfrcmple
+<BR>[Calls]<UL><LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfrcmple
 </UL>
 <BR>[Called By]<UL><LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PwmServo_IncOffset
 </UL>
@@ -2446,7 +2462,7 @@ Global Symbols
 <LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fdiv
 <LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fadd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Cmd
+<BR>[Called By]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Cmd
 </UL>
 
 <P><STRONG><a name="[12b]"></a>atan2f</STRONG> (Thumb, 598 bytes, Stack size 32 bytes, atan2f.o(i.atan2f))
@@ -2522,13 +2538,13 @@ Global Symbols
 <LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
 <LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2f
 <LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_frsub
-<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfcmple
+<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfcmple
 <LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
 <LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
 <LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
 <LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fdiv
 <LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fadd
-<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfrcmple
+<LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfrcmple
 <LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
 <LI><a href="#[132]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sqrtf
 <LI><a href="#[133]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sqrt
@@ -2539,15 +2555,15 @@ Global Symbols
 <LI><a href="#[12b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;atan2f
 <LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Cmd
+<BR>[Called By]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Cmd
 <LI><a href="#[139]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setup_app
 </UL>
 
 <P><STRONG><a name="[135]"></a>loop_Joystick_key</STRONG> (Thumb, 214 bytes, Stack size 8 bytes, application.o(i.loop_Joystick_key))
 <BR><BR>[Stack]<UL><LI>Max Depth = 60<LI>Call Chain = loop_Joystick_key &rArr; PwmServo_DoingSet &rArr; __aeabi_fsub &rArr; __aeabi_fadd &rArr; _float_epilogue
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart1_Print
-<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PwmServo_DoingSet
+<BR>[Calls]<UL><LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart1_Print
+<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PwmServo_DoingSet
 <LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
 <LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
 <LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadInputDataBit
@@ -2559,13 +2575,13 @@ Global Symbols
 <P><STRONG><a name="[136]"></a>loop_app</STRONG> (Thumb, 36 bytes, Stack size 8 bytes, application.o(i.loop_app))
 <BR><BR>[Stack]<UL><LI>Max Depth = 696<LI>Call Chain = loop_app &rArr; AppPs2Run &rArr; ParsePsx_Buf &rArr; Parse_Cmd &rArr; inverseKinematics &rArr; sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dsub &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Loop_Action
+<BR>[Calls]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Loop_Action
 <LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AppPs2Run
 <LI><a href="#[137]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;loop_key
 <LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;loop_Joystick_key
-<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Loop_Uart
-<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoopMode
-<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Led_Blink
+<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Loop_Uart
+<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoopMode
+<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Led_Blink
 </UL>
 <BR>[Called By]<UL><LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -2573,7 +2589,7 @@ Global Symbols
 <P><STRONG><a name="[137]"></a>loop_key</STRONG> (Thumb, 174 bytes, Stack size 8 bytes, application.o(i.loop_key))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = loop_key &rArr; __2printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart1_Print
+<BR>[Calls]<UL><LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart1_Print
 <LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
 <LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
 <LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadInputDataBit
@@ -2607,7 +2623,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;inverseKinematics
 <LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
-<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart1_Print
+<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart1_Print
 <LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;US_Init
 <LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_Init
 <LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_Init
@@ -2615,15 +2631,15 @@ Global Symbols
 <LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SpiFlash_Init
 <LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Sound_Touch_Key_Init
 <LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SoftI2C_init
-<LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetPrintfUart
+<LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetPrintfUart
 <LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SWJGpio_Init
 <LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Rcc_Init
 <LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PwmServoInit
 <LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Ps2_Init
 <LI><a href="#[13b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PidInit
 <LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_Init
-<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Init
-<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Key_Init
+<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Init
+<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Key_Init
 <LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GY33T_Write_Byte
 <LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Buzzer_Init
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Joystick_Init
@@ -2643,7 +2659,7 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 288<LI>Call Chain = setup_run_action &rArr; Parse_Group_Cmd &rArr; __0sscanf &rArr; __vfscanf_char &rArr; __vfscanf &rArr; _scanf_real
 </UL>
 <BR>[Calls]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Group_Cmd
-<LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strcpy
+<LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strcpy
 </UL>
 <BR>[Called By]<UL><LI><a href="#[139]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setup_app
 </UL>

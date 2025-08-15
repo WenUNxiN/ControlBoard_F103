@@ -4,10 +4,10 @@
 #include "main.h"
 
 /*===================== 宏定义 =====================*/
-
-/* 串口3 DMA 接收缓冲区长度，必须与源文件保持一致 */
+/* 串口1 DMA 接收缓冲区长度 */
+#define UART1_DMA_RX_BUF_SIZE   1024
+/* 串口3 DMA 接收缓冲区长度 */
 #define UART3_DMA_RX_BUF_SIZE   1024
-
 /* 普通解析缓冲区长度（单位：字节） */
 #define UART_BUF_SIZE           1024
 

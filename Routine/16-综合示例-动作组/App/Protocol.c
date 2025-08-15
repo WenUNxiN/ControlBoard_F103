@@ -117,10 +117,10 @@ void Parse_Action(char *Uart_ReceiveBuf)
             //  手爪限位
             if (index == 5)
             {
-                if (pwm >= 2000)
-                    pwm = 2000;
-                if (pwm <= 1200)
-                    pwm = 1200;
+                if (pwm >= 1800)
+                    pwm = 1800;
+                if (pwm <= 1100)
+                    pwm = 1100;
             }
             if (index == 3)
             {
