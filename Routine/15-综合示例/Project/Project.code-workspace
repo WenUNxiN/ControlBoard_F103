@@ -1,0 +1,16 @@
+{
+    "folders": [
+        {
+            "path": "."
+        }
+    ],
+    "settings": {
+        "files.associations": {
+            "*.py": "python",
+            "kinematics.h": "c",
+            "pwmservo.h": "c",
+            "protocol.h": "c"
+        }
+    },
+    "extensions": {}
+}

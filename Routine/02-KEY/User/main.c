@@ -35,7 +35,7 @@ int main(void) {
             LED_TOGGLE();             // LED 状态翻转
         }
 
-        Delay_ms(20);                 // 简单消抖延时
+        Delay_ms(20);                 
 	}
 }
 

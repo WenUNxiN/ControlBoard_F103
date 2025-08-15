@@ -1,0 +1,23 @@
+[project_search_path]: ./
+[map_search_path]: ./
+[project_file_path]: .//Project.uvprojx
+[ map_file_path]: .//Listings/Project.map
+[parse_keil_map start]: 
+[Found keyword]: ----------Execution Region----------
+[name]:  ER_IROM1 
+[Exec base]: 0x8000000
+[Size]: 0x8ad8
+[Max]: 0x10000
+[Found keyword]: ----------Execution Region----------
+[name]:  RW_IRAM1 
+[Exec base]: 0x20000000
+[Size]: 0x2740
+[Max]: 0x5000
+[parse_keil_map over printf bar]: 
+  RW_IRAM1 :0x20000000
+   20.00 KB :|¡ö¡ö¡ö¡ö¡ö¡ö¡ö¡ö¡ö___________|   49.06 % (    9.81 KB /    20.00 KB) [10432 B]
+  ER_IROM1 :0x8000000
+   64.00 KB :|¡ö¡ö¡ö¡ö¡ö¡ö¡ö¡ö¡ö¡ö__________|   54.24 % (   34.71 KB /    64.00 KB) [29992 B]
+[export csv]: ./Project_sort_by_flash.csv
+[export csv]: ./Project_sort_by_ram.csv
+[export xlsx]: Project_analysis.xlsx
