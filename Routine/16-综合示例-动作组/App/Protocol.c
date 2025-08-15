@@ -377,13 +377,13 @@ void Parse_Cmd(char *cmd)
             if (kms_value == 0)
             {
                 printf("IK Solution found:\n");
-                for (int i = 0; i < 6; i++)
+                for (int i = 0; i < 5; i++)
                 {
                     SetPrintfUart(1);
                     printf("Joint %d: %.2f degrees\n", i, solutions.theta[i]);
                 }
                 angle_to_PWM();
-                for (int i = 0; i < 6; i++)
+                for (int i = 0; i < 5; i++)
                 {
                     sprintf((char *)cmd_return, "#%03dP%04dT%04d!\n", i, pwm_value[i], int4);
                     Uart1_Print(cmd_return);
@@ -431,7 +431,7 @@ void angle_to_PWM()
     pwm_value[2] = 1500 - solutions.theta[2] * 2000 / 270;
     pwm_value[4] = 1500 + solutions.theta[3] * 2000 / 270;
     pwm_value[3] = 1500 + solutions.theta[4] * 2000 / 270;
-    pwm_value[5] = 1500 + solutions.theta[5] * 2000 / 270;
+//    pwm_value[5] = 1500 + solutions.theta[5] * 2000 / 270;
     // sprintf((char *)cmd_return, "#001P%4dT%4d!\r\n", pwm_value[0]);
     // UartAll_Printf(cmd_return);
 }

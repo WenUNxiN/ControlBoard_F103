@@ -30,3 +30,4 @@
 ..\objects\beep.o: ..\Library\stm32f10x_usart.h
 ..\objects\beep.o: ..\Library\stm32f10x_wwdg.h
 ..\objects\beep.o: ..\Library\misc.h
+..\objects\beep.o: ..\System\SysTick.h

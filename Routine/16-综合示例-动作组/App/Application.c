@@ -117,23 +117,6 @@ void ServoState_Init(void)
 	}
 }
 
-/***********************************************
-函数名称：Buzzer_times
-功能介绍：蜂鸣器响time时长，响count次数
-函数参数：time，间隔时长，count，次数
-返回值：无
- ***********************************************/
-void Buzzer_times(u32 time, u32 count)
-{
-	for (int i = 0; i < count; i++)
-	{
-		BUZZER_ON();
-		Delay_ms(time);
-		BUZZER_OFF();
-		Delay_ms(time);
-	}
-}
-
 void Led_Blink(u32 time)
 {
 	static u32 systick_ms_bak_led = 0;
@@ -173,7 +156,6 @@ void loop_key(void)
 
     case KEY_PRESSED:
         /* 只做一次处理，然后转等待松开 */
-        BUZZER_ON();
         Uart1_Print("$KEY_PRESS!");
         SetMode++;
         SetMode %= 5;
@@ -183,7 +165,7 @@ void loop_key(void)
 
     case KEY_WAIT_RELEASE:
         if (pin_level != KEY_PRESS) {           // 已松开
-            BUZZER_OFF();
+            Buzzer_times(50, 1);
             state = KEY_IDLE;                   // 回到初始态，准备下一次
         }
         break;
@@ -256,15 +238,18 @@ void LoopMode(void) {
 	systick_ms_bak_mode = Millis();
 	switch (SetMode) { 
 	case 1: // 颜色
+        Us_ok = 1;
 		ColorTask(1000);
 		break;
 	case 2: // 超声波
-
+        UsTask(1000);
 		break;
 	case 3: // 声音触摸
+        Us_ok = 1;
         SoundTouchTask();
 		break;
     case 4: // 摇杆
+        Us_ok = 1;
         JoystickTask();
 		break;
 	default:

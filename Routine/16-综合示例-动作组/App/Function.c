@@ -1,5 +1,7 @@
 #include "Function.h"
 
+u8 Us_ok = 1;
+
 /* 颜色 → 指令映射表
    color  : 读到的寄存器值
    cmd    : 直接丢给 Parse_Group_Cmd 的完整字符串 */
@@ -22,7 +24,7 @@ typedef struct
 
 static const ColorMap_t color_map[] = {
     {0x01, "$DGT:1-10,1!"},    // 红色
-    {0x20, "$DGT:11-20,1!"},   // 黄色
+    {0x20, "$DGT:11-20,1!"},   // 绿色
     {0x40, "$DGT:21-30,1!"},   // 蓝色
 };
 
@@ -170,5 +172,51 @@ void JoystickTask(void)
     }
     sprintf((char *)cmd_return, "$KMS:%03d,%03d,100,1000!\r\n", (int)kms_x, (int)kms_y);
     Parse_Cmd(cmd_return);
+}
+
+/* 超声波
+   interval_ms : 两次识别的最小间隔
+   返回后再次调用即可，无需额外任务创建 */
+void UsTask(uint32_t interval_ms)
+{
+    static uint32_t last_tick = 0;
+
+    /* 节拍控制 */
+    if (Millis() - last_tick < interval_ms)
+        return;
+    last_tick = Millis();
+
+    /* 动作运行中：等待完成标志 */
+    if (!Us_ok)
+    {
+        return;
+    } 
+
+    PwmServo_DoingSet(5, 1200, 1000);
+    
+    float UsNum = US_DisRead();
+    if (UsNum > 12.5){return;}
+    
+    // 将机械臂移动至物体上方
+    sprintf((char *)cmd_return, "$KMS:%03d,0,100,1000!\r\n", (int)UsNum*10 + 125);
+    SetPrintfUart(1);
+    printf("\nUsNum:%s\r\n",cmd_return);  
+    Parse_Cmd(cmd_return);
+    
+    sprintf((char *)cmd_return, "$KMS:%03d,0,%03d,1000!\r\n", (int)UsNum*10 + 125, 30);
+    SetPrintfUart(1);
+    printf("\nUsNum:%s\r\n",cmd_return);     
+    Parse_Cmd(cmd_return);
+
+    
+    Delay_ms(1000);  
+    //夹取
+    PwmServo_DoingSet(5, 1650, 1000);
+    
+    Delay_ms(500); 
+    
+    Parse_Group_Cmd("$DGT:40-46,1!");
+        
+    Us_ok = 0;
 }
 
