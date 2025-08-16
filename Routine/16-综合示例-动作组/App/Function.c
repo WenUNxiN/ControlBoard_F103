@@ -191,15 +191,14 @@ void UsTask(uint32_t interval_ms)
     {
         return;
     } 
-
-    PwmServo_DoingSet(5, 1200, 1000);
     
-    int UsNum = US_DisRead()*10 + 125;
+    int UsNum = US_DisRead()*10 + 120;
     if (UsNum > 250){return;}
     
     SetPrintfUart(1);
     printf("\nUs:%d\r\n",UsNum);  
     
+    PwmServo_DoingSet(5, 1200, 1000);
     
     // 将机械臂移动至物体上方
     sprintf((char *)cmd_return, "$KMS:%03d,0,100,1000!\r\n", UsNum);
@@ -207,11 +206,11 @@ void UsTask(uint32_t interval_ms)
     Parse_Cmd(cmd_return);
     
     if(UsNum <= 200){
-        sprintf((char *)cmd_return, "$KMS:%03d,0,%03d,1000!\r\n", UsNum, 30);
+        sprintf((char *)cmd_return, "$KMS:%03d,0,%03d,1000!\r\n", UsNum, 25);
         printf("\nUsNum:%s\r\n",cmd_return);     
         Parse_Cmd(cmd_return);
     } else if(UsNum >= 200){
-        sprintf((char *)cmd_return, "$KMS:%03d,0,%03d,1000!\r\n", UsNum, 50);
+        sprintf((char *)cmd_return, "$KMS:%03d,0,%03d,1000!\r\n", UsNum, 40);
         printf("\nUsNum:%s\r\n",cmd_return);     
         Parse_Cmd(cmd_return);
     }

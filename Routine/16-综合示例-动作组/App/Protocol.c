@@ -380,13 +380,13 @@ void Parse_Cmd(char *cmd)
                 for (int i = 0; i < 5; i++)
                 {
                     SetPrintfUart(1);
-                    printf("Joint %d: %.2f degrees\n", i, solutions.theta[i]);
+//                    printf("Joint %d: %.2f degrees\n", i, solutions.theta[i]);
                 }
                 angle_to_PWM();
                 for (int i = 0; i < 5; i++)
                 {
                     sprintf((char *)cmd_return, "#%03dP%04dT%04d!\n", i, pwm_value[i], int4);
-                    Uart1_Print(cmd_return);
+//                    Uart1_Print(cmd_return);
                     Parse_Action(cmd_return);
                 }
             }
