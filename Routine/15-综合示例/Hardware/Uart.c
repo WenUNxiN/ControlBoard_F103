@@ -395,4 +395,6 @@ void Uart_DataParse(char rx_data)
         Uart_ReceiveBuf[buf_index] = '\0';  // 添加字符串结束符
         Uart_GetOK = 1;                     // 通知主循环处理
     }
+    SetPrintfUart(2);
+    printf("%s", Uart_ReceiveBuf); // 总线发送
 }
