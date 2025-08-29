@@ -25,31 +25,13 @@ void setup_app(void)
 	Ps2_Init();					// PS2 手柄（如有）初始化
 	Parameter_Init();			// 从 Flash 读取保存的参数
 	ServoState_Init();			// 设定舵机上电初始位置
-	Uart1_Print("$APP_START!"); // 串口打印启动标志
+	uart1_send_str("$APP_START!"); // 串口打印启动标志
 	Buzzer_times(200, 3);		// 蜂鸣器响 3 次，提示启动完成
 	setup_run_action();			// 执行开机预设动作组
 
     SetPrintfUart(2);
     printf("#RunStop!"); // 总线发送
 
-	Pose target_pose = {
-		.x = 170.0f, .y = 000.0f, .z = 120.0f, 
-		.roll = 0.0f, .pitch = 180.0f, .yaw = 0.0f};
-	JointAngles solutions;
-
-	int pos = inverseKinematics(&target_pose, &solutions);
-	if (pos == 0)
-	{
-		printf("IK Solution found:\n");
-		for (int i = 0; i < 6; i++)
-		{
-			printf("Joint %d: %.2f degrees\n", i + 1, solutions.theta[i]);
-		}
-	}
-	else
-	{
-		printf("Target pose is unreachable:%d.\n", pos);
-	}
 }
 
 /*----------------- 主循环 -----------------*/
@@ -80,7 +62,7 @@ void Parameter_Init(void)
 			eeprom_info.servo_init_pos[2], eeprom_info.servo_init_pos[3],
 			eeprom_info.servo_init_pos[4], eeprom_info.servo_init_pos[5],
 			eeprom_info.servo_init_pos[6], eeprom_info.servo_init_pos[7]);
-	Uart1_Print(cmd_return);
+	uart1_send_str(cmd_return);
 
 	/* 若校验失败，则恢复默认 PWM 零偏 */
 	if (eeprom_info.dj_bias_pwm[DJ_NUM] != FLAG_VERIFY)
@@ -140,7 +122,7 @@ void loop_key(void)
 		{
 			BUZZER_ON();
 			LED_ON();
-			Uart1_Print("$KEY_PRESS!");
+			uart1_send_str("$KEY_PRESS!");
 		}
 	}
 	else

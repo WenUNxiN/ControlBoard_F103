@@ -1,6 +1,6 @@
 #include "Function.h"
 
-u8 Us_ok = 1;
+u8 Us_ok;
 
 /* 颜色 → 指令映射表
    color  : 读到的寄存器值

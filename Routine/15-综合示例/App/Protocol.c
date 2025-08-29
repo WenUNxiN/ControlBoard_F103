@@ -177,7 +177,7 @@ void Save_Action(char *str)
     {
         eeprom_info.pre_cmd[PRE_CMD_SIZE] = 0;
         Rewrite_Eeprom();
-        Uart1_Print("@CLEAR PRE_CMD OK!");
+        uart1_send_str("@CLEAR PRE_CMD OK!");
         return;
     }
     else if (str[1] == '$') // 设置开机动作
@@ -187,17 +187,17 @@ void Save_Action(char *str)
         eeprom_info.pre_cmd[strlen(str) - 2] = '\0'; // 赋值字符0
         eeprom_info.pre_cmd[PRE_CMD_SIZE] = FLAG_VERIFY;
         Rewrite_Eeprom();
-        Uart1_Print("@SET PRE_CMD OK!"); //
+        uart1_send_str("@SET PRE_CMD OK!"); //
         return;
     }
 
     // 获取动作的组号如果不正确，或是第6个字符不是#则认为字符串错误
     action_index = (str[2] - '0') * 1000 + (str[3] - '0') * 100 + (str[4] - '0') * 10 + (str[5] - '0');
-    // Uart1_Print("@GET ACTION!");
+    // uart1_send_str("@GET ACTION!");
     // <G0000#000P1500T1000!>
     if ((action_index < 0) || str[6] != '#')
     {
-        Uart1_Print("E");
+        uart1_send_str("E");
         return;
     }
 
@@ -212,7 +212,7 @@ void Save_Action(char *str)
     w25x_write((u8 *)str, action_index * ACTION_SIZE, strlen(str) + 1);
 
     // 反馈一个A告诉上位机我已经接收到了
-    Uart1_Print("A");
+    uart1_send_str("A");
     return;
 }
 
@@ -372,7 +372,7 @@ void Parse_Cmd(char *cmd)
     {
         if (sscanf((char *)cmd, "$KMS:%d,%d,%d,%d!", &int1, &int2, &int3, &int4))
         {
-            Uart1_Print("Try to find best pos:\r\n");
+            uart1_send_str("Try to find best pos:\r\n");
             Pose target_pose = {
                         .x = (float)int1, .y = (float)int2, .z = (float)int3, 
                         .roll = 0.0f, .pitch = (float)-90, .yaw = (float)0};
@@ -389,7 +389,7 @@ void Parse_Cmd(char *cmd)
                 for (int i = 0; i < 6; i++)
                 {
                     sprintf((char *)cmd_return, "#%03dP%04dT%04d!\n", i, pwm_value[i], int4);
-                    Uart1_Print(cmd_return);
+                    uart1_send_str(cmd_return);
                     Parse_Action(cmd_return);
                 }
             }

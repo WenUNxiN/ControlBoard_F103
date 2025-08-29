@@ -4,6 +4,7 @@
 #include "Application.h"
 
 u8 SetMode;
+u8 UsMode;
 
 void setup_app(void)
 {
@@ -30,31 +31,13 @@ void setup_app(void)
     GY33T_Write_Byte(0xA4, 0x02, 0); 
 	Parameter_Init(); // 读取W25Q64内存储的数据
 	ServoState_Init();
-	Uart1_Print("$APP_START!");
+	uart1_send_str("$APP_START!");
 	Buzzer_times(200, 3);
 	setup_run_action();
     
     SetPrintfUart(2);
     printf("#RunStop!"); // 总线发送
-
-	Pose target_pose = {
-		.x = 170.0f, .y = 000.0f, .z = 120.0f, 
-		.roll = 0.0f, .pitch = 180.0f, .yaw = 0.0f};
-	JointAngles solutions;
-
-	int pos = inverseKinematics(&target_pose, &solutions);
-	if (pos == 0)
-	{
-		printf("IK Solution found:\n");
-		for (int i = 0; i < 6; i++)
-		{
-			printf("Joint %d: %.2f degrees\n", i + 1, solutions.theta[i]);
-		}
-	}
-	else
-	{
-		printf("Target pose is unreachable:%d.\n", pos);
-	}    
+  
 }
 
 void loop_app(void)
@@ -79,7 +62,7 @@ void Parameter_Init(void)
 		}
 	}
 	sprintf((char *)cmd_return, "init_pos:%d,%d,%d,%d,%d,%d,%d,%d\r\n", eeprom_info.servo_init_pos[0], eeprom_info.servo_init_pos[1], eeprom_info.servo_init_pos[2], eeprom_info.servo_init_pos[3], eeprom_info.servo_init_pos[4], eeprom_info.servo_init_pos[5], eeprom_info.servo_init_pos[6], eeprom_info.servo_init_pos[7]);
-	Uart1_Print(cmd_return);
+	uart1_send_str(cmd_return);
 
 	if (eeprom_info.dj_bias_pwm[DJ_NUM] != FLAG_VERIFY)
 	{
@@ -156,9 +139,9 @@ void loop_key(void)
 
     case KEY_PRESSED:
         /* 只做一次处理，然后转等待松开 */
-        Uart1_Print("$KEY_PRESS!");
+        uart1_send_str("$KEY_PRESS!");
         SetMode++;
-        SetMode %= 5;
+        SetMode %= 14;
         printf("%d\n", SetMode);
         state = KEY_WAIT_RELEASE;
         break;
@@ -178,7 +161,7 @@ void loop_Joystick_key(void)
     static KeyState_t state1 = KEY_IDLE;
     static u8 clamp = 0;
     
-    if(SetMode == 4){ // 在摇杆模式下才扫描
+    if(SetMode == 2 || SetMode == 3){ // 在摇杆超声波模式下才扫描
         /* 每 20 ms 扫描一次，共用系统节拍 */
         if (Millis() - Joystick_tick_bak < 20) return;
         Joystick_tick_bak = Millis();
@@ -207,8 +190,9 @@ void loop_Joystick_key(void)
         case KEY_PRESSED:
             /* 只做一次处理，然后转等待松开 */
             BUZZER_ON();
-            Uart1_Print("$ROCKER_PRESS!");
-            clamp = !clamp;
+            uart1_send_str("$ROCKER_PRESS!");
+            if(SetMode == 2) {clamp = !clamp;}
+            if(SetMode == 3) {Us_ok = 1;}
             state1 = KEY_WAIT_RELEASE;
             break;
 
@@ -221,14 +205,11 @@ void loop_Joystick_key(void)
         }
         // 夹取
         if(clamp){
-            PwmServo_DoingSet(5, 1850, 1000);
+            PwmServo_DoingSet(5, 1650, 1000);
         } else {
-            PwmServo_DoingSet(5, 1500, 1000);
+            PwmServo_DoingSet(5, 1200, 1000);
         }
-    } else {
-        JOYSTICK_LED_OFF();
     }
-    
 }
 
 void LoopMode(void) { 
@@ -238,19 +219,58 @@ void LoopMode(void) {
 	systick_ms_bak_mode = Millis();
 	switch (SetMode) { 
 	case 1: // 颜色
-        Us_ok = 1;
 		ColorTask(1000);
+        uart2_send_str("0x01");
 		break;
-	case 2: // 超声波
-        UsTask(1000);
-		break;
-	case 3: // 声音触摸
-        Us_ok = 1;
-        SoundTouchTask();
-		break;
-    case 4: // 摇杆
-        Us_ok = 1;
+	case 2:// 摇杆
         JoystickTask();
+        uart2_send_str("0x02");
+        break;  
+	case 3: // 超声波
+        if(UsMode == 1){UsTask(1000);}
+        uart2_send_str("0x03");
+		break;
+    case 4: // 声音触摸
+        uart2_send_str("0x04");
+        SoundTouchTask();   
+		break;
+    case 5: // 颜色视觉
+        uart2_send_str("0x05");
+        uart2_send_str("#ColorSort!");
+		break;
+    case 6:
+        uart2_send_str("0x06"); // 总线发送
+        uart2_send_str("#ColorStack!");
+        break;
+    case 7:
+        uart2_send_str("0x07"); // 总线发送
+        uart2_send_str("#PTZColorTrace!");   
+        break;
+    case 8:
+        uart2_send_str("0x08"); // 总线发送
+        uart2_send_str("#FaceTrack!");
+        break;
+    case 9:
+        uart2_send_str("0x09"); // 总线发送
+        uart2_send_str("#ApriltagSort!");
+        break;
+    case 10:
+        uart2_send_str("0x10"); // 总线发送
+        uart2_send_str("#ApriltagStack!");      
+        break;
+    case 11:
+        uart2_send_str("0x11"); // 总线发送
+        uart2_send_str("#ApriltagTrack!");
+        break;
+    case 12:
+        uart2_send_str("0x12"); // 总线发送
+        uart2_send_str("#ApriltagNumSort!");
+        OLED_Print(32, 3, "数字分拣");
+        break;
+    case 13:
+        uart2_send_str("0x13"); // 总线发送
+        uart2_send_str("#NumTrack!");
+        OLED_Print(32, 3, "数字追踪");
 		break;
 	default:
 		break;

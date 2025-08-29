@@ -3,13 +3,13 @@
         {
             "name": "Target 1",
             "includePath": [
-                "d:\\Company_Project\\课程资料\\ControlBoard_F103\\Routine\\13-综合示例 - 副本\\Library",
-                "d:\\Company_Project\\课程资料\\ControlBoard_F103\\Routine\\13-综合示例 - 副本\\Library\\Start",
-                "d:\\Company_Project\\课程资料\\ControlBoard_F103\\Routine\\13-综合示例 - 副本\\System",
-                "d:\\Company_Project\\课程资料\\ControlBoard_F103\\Routine\\13-综合示例 - 副本\\User",
-                "d:\\Company_Project\\课程资料\\ControlBoard_F103\\Routine\\13-综合示例 - 副本\\App",
-                "d:\\Company_Project\\课程资料\\ControlBoard_F103\\Routine\\13-综合示例 - 副本\\BSP",
-                "d:\\Company_Project\\课程资料\\ControlBoard_F103\\Routine\\13-综合示例 - 副本\\Hardware"
+                "d:\\Company_Project\\课程资料\\ControlBoard_F103\\Routine\\16-综合示例-动作组\\Library",
+                "d:\\Company_Project\\课程资料\\ControlBoard_F103\\Routine\\16-综合示例-动作组\\Library\\Start",
+                "d:\\Company_Project\\课程资料\\ControlBoard_F103\\Routine\\16-综合示例-动作组\\System",
+                "d:\\Company_Project\\课程资料\\ControlBoard_F103\\Routine\\16-综合示例-动作组\\User",
+                "d:\\Company_Project\\课程资料\\ControlBoard_F103\\Routine\\16-综合示例-动作组\\App",
+                "d:\\Company_Project\\课程资料\\ControlBoard_F103\\Routine\\16-综合示例-动作组\\BSP",
+                "d:\\Company_Project\\课程资料\\ControlBoard_F103\\Routine\\16-综合示例-动作组\\Hardware"
             ],
             "defines": [
                 "STM32F10X_MD",

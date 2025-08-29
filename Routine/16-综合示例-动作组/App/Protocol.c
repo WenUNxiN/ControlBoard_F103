@@ -29,6 +29,75 @@ void Rewrite_Eeprom(void)
     w25x_writeS((u8 *)(&eeprom_info), W25Q64_INFO_ADDR_SAVE_STR, sizeof(eeprom_info_t));
 }
 
+void Voice_Cmd(char *cmd){
+    int pos = 0 ;
+    
+    if (pos = Str_Contain_Str(cmd, "#SensorColorSort!"), pos)
+    {
+        SetMode = 1;
+    } 
+    else if (pos = Str_Contain_Str(cmd, "#SoundTouch!"), pos)
+    {
+        SetMode = 2;
+    } 
+    else if (pos = Str_Contain_Str(cmd, "#Joystick!"), pos)
+    {
+        SetMode = 3;
+    }
+    else if (pos = Str_Contain_Str(cmd, "#Ultrasonic!"), pos)
+    {
+        SetMode = 4;
+    }
+    else if (pos = Str_Contain_Str(cmd, "#StartLed!"), pos)
+    {
+
+    } 
+    else if (pos = Str_Contain_Str(cmd, "#StopLed!"), pos)
+    {
+
+    }
+    else if (pos = Str_Contain_Str(cmd, "#RunStop!"), pos)
+    {
+        SetMode = 0;
+    } 
+    else if (pos = Str_Contain_Str(cmd, "#ColorSort!"), pos)
+    {
+        SetMode = 5;
+    } 
+    else if (pos = Str_Contain_Str(cmd, "#ColorStack!"), pos)
+    {
+        SetMode = 6;
+    } 
+    else if (pos = Str_Contain_Str(cmd, "#PTZColorTrace!"), pos)
+    {
+        SetMode = 7;
+    } 
+    else if (pos = Str_Contain_Str(cmd, "#FaceTrack!"), pos)
+    {
+        SetMode = 8;
+    } 
+    else if (pos = Str_Contain_Str(cmd, "#ApriltagSort!"), pos)
+    {
+        SetMode = 9;
+    } 
+    else if (pos = Str_Contain_Str(cmd, "#ApriltagStack!"), pos)
+    {
+        SetMode = 10;
+    } 
+    else if (pos = Str_Contain_Str(cmd, "#ApriltagTrack!"), pos)
+    {
+        SetMode = 11;
+    } 
+    else if (pos = Str_Contain_Str(cmd, "#ApriltagNumSort!"), pos)
+    {
+        SetMode = 12;
+    } 
+    else if (pos = Str_Contain_Str(cmd, "#NumTrack!"), pos)
+    {
+        SetMode = 13;
+    } 
+}
+
 /***********************************************
     函数名称:void Parse_Action(char *Uart_ReceiveBuf)
     功能介绍:处理 #000P1500T1000! 类似的字符串
@@ -40,8 +109,9 @@ void Parse_Action(char *Uart_ReceiveBuf)
     u16 index, time, i = 0;
     int bias, len;
     float pwm;
-    // UartAll_Printf(Uart_ReceiveBuf);
-
+//    UartAll_Printf(Uart_ReceiveBuf);
+    Voice_Cmd(Uart_ReceiveBuf);// 语音指令解析
+    
     // 调整偏差指令
     if (Uart_ReceiveBuf[0] == '#' && Uart_ReceiveBuf[4] == 'P' && Uart_ReceiveBuf[5] == 'S' && Uart_ReceiveBuf[6] == 'C' && Uart_ReceiveBuf[7] == 'K' && Uart_ReceiveBuf[12] == '!') // 带入偏差调节
     {
@@ -64,7 +134,7 @@ void Parse_Action(char *Uart_ReceiveBuf)
             }
             duoji_doing[index].aim = duoji_doing[index].cur;
             duoji_doing[index].inc = 0.001;
-            // Rewrite_Eeprom();
+            Rewrite_Eeprom();
         }
 
         // 总线舵机对应处理
@@ -174,7 +244,7 @@ void Save_Action(char *str)
     {
         eeprom_info.pre_cmd[PRE_CMD_SIZE] = 0;
         Rewrite_Eeprom();
-        Uart1_Print("@CLEAR PRE_CMD OK!");
+        uart1_send_str("@CLEAR PRE_CMD OK!");
         return;
     }
     else if (str[1] == '$') // 设置开机动作
@@ -184,7 +254,7 @@ void Save_Action(char *str)
         eeprom_info.pre_cmd[strlen(str) - 2] = '\0'; // 赋值字符0
         eeprom_info.pre_cmd[PRE_CMD_SIZE] = FLAG_VERIFY;
         Rewrite_Eeprom();
-        Uart1_Print("@SET PRE_CMD OK!"); //
+        uart1_send_str("@SET PRE_CMD OK!"); //
         return;
     }
 
@@ -194,7 +264,7 @@ void Save_Action(char *str)
     // <G0000#000P1500T1000!>
     if ((action_index < 0) || str[6] != '#')
     {
-        Uart1_Print("E");
+        uart1_send_str("E");
         return;
     }
 
@@ -209,7 +279,7 @@ void Save_Action(char *str)
     w25x_write((u8 *)str, action_index * ACTION_SIZE, strlen(str) + 1);
 
     // 反馈一个A告诉上位机我已经接收到了
-    Uart1_Print("A");
+    uart1_send_str("A");
     return;
 }
 
@@ -262,7 +332,7 @@ void Parse_Cmd(char *cmd)
 {
     int pos = 0, index = 0, int1 = 0, int2 = 0,int3 = 0,int4 = 0;
     float angle = 0, Servo_angle = 0;
-
+    
     if (pos = Str_Contain_Str(cmd, "$DRS!"), pos)
     {
         SetPrintfUart(1);
@@ -369,7 +439,7 @@ void Parse_Cmd(char *cmd)
     {
         if (sscanf((char *)cmd, "$KMS:%d,%d,%d,%d!", &int1, &int2, &int3, &int4))
         {
-            Uart1_Print("Try to find best pos:\r\n");
+            uart1_send_str("Try to find best pos:\r\n");
             Pose target_pose = {
                         .x = (float)int1, .y = (float)int2, .z = (float)int3, 
                         .roll = 0.0f, .pitch = (float)-90, .yaw = (float)0};
@@ -405,6 +475,10 @@ void Parse_Cmd(char *cmd)
             printf("Angle   Angle\r\n");
             PwmServo_SetAngle(index, angle, Servo_angle);
         }
+    }
+    else if (pos = Str_Contain_Str(cmd, ""), pos)
+    {
+
     }
     else if (pos = Str_Contain_Str(cmd, "$BEEP!"), pos)
     {

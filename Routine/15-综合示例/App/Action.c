@@ -69,7 +69,7 @@ void Loop_Action(void)
             if (group_num_times != 0 && do_time == 0)
             {
                 group_do_ok = 1;
-                Uart1_Print("@GroupDone!");
+                uart1_send_str("@GroupDone!");
                 return;
             }
             // 调用do_start_index个动作

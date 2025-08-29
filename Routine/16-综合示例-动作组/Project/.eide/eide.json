@@ -69,6 +69,9 @@
           },
           {
             "path": "../BSP/GY33T.c"
+          },
+          {
+            "path": "../BSP/joystick.c"
           }
         ],
         "folders": []
@@ -384,8 +387,8 @@
               "abortAfterFailed": true
             },
             {
-              "name": "D:\\Company_Project\\课程资料\\ControlBoard_F103\\Routine\\13-综合示例\\Project\\keil5_disp_size_bar.exe",
-              "command": "D:\\Company_Project\\课程资料\\ControlBoard_F103\\Routine\\13-综合示例\\Project\\keil5_disp_size_bar.exe",
+              "name": "D:\\Company_Project\\课程资料\\ControlBoard_F103\\Routine\\16-综合示例-动作组\\Project\\keil5_disp_size_bar.exe",
+              "command": "D:\\Company_Project\\课程资料\\ControlBoard_F103\\Routine\\16-综合示例-动作组\\Project\\keil5_disp_size_bar.exe",
               "disable": false,
               "abortAfterFailed": true
             }
