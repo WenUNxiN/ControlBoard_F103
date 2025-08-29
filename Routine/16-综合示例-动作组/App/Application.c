@@ -141,7 +141,7 @@ void loop_key(void)
         /* 只做一次处理，然后转等待松开 */
         uart1_send_str("$KEY_PRESS!");
         SetMode++;
-        SetMode %= 14;
+        SetMode %= 15;
         printf("%d\n", SetMode);
         state = KEY_WAIT_RELEASE;
         break;
@@ -214,9 +214,19 @@ void loop_Joystick_key(void)
 
 void LoopMode(void) { 
     static u32 systick_ms_bak_mode= 0;
+    static u8 last_mode = 0xFF; // 0xFF 保证第一次必刷新
+    
 	if (Millis() - systick_ms_bak_mode < 10)
 		return;
 	systick_ms_bak_mode = Millis();
+    
+    /* 模式未改变 → 不做任何事 */
+    if (SetMode == last_mode)
+        return;
+
+    /* 模式已变化：清屏 + 重新显示 */
+    last_mode = SetMode;
+    
 	switch (SetMode) { 
 	case 1: // 颜色
 		ColorTask(1000);
@@ -265,12 +275,14 @@ void LoopMode(void) {
     case 12:
         uart2_send_str("0x12"); // 总线发送
         uart2_send_str("#ApriltagNumSort!");
-        OLED_Print(32, 3, "数字分拣");
         break;
     case 13:
         uart2_send_str("0x13"); // 总线发送
         uart2_send_str("#NumTrack!");
-        OLED_Print(32, 3, "数字追踪");
+		break;
+    case 14:
+        uart2_send_str("0x14"); // 总线发送
+        uart2_send_str("#GarbageSorting!");
 		break;
 	default:
 		break;

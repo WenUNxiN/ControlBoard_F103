@@ -96,6 +96,10 @@ void Voice_Cmd(char *cmd){
     {
         SetMode = 13;
     } 
+    else if (pos = Str_Contain_Str(cmd, "#GarbageSorting!"), pos)
+    {
+        SetMode = 14;
+    } 
 }
 
 /***********************************************
