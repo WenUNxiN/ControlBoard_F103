@@ -207,7 +207,7 @@ void UsTask(uint32_t interval_ms)
     Delay_ms(1000);
     
     /* 下降高度根据距离区分 */
-    int downZ = (UsNum <= 200) ? 5 : 15;
+    int downZ = (UsNum <= 200) ? 5 : 10;
     sprintf((char *)cmd_return, "$KMS:%03d,0,%03d,1000!\r\n", UsNum, downZ);
     Parse_Cmd(cmd_return);
 

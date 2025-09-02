@@ -203,12 +203,15 @@ void loop_Joystick_key(void)
             }
             break;
         }
-        // 夹取
-        if(clamp){
-            PwmServo_DoingSet(5, 1650, 1000);
-        } else {
-            PwmServo_DoingSet(5, 1200, 1000);
+        if (SetMode == 2){
+            // 摇杆下夹取
+            if(clamp){
+                PwmServo_DoingSet(5, 1650, 1000);
+            } else {
+                PwmServo_DoingSet(5, 1200, 1000);
+            }
         }
+        
     }
 }
 
