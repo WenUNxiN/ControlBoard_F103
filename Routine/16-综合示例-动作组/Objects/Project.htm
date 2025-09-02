@@ -3,11 +3,11 @@
 <title>Static Call Graph - [..\Objects\Project.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ..\Objects\Project.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Fri Aug 29 16:57:32 2025
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Mon Sep 01 17:51:35 2025
 <BR><P>
-<H3>Maximum Stack Usage =        688 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        696 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
-main &rArr; loop_app &rArr; AppPs2Run &rArr; ParsePsx_Buf &rArr; Parse_Cmd &rArr; inverseKinematics &rArr; sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dsub &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
+main &rArr; loop_app &rArr; LoopMode &rArr; UsTask &rArr; Parse_Cmd &rArr; inverseKinematics &rArr; sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dsub &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 <P>
 <H3>
 Mutually Recursive functions
@@ -1191,8 +1191,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[13a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;loop_app
 </UL>
 
-<P><STRONG><a name="[9c]"></a>LoopMode</STRONG> (Thumb, 290 bytes, Stack size 8 bytes, application.o(i.LoopMode))
-<BR><BR>[Stack]<UL><LI>Max Depth = 680<LI>Call Chain = LoopMode &rArr; UsTask &rArr; Parse_Cmd &rArr; inverseKinematics &rArr; sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dsub &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
+<P><STRONG><a name="[9c]"></a>LoopMode</STRONG> (Thumb, 268 bytes, Stack size 8 bytes, application.o(i.LoopMode))
+<BR><BR>[Stack]<UL><LI>Max Depth = 688<LI>Call Chain = LoopMode &rArr; UsTask &rArr; Parse_Cmd &rArr; inverseKinematics &rArr; sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dsub &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart2_send_str
 <LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UsTask
@@ -2267,8 +2267,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[13d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setup_app
 </UL>
 
-<P><STRONG><a name="[9e]"></a>UsTask</STRONG> (Thumb, 234 bytes, Stack size 24 bytes, function.o(i.UsTask))
-<BR><BR>[Stack]<UL><LI>Max Depth = 672<LI>Call Chain = UsTask &rArr; Parse_Cmd &rArr; inverseKinematics &rArr; sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dsub &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
+<P><STRONG><a name="[9e]"></a>UsTask</STRONG> (Thumb, 210 bytes, Stack size 32 bytes, function.o(i.UsTask))
+<BR><BR>[Stack]<UL><LI>Max Depth = 680<LI>Call Chain = UsTask &rArr; Parse_Cmd &rArr; inverseKinematics &rArr; sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dsub &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;US_DisRead
 <LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2iz
@@ -2620,7 +2620,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Parse_Cmd
 </UL>
 
-<P><STRONG><a name="[139]"></a>loop_Joystick_key</STRONG> (Thumb, 234 bytes, Stack size 8 bytes, application.o(i.loop_Joystick_key))
+<P><STRONG><a name="[139]"></a>loop_Joystick_key</STRONG> (Thumb, 238 bytes, Stack size 8 bytes, application.o(i.loop_Joystick_key))
 <BR><BR>[Stack]<UL><LI>Max Depth = 60<LI>Call Chain = loop_Joystick_key &rArr; PwmServo_DoingSet &rArr; __aeabi_fsub &rArr; __aeabi_fadd &rArr; _float_epilogue
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart1_send_str
@@ -2634,7 +2634,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[13a]"></a>loop_app</STRONG> (Thumb, 36 bytes, Stack size 8 bytes, application.o(i.loop_app))
-<BR><BR>[Stack]<UL><LI>Max Depth = 688<LI>Call Chain = loop_app &rArr; AppPs2Run &rArr; ParsePsx_Buf &rArr; Parse_Cmd &rArr; inverseKinematics &rArr; sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dsub &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
+<BR><BR>[Stack]<UL><LI>Max Depth = 696<LI>Call Chain = loop_app &rArr; LoopMode &rArr; UsTask &rArr; Parse_Cmd &rArr; inverseKinematics &rArr; sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dsub &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Loop_Action
 <LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AppPs2Run
@@ -2670,7 +2670,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[35]"></a>main</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, main.o(i.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 688<LI>Call Chain = main &rArr; loop_app &rArr; AppPs2Run &rArr; ParsePsx_Buf &rArr; Parse_Cmd &rArr; inverseKinematics &rArr; sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dsub &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
+<BR><BR>[Stack]<UL><LI>Max Depth = 696<LI>Call Chain = main &rArr; loop_app &rArr; LoopMode &rArr; UsTask &rArr; Parse_Cmd &rArr; inverseKinematics &rArr; sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dsub &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[13d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setup_app
 <LI><a href="#[13a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;loop_app

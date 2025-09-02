@@ -111,7 +111,7 @@ void SoundTouchTask(void)
 
     case KEY_PRESSED:
         Buzzer_times(200, 3);
-        Parse_Group_Cmd("$DGT:31-39,1!");
+        Parse_Group_Cmd("$DGT:31-40,1!");
         action_state = LOCKED; // 立即锁定，直到动作完成
         state = KEY_WAIT_RELEASE;
         break;
@@ -198,32 +198,26 @@ void UsTask(uint32_t interval_ms)
     SetPrintfUart(1);
     printf("\nUs:%d\r\n",UsNum);  
     
-    PwmServo_DoingSet(5, 1200, 1000);
+    PwmServo_DoingSet(5, 1300, 1000);
     
     // 将机械臂移动至物体上方
     sprintf((char *)cmd_return, "$KMS:%03d,0,100,1000!\r\n", UsNum);
     printf("\nUsNum:%s\r\n",cmd_return);  
     Parse_Cmd(cmd_return);
+    Delay_ms(1000);
     
-    if(UsNum <= 200){
-        sprintf((char *)cmd_return, "$KMS:%03d,0,%03d,1000!\r\n", UsNum, 25);
-        printf("\nUsNum:%s\r\n",cmd_return);     
-        Parse_Cmd(cmd_return);
-    } else if(UsNum >= 200){
-        sprintf((char *)cmd_return, "$KMS:%03d,0,%03d,1000!\r\n", UsNum, 40);
-        printf("\nUsNum:%s\r\n",cmd_return);     
-        Parse_Cmd(cmd_return);
-    }
+    /* 下降高度根据距离区分 */
+    int downZ = (UsNum <= 200) ? 5 : 15;
+    sprintf((char *)cmd_return, "$KMS:%03d,0,%03d,1000!\r\n", UsNum, downZ);
+    Parse_Cmd(cmd_return);
 
-
-    
     Delay_ms(1000);  
     //夹取
-    PwmServo_DoingSet(5, 1650, 1000);
+    PwmServo_DoingSet(5, 1750, 1000);
     
     Delay_ms(500); 
     
-    Parse_Group_Cmd("$DGT:40-46,1!");
+    Parse_Group_Cmd("$DGT:41-47,1!");
         
     Us_ok = 0;
 }

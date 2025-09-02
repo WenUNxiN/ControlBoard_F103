@@ -36,15 +36,15 @@ void Voice_Cmd(char *cmd){
     {
         SetMode = 1;
     } 
-    else if (pos = Str_Contain_Str(cmd, "#SoundTouch!"), pos)
+    else if (pos = Str_Contain_Str(cmd, "#Joystick!"), pos)
     {
         SetMode = 2;
     } 
-    else if (pos = Str_Contain_Str(cmd, "#Joystick!"), pos)
+    else if (pos = Str_Contain_Str(cmd, "#Ultrasonic!"), pos)
     {
         SetMode = 3;
     }
-    else if (pos = Str_Contain_Str(cmd, "#Ultrasonic!"), pos)
+    else if (pos = Str_Contain_Str(cmd, "#SoundTouch!"), pos)
     {
         SetMode = 4;
     }
@@ -191,10 +191,10 @@ void Parse_Action(char *Uart_ReceiveBuf)
             //  手爪限位
             if (index == 5)
             {
-                if (pwm >= 1800)
-                    pwm = 1800;
-                if (pwm <= 1100)
-                    pwm = 1100;
+                if (pwm >= 1900)
+                    pwm = 1900;
+                if (pwm <= 1300)
+                    pwm = 1300;
             }
             if (index == 3)
             {

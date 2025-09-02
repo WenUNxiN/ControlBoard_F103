@@ -192,7 +192,7 @@ void loop_Joystick_key(void)
             BUZZER_ON();
             uart1_send_str("$ROCKER_PRESS!");
             if(SetMode == 2) {clamp = !clamp;}
-            if(SetMode == 3) {Us_ok = 1;}
+            if(SetMode == 3) {UsMode = 1;Us_ok = 1;}
             state1 = KEY_WAIT_RELEASE;
             break;
 
@@ -214,18 +214,10 @@ void loop_Joystick_key(void)
 
 void LoopMode(void) { 
     static u32 systick_ms_bak_mode= 0;
-    static u8 last_mode = 0xFF; // 0xFF 保证第一次必刷新
     
 	if (Millis() - systick_ms_bak_mode < 10)
 		return;
 	systick_ms_bak_mode = Millis();
-    
-    /* 模式未改变 → 不做任何事 */
-    if (SetMode == last_mode)
-        return;
-
-    /* 模式已变化：清屏 + 重新显示 */
-    last_mode = SetMode;
     
 	switch (SetMode) { 
 	case 1: // 颜色
