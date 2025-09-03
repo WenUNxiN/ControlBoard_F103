@@ -46,6 +46,7 @@ extern void Led_Blink(u32 time);	        //循环执行工作指示灯
 void loop_key(void);
 void loop_Joystick_key(void);
 void LoopMode(void);
+void LoopVisionMode(void);
 void Loop_Uart(void);
 #endif
 

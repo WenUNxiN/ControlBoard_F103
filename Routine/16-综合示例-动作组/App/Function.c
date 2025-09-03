@@ -1,6 +1,7 @@
 #include "Function.h"
 
 u8 Us_ok;
+u8 clampMode = 0; // 夹爪状态
 
 /* 颜色 → 指令映射表
    color  : 读到的寄存器值
@@ -133,7 +134,7 @@ void JoystickTask(void)
     static u32 joystick_tick_bak = 0;
     static int kms_x = 150; 
     static int kms_y = 0;
-
+    static u8 last_clamp = 0xFF;
 
     /* 每 50 ms 扫描一次 */
     if (Millis() - joystick_tick_bak < 50) return; 
@@ -172,6 +173,44 @@ void JoystickTask(void)
     }
     sprintf((char *)cmd_return, "$KMS:%03d,%03d,100,1000!\r\n", (int)kms_x, (int)kms_y);
     Parse_Cmd(cmd_return);
+    
+    /* 模式未改变 → 不做任何事 */
+    if (clampMode == last_clamp)
+        return;
+
+    /* 模式已变化 */
+    last_clamp = clampMode;
+    
+    // 摇杆下夹取
+    if(clampMode == 1){
+        // 下降
+        sprintf((char *)cmd_return, "$KMS:%03d,%03d,5,1000!\r\n", (int)kms_x, (int)kms_y);
+        Parse_Cmd(cmd_return);
+        
+        Delay_ms(1000);
+        
+        // 夹取
+        PwmServo_DoingSet(5, 1750, 1000);
+        Delay_ms(1000);
+        
+        // 上升
+        sprintf((char *)cmd_return, "$KMS:%03d,%03d,100,1000!\r\n", (int)kms_x, (int)kms_y);
+        Parse_Cmd(cmd_return);
+    } else if(clampMode == 2) {
+        // 下降
+        sprintf((char *)cmd_return, "$KMS:%03d,%03d,5,1000!\r\n", (int)kms_x, (int)kms_y);
+        Parse_Cmd(cmd_return);
+        
+        Delay_ms(1000);
+        
+        // 松爪
+        PwmServo_DoingSet(5, 1300, 1000);
+        
+        Delay_ms(1000);
+        // 上升
+        sprintf((char *)cmd_return, "$KMS:%03d,%03d,100,1000!\r\n", (int)kms_x, (int)kms_y);
+        Parse_Cmd(cmd_return);
+    }
 }
 
 /* 超声波

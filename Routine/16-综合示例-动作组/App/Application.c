@@ -5,6 +5,7 @@
 
 u8 SetMode;
 u8 UsMode;
+extern u8 clampMode;
 
 void setup_app(void)
 {
@@ -49,6 +50,7 @@ void loop_app(void)
 	AppPs2Run();
 	Loop_Action();
 	LoopMode();
+    LoopVisionMode();
 }
 
 void Parameter_Init(void)
@@ -159,7 +161,6 @@ void loop_Joystick_key(void)
 {
     static u32  Joystick_tick_bak = 0;
     static KeyState_t state1 = KEY_IDLE;
-    static u8 clamp = 0;
     
     if(SetMode == 2 || SetMode == 3){ // 在摇杆超声波模式下才扫描
         /* 每 20 ms 扫描一次，共用系统节拍 */
@@ -170,6 +171,11 @@ void loop_Joystick_key(void)
         
         uint8_t pin_level = GPIO_ReadInputDataBit(JOYSTICK_KEY_PORT, JOYSTICK_KEY_PIN);
 
+            /* 新增：强制置 0 + 立即打印 */
+    clampMode = 0;
+        SetPrintfUart(1);
+    printf("loop entry clamp=%d\r\n", clampMode);
+        
         switch (state1)
         {
         case KEY_IDLE:
@@ -188,10 +194,15 @@ void loop_Joystick_key(void)
             break;
 
         case KEY_PRESSED:
-            /* 只做一次处理，然后转等待松开 */
             BUZZER_ON();
             uart1_send_str("$ROCKER_PRESS!");
-            if(SetMode == 2) {clamp = !clamp;}
+
+            if(SetMode == 2){
+                static uint8_t toggle = 0;   // 0 表示下一次给 1，1 表示下一次给 2
+                clampMode = toggle ? 2 : 1;
+                toggle ^= 1;                 // 0/1 交替
+            }
+                
             if(SetMode == 3) {UsMode = 1;Us_ok = 1;}
             state1 = KEY_WAIT_RELEASE;
             break;
@@ -202,16 +213,7 @@ void loop_Joystick_key(void)
                 state1 = KEY_IDLE;               // 回到初始态，准备下一次
             }
             break;
-        }
-        if (SetMode == 2){
-            // 摇杆下夹取
-            if(clamp){
-                PwmServo_DoingSet(5, 1650, 1000);
-            } else {
-                PwmServo_DoingSet(5, 1200, 1000);
-            }
-        }
-        
+        }   
     }
 }
 
@@ -239,6 +241,27 @@ void LoopMode(void) {
         uart2_send_str("0x04");
         SoundTouchTask();   
 		break;
+	default:
+		break;
+	}
+}
+
+void LoopVisionMode(void) { 
+    static u32 systick_ms_bak_mode= 0;
+    static u8 last_mode = 0xFF; // 0xFF 保证第一次必刷新
+    
+	if (Millis() - systick_ms_bak_mode < 10)
+		return;
+	systick_ms_bak_mode = Millis();
+    
+    /* 模式未改变 → 不做任何事 */
+    if (SetMode == last_mode)
+        return;
+
+    /* 模式已变化 */
+    last_mode = SetMode;
+    
+	switch (SetMode) { 
     case 5: // 颜色视觉
         uart2_send_str("0x05");
         uart2_send_str("#ColorSort!");

@@ -4,6 +4,7 @@
 #include "Application.h"
 
 extern u8 Us_ok;
+extern u8 clampMode;
 
 // 摇杆一次动作多少
 #define SERVO_STEP 5
