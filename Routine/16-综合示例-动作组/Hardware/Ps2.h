@@ -25,8 +25,8 @@
 #define ASK_DAT_CMD 0x42 /* 请求数据 */
 
 /*******PS2模式数据表*******/
-#define PS2_MODE_GRN 0x41 /* 模拟绿灯 */
-#define PS2_MODE_RED 0x73 /* 模拟红灯 */
+#define PS2_MODE_GRN 0x73 /* 模拟绿灯 */
+#define PS2_MODE_RED 0x41 /* 模拟红灯 */
 
 /* 控制PS2的宏 */
 #define PS2_DAT() 	GPIO_ReadInputDataBit(PS2_DAT_GPIO_PORT, PS2_DAT_PIN)        // 读取LED信号灯状态

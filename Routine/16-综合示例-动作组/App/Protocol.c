@@ -100,6 +100,10 @@ void Voice_Cmd(char *cmd){
     {
         SetMode = 14;
     } 
+    else if (pos = Str_Contain_Str(cmd, "#Gamepad!"), pos)
+    {
+        SetMode = 15;
+    }
 }
 
 /***********************************************

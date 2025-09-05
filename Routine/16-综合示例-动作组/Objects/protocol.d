@@ -34,9 +34,6 @@
 ..\objects\protocol.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\objects\protocol.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 ..\objects\protocol.o: ..\App\Application.h
-..\objects\protocol.o: ..\User\main.h
-..\objects\protocol.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
-..\objects\protocol.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
 ..\objects\protocol.o: ..\System\SysTick.h
 ..\objects\protocol.o: ..\System\rcc.h
 ..\objects\protocol.o: ..\BSP\OLED.h
@@ -45,6 +42,9 @@
 ..\objects\protocol.o: ..\Hardware\PwmServo.h
 ..\objects\protocol.o: ..\System\Timer.h
 ..\objects\protocol.o: ..\Hardware\Uart.h
+..\objects\protocol.o: ..\User\main.h
+..\objects\protocol.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+..\objects\protocol.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
 ..\objects\protocol.o: ..\Hardware\Led.h
 ..\objects\protocol.o: ..\Hardware\Beep.h
 ..\objects\protocol.o: ..\Hardware\Key.h

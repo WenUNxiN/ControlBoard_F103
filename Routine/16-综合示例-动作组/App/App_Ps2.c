@@ -5,71 +5,63 @@
 
 #include <string.h>
 
-// 颜色反了
-const char *pre_cmd_set_red[PSX_BUTTON_NUM] = {
-	// 手柄按键功能字符串 红灯模式下使用
-	"<PS2_RED01:#005P0600T2000!^#005PDST!>",																			  // L2
-	"<PS2_RED02:#005P2400T2000!^#005PDST!>",																			  // R2
-	"<PS2_RED03:#004P0600T2000!^#004PDST!>",																			  // L1
-	"<PS2_RED04:#004P2400T2000!^#004PDST!>",																			  // R1
-																														  //	"<PS2_RED05:#002P2400T2000!^#002PDST!>", // RU
-	"<PS2_RED05:{#000P1500T0200!#001P1600T0200!#002P1550T0200!#003P1500T0200!#004P1500T0200!#005P1550T0200!}^#002PDST!>", // RU    //控制6个舵机   多个舵机以上要加上大括号{}
-	"<PS2_RED06:#003P2400T2000!^#003PDST!>",																			  // RR
-	"<PS2_RED07:#002P0600T2000!^#002PDST!>",																			  // RD
-	"<PS2_RED08:#003P0600T2000!^#003PDST!>",																			  // RL
+#define DEAD_ZONE   8
+#define MOVE_TH     3
 
-	"<PS2_RED09:#006P2400T2000!^#006PDST!>", // SE
-	"<PS2_RED10:#006P0600T2000!^#006PDST!>", // AL
+#define PSX_BUTTON_NUM  16      /* 按键个数 */
 
-	"<PS2_RED11:#007P0600T2000!^#007PDST!>", // AR
-	"<PS2_RED12:#007P2400T2000!^#007PDST!>", // ST
+static s32 pos_x = 150, pos_y = 0, pos_z = 120;   /* 全局坐标，单位 mm */
+#define POS_MIN     -200
+#define POS_MAX     200
+#define SCALE       1          /* 灵敏度，越大越快 */
 
-	//	"<PS2_RED13:#001P0600T2000!^#001PDST!>", // LU
-	"<PS2_RED13:{#000P1350T0200!#001P1400T0200!#002P1380T0200!#003P1330T0200!#004P1300T0200!#005P1350T0200!}^#001PDST!>", // LU	//控制6个舵机    多个舵机以上要加上大括号{}
-	"<PS2_RED14:#000P0600T2000!^#000PDST!>",																			  // LR
-	"<PS2_RED15:#001P2400T2000!^#001PDST!>",																			  // LD
-	"<PS2_RED16:#000P2400T2000!^#000PDST!>",																			  // LL
-};
-
+// 绿灯模式下按键的配置
 const char *pre_cmd_set_grn[PSX_BUTTON_NUM] = {
-	// 绿灯模式下按键的配置
-	"<PS2_RED01:#005P0600T2000!^#005PDST!>", // L2
-	"<PS2_RED02:#005P2400T2000!^#005PDST!>", // R2
-	"<PS2_RED03:#004P0600T2000!^#004PDST!>", // L1
-	"<PS2_RED04:#004P2400T2000!^#004PDST!>", // R1
+	// 手柄按键功能字符串 红灯模式下使用
+	"<PS2_GRN01:#005P0600T2000!^#005PDST!>",																			  // L2
+	"<PS2_GRN02:#005P2400T2000!^#005PDST!>",																			  // R2
+	"<PS2_GRN03:#004P0600T2000!^#004PDST!>",																			  // L1
+	"<PS2_GRN04:#004P2400T2000!^#004PDST!>",																			  // R1
+																														  //	"<PS2_RED05:#002P2400T2000!^#002PDST!>", // RU
 	"<PS2_RED05:#002P2400T2000!^#002PDST!>", // RU
-	"<PS2_RED06:#003P2400T2000!^#003PDST!>", // RR
-	"<PS2_RED07:#002P0600T2000!^#002PDST!>", // RD
-	"<PS2_RED08:#003P0600T2000!^#003PDST!>", // RL
+	"<PS2_GRN06:#003P2400T2000!^#003PDST!>",																			  // RR
+	"<PS2_GRN07:#002P0600T2000!^#002PDST!>",																			  // RD
+	"<PS2_GRN08:#003P0600T2000!^#003PDST!>",																			  // RL
 
-	"<PS2_RED09:#006P2400T2000!^#006PDST!>", // SE
-	"<PS2_RED10:#006P0600T2000!^#006PDST!>", // AL
-
-	"<PS2_RED11:#007P0600T2000!^#007PDST!>", // AR
-	"<PS2_RED12:#007P2400T2000!^#007PDST!>", // ST
-
+    "<PS2_GRN09:$DJR!>",					// SE
+    "<PS2_GRN10:>",							// AL
+    "<PS2_GRN11:>",							// AR
+    "<PS2_GRN12:{#000P1500T2000!#001P1500T2000!#002P1500T2000!#003P1500T2000!#004P1500T2000!#005P1500T2000!}^#001PDST!>",	// ST
+    
 	"<PS2_RED13:#001P0600T2000!^#001PDST!>", // LU
-	"<PS2_RED14:#000P0600T2000!^#000PDST!>", // LR
-	"<PS2_RED15:#001P2400T2000!^#001PDST!>", // LD
-	"<PS2_RED16:#000P2400T2000!^#000PDST!>", // LL
-
-	//	"<PS2_RED01:$DCR:0,500,500,0!^$DCR:0,0,0,0!>",			   // L2  左上500     //PS2在绿灯模式下控制小车
-	//	"<PS2_RED02:$DCR:500,0,0,500!^$DCR:0,0,0,0!>",			   // R2	右上500
-	//	"<PS2_RED03:$DCR:0,1000,1000,0!^$DCR:0,0,0,0!>",		   // L1	左上1000
-	//	"<PS2_RED04:$DCR:1000,0,0,1000!^$DCR:0,0,0,0!>",		   // R1	右上1000
-	//	"<PS2_RED05:$DCR:1000,1000,1000,1000!^$DCR:0,0,0,0!>",	   // RU	前进1000
-	//	"<PS2_RED06:$DCR:1000,-1000,-1000,1000!^$DCR:0,0,0,0!>",   // RR	右平移1000
-	//	"<PS2_RED07:$DCR:-1000,-1000,-1000,-1000!^$DCR:0,0,0,0!>", // RD	后退1000
-	//	"<PS2_RED08:$DCR:-1000,1000,1000,-1000!^$DCR:0,0,0,0!>",   // RL	左平移1000
-	//	"<PS2_RED09:$DJR!>",									   // SE
-	//	"<PS2_RED10:>",											   // AL
-	//	"<PS2_RED11:>",											   // AR
-	//	"<PS2_RED12:$DJR!>",									   // ST
-	//	"<PS2_RED13:$DCR:500,500,500,500!^$DCR:0,0,0,0!>",		   // LU	前进500
-	//	"<PS2_RED14:$DCR:500,-500,500,-500!^$DCR:0,0,0,0!>",	   // LR	右转500
-	//	"<PS2_RED15:$DCR:-500,-500,-500,-500!^$DCR:0,0,0,0!>",	   // LD	后退500
-	//	"<PS2_RED16:$DCR:-500,500,-500,500!^$DCR:0,0,0,0!>",	   // LL	左转500
+	"<PS2_GRN14:#000P0600T2000!^#000PDST!>",																			  // LR
+	"<PS2_GRN15:#001P2400T2000!^#001PDST!>",																			  // LD
+	"<PS2_GRN16:#000P2400T2000!^#000PDST!>",																			  // LL
 };
+
+//const char *pre_cmd_set_grn[PSX_BUTTON_NUM] = {
+//	
+//	"<PS2_RED01:#005P0600T2000!^#005PDST!>", // L2
+//	"<PS2_RED02:#005P2400T2000!^#005PDST!>", // R2
+//	"<PS2_RED03:#004P0600T2000!^#004PDST!>", // L1
+//	"<PS2_RED04:#004P2400T2000!^#004PDST!>", // R1
+//	"<PS2_RED05:#002P2400T2000!^#002PDST!>", // RU
+//	"<PS2_RED06:#003P2400T2000!^#003PDST!>", // RR
+//	"<PS2_RED07:#002P0600T2000!^#002PDST!>", // RD
+//	"<PS2_RED08:#003P0600T2000!^#003PDST!>", // RL
+
+//	"<PS2_RED09:#006P2400T2000!^#006PDST!>", // SE
+//	"<PS2_RED10:#006P0600T2000!^#006PDST!>", // AL
+
+//	"<PS2_RED11:#007P0600T2000!^#007PDST!>", // AR
+//	"<PS2_RED12:#007P2400T2000!^#007PDST!>", // ST
+
+//	"<PS2_RED13:#001P0600T2000!^#001PDST!>", // LU
+//	"<PS2_RED14:#000P0600T2000!^#000PDST!>", // LR
+//	"<PS2_RED15:#001P2400T2000!^#001PDST!>", // LD
+//	"<PS2_RED16:#000P2400T2000!^#000PDST!>", // LL
+
+//};
 
 /***********************************************
 	函数名称:	void AppPs2Init(void)
@@ -90,34 +82,65 @@ void AppPs2Init(void)
  ***********************************************/
 void AppPs2Run(void)
 {
-	static unsigned char psx_button_bak[2] = {0};
-	static u32 systick_ms_bak = 0;
+    static u32 systick_ms_bak = 0;
+    static unsigned char psx_button_bak[2] = {0};
 
-	// 每50ms处理1次
-	if (Millis() - systick_ms_bak < 50)
-		return;
-	systick_ms_bak = Millis();
+    /* 1. 50 ms 节拍 */
+    if (Millis() - systick_ms_bak < 50) return;
+    systick_ms_bak = Millis();
 
-	Ps2_WriteRead(); /* 读取ps2数据 */
+    /* 2. 读手柄 9 字节 */
+    Ps2_WriteRead();
 
-	// 对比两次获取的按键值是否相同 ，相同就不处理，不相同则处理
-	if ((psx_button_bak[0] == psx_buf[3]) && (psx_button_bak[1] == psx_buf[4]))
-	{
-	}
-	else
-	{
-		// 处理buf3和buf4两个字节，这两个字节存储这手柄16个按键的状态
-		ParsePsx_Buf(psx_buf + 3, psx_buf[1]);
-		psx_button_bak[0] = psx_buf[3];
-		psx_button_bak[1] = psx_buf[4];
-	}
+    /* 3. 原有按键处理（不变） */
+    if ((psx_button_bak[0] != psx_buf[3]) || (psx_button_bak[1] != psx_buf[4]))
+    {
+        ParsePsx_Buf(psx_buf + 3, psx_buf[1]);
+        psx_button_bak[0] = psx_buf[3];
+        psx_button_bak[1] = psx_buf[4];
+    }
+
+    SetPrintfUart(1);
+    /* 4. ===== 增量保持 + 变化才刷新 ===== */
+    s8 joy_now[4];
+    for (u8 i = 0; i < 4; ++i) joy_now[i] = (s8)(psx_buf[5 + i] - 128);
+
+    /* 死区 */
+    for (u8 i = 0; i < 4; ++i)
+        if (abs_int(joy_now[i]) <= DEAD_ZONE) joy_now[i] = 0;
+
+    /* 速度→增量 */
+    s16 dx = -joy_now[3] * SCALE / 40;   /* LX 左正 */
+    s16 dy = -joy_now[2] * SCALE / 40;   /* LY 前正 */
+    s16 dz =  joy_now[1] * SCALE / 40;   /* RY 前负 */
+
+    /* 累加 */
+    pos_x += dx;
+    pos_y += dy;
+    pos_z += dz;
+
+    /* 限幅 */
+    if (pos_x < POS_MIN) pos_x = POS_MIN; else if (pos_x > POS_MAX) pos_x = POS_MAX;
+    if (pos_y < POS_MIN) pos_y = POS_MIN; else if (pos_y > POS_MAX) pos_y = POS_MAX;
+    if (pos_z < 0) pos_z = 0; else if (pos_z > POS_MAX) pos_z = POS_MAX;
+
+    /* 有变化才发命令 */
+    if (dx | dy | dz)
+    {
+        char buf[64];
+        sprintf((char*)buf, "$KMS:%d,%d,%d,1000!", pos_x, pos_y, pos_z);
+        /* 可选调试信息 */
+        printf("%s\r\n",buf);
+        Parse_Cmd(buf);
+
+    }
 }
 
 /***********************************************
 	函数名称:	ParsePsx_Buf(unsigned char *buf, unsigned char mode)
 	功能介绍:	处理手柄按键字符
 	函数参数:	*buf:发送字符串
-				mode:模式 主要是红灯和绿灯模式
+			mode:模式 主要是红灯和绿灯模式
 	返回值:		无
  ***********************************************/
 void ParsePsx_Buf(unsigned char *buf, unsigned char mode)
@@ -139,13 +162,13 @@ void ParsePsx_Buf(unsigned char *buf, unsigned char mode)
 				if ((1 << i) & bak)
 				{ // press 表示按键按下了
 					memset(Uart_ReceiveBuf, 0, sizeof(Uart_ReceiveBuf));
-					if (mode == PS2_LED_RED)
-					{
-						memcpy((char *)Uart_ReceiveBuf, (char *)pre_cmd_set_red[i], strlen(pre_cmd_set_red[i]));
-					}
-					else if (mode == PS2_LED_GRN)
+					if (mode == PS2_LED_GRN)
 					{
 						memcpy((char *)Uart_ReceiveBuf, (char *)pre_cmd_set_grn[i], strlen(pre_cmd_set_grn[i]));
+					}
+					else if (mode == PS2_LED_RED)
+					{
+//						memcpy((char *)Uart_ReceiveBuf, (char *)pre_cmd_set_grn[i], strlen(pre_cmd_set_grn[i]));
 					}
 					else
 						continue;
@@ -178,13 +201,13 @@ void ParsePsx_Buf(unsigned char *buf, unsigned char mode)
 				{ // release 表示按键松开了
 
 					memset(Uart_ReceiveBuf, 0, sizeof(Uart_ReceiveBuf));
-					if (mode == PS2_LED_RED)
-					{
-						memcpy((char *)Uart_ReceiveBuf, (char *)pre_cmd_set_red[i], strlen(pre_cmd_set_red[i]));
-					}
-					else if (mode == PS2_LED_GRN)
+					if (mode == PS2_LED_GRN)
 					{
 						memcpy((char *)Uart_ReceiveBuf, (char *)pre_cmd_set_grn[i], strlen(pre_cmd_set_grn[i]));
+					}
+					else if (mode == PS2_LED_RED)
+					{
+//						memcpy((char *)Uart_ReceiveBuf, (char *)pre_cmd_set_grn[i], strlen(pre_cmd_set_grn[i]));
 					}
 					else
 						continue;

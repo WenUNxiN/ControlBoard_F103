@@ -5,15 +5,15 @@
 ..\objects\kinematics.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\objects\kinematics.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 ..\objects\kinematics.o: ..\App\Application.h
-..\objects\kinematics.o: ..\User\main.h
 ..\objects\kinematics.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-..\objects\kinematics.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
-..\objects\kinematics.o: ..\User\stm32f10x_conf.h
-..\objects\kinematics.o: ..\Library\stm32f10x_adc.h
+..\objects\kinematics.o: ..\System\SysTick.h
+..\objects\kinematics.o: ..\System\sys.h
 ..\objects\kinematics.o: ..\Library\Start\stm32f10x.h
 ..\objects\kinematics.o: ..\Library\Start\core_cm3.h
 ..\objects\kinematics.o: ..\Library\Start\system_stm32f10x.h
 ..\objects\kinematics.o: ..\User\stm32f10x_conf.h
+..\objects\kinematics.o: ..\Library\stm32f10x_adc.h
+..\objects\kinematics.o: ..\Library\Start\stm32f10x.h
 ..\objects\kinematics.o: ..\Library\stm32f10x_bkp.h
 ..\objects\kinematics.o: ..\Library\stm32f10x_can.h
 ..\objects\kinematics.o: ..\Library\stm32f10x_cec.h
@@ -36,8 +36,6 @@
 ..\objects\kinematics.o: ..\Library\stm32f10x_usart.h
 ..\objects\kinematics.o: ..\Library\stm32f10x_wwdg.h
 ..\objects\kinematics.o: ..\Library\misc.h
-..\objects\kinematics.o: ..\System\SysTick.h
-..\objects\kinematics.o: ..\System\sys.h
 ..\objects\kinematics.o: ..\System\rcc.h
 ..\objects\kinematics.o: ..\BSP\OLED.h
 ..\objects\kinematics.o: ..\App\Application.h
@@ -46,6 +44,8 @@
 ..\objects\kinematics.o: ..\System\Timer.h
 ..\objects\kinematics.o: ..\App\Global.h
 ..\objects\kinematics.o: ..\Hardware\Uart.h
+..\objects\kinematics.o: ..\User\main.h
+..\objects\kinematics.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
 ..\objects\kinematics.o: ..\Hardware\Led.h
 ..\objects\kinematics.o: ..\Hardware\Beep.h
 ..\objects\kinematics.o: ..\Hardware\Key.h
