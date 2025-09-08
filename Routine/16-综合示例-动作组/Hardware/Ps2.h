@@ -2,6 +2,8 @@
 #define _PS2__H_
 #include "sys.h"
 #include "SysTick.h"
+#include <string.h>
+#include <stdio.h>
 
 /* 定义PS2引脚，修改编号就可以修改PS2引脚 */
 #define PS2_DAT_PIN 		GPIO_Pin_1
@@ -34,10 +36,10 @@
 #define PS2_CS(x)	GPIO_WriteBit(PS2_CS_GPIO_PORT, PS2_CS_PIN, (BitAction)x)    // 翻转LED信号灯
 #define PS2_CLK(x)  GPIO_WriteBit(PS2_CLK_GPIO_PORT, PS2_CLK_PIN, (BitAction)x) // 翻转LED信号灯
 
-
 extern u8 psx_buf[9];
 
 /*******PS2相关函数声明*******/
 void Ps2_Init(void);       /* PS2手柄初始化 */
 void Ps2_WriteRead(void); /* 读取手柄数据 */
+u8 Ps2HotplugTask(void);   // 10 ms 周期调用，返回 1 表示 psx_buf 可用
 #endif

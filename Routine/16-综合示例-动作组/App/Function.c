@@ -50,12 +50,11 @@ void ColorTask(uint32_t interval_ms)
         if (!group_do_ok) return;   // 动作仍在跑
         state = IDLE;               // 动作跑完，解锁
     }
-    uart1_send_str("A1\r\n");
+
     uint8_t color;
     /* 从 GY33 颜色寄存器 0x15 读 1 Byte */
     if (!GY33T_Read(0xA4, 0x15, &color, 1))          // 读取成功返回 0
     {
-        uart1_send_str("A2\r\n");
         /* 遍历映射表，匹配颜色 */
         for (size_t i = 0; i < sizeof(color_map) / sizeof(color_map[0]); ++i)
         {

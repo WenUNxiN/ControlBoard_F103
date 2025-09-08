@@ -40,6 +40,7 @@ void setup_app(void)
     Buzzer_times(200, 3);       // 启动提示音
     setup_run_action();         // 执行开机动作组
 
+    Delay_ms(500);
     SetPrintfUart(2);           // printf 重定向到串口2
     printf("#RunStop!");        // 通知 OpenMV 进入待机
 }
@@ -54,6 +55,7 @@ void loop_app(void)
     loop_Joystick_key();// 摇杆按键扫描
     Loop_Uart();        // 串口数据解析
     Loop_Action();      // 动作组运行
+    AppPs2Run();
     LoopMode();         // 基础模式（颜色/摇杆/超声/声音）
     LoopVisionMode();   // 视觉模式（颜色/标签/人脸/数字识别）
 }
@@ -151,7 +153,7 @@ void loop_key(void)
         break;
     case KEY_PRESSED:
         uart1_send_str("$KEY_PRESS!");
-        SetMode = (SetMode + 1) % 16;
+        SetMode = (SetMode + 1) % 15;
         printf("%d\n", SetMode);
         state = KEY_WAIT_RELEASE;
         break;
@@ -185,7 +187,6 @@ void loop_Joystick_key(void)
 
     clampMode = 0;                 // 每次循环强制清零（调试）
     SetPrintfUart(1);
-    printf("loop entry clamp=%d\r\n", clampMode);
 
     switch (state1)
     {
@@ -234,11 +235,10 @@ void LoopMode(void)
 
     switch (SetMode)
     {
-    case 1: ColorTask(1000);     uart2_send_str("0x01"); break; // 颜色
-    case 2: JoystickTask();      uart2_send_str("0x02"); break; // 摇杆
-    case 3: if (UsMode == 1) UsTask(1000);uart2_send_str("0x03"); break; // 超声波
-    case 4: SoundTouchTask();    uart2_send_str("0x04"); break; // 声音/触摸
-    case 15: AppPs2Run();    uart2_send_str("0x15"); break;     // PS2 手柄处理
+    case 1: ColorTask(1000);                break; // 颜色
+    case 2: JoystickTask();                 break; // 摇杆
+    case 3: if (UsMode == 1) UsTask(1000);  break; // 超声波
+    case 4: SoundTouchTask();               break; // 声音/触摸
     default: break;
     }
 }
@@ -258,18 +258,23 @@ void LoopVisionMode(void)
     if (SetMode == last_mode) return;
     last_mode = SetMode;
 
+    if (SetMode <= 4){
+        uart2_send_str("#RunStop!");// 在基础模式下将视觉暂停
+        uart1_send_str("#RunStop!");
+    }
+    
     switch (SetMode)
     {
-    case 5:  uart2_send_str("0x05"); uart2_send_str("#ColorSort!");        break;
-    case 6:  uart2_send_str("0x06"); uart2_send_str("#ColorStack!");       break;
-    case 7:  uart2_send_str("0x07"); uart2_send_str("#PTZColorTrace!");    break;
-    case 8:  uart2_send_str("0x08"); uart2_send_str("#FaceTrack!");        break;
-    case 9:  uart2_send_str("0x09"); uart2_send_str("#ApriltagSort!");     break;
-    case 10: uart2_send_str("0x10"); uart2_send_str("#ApriltagStack!");    break;
-    case 11: uart2_send_str("0x11"); uart2_send_str("#ApriltagTrack!");    break;
-    case 12: uart2_send_str("0x12"); uart2_send_str("#ApriltagNumSort!");  break;
-    case 13: uart2_send_str("0x13"); uart2_send_str("#NumTrack!");         break;
-    case 14: uart2_send_str("0x14"); uart2_send_str("#GarbageSorting!");   break;
+    case 5:  uart2_send_str("#ColorSort!");        break;
+    case 6:  uart2_send_str("#ColorStack!");       break;
+    case 7:  uart2_send_str("#PTZColorTrace!");    break;
+    case 8:  uart2_send_str("#FaceTrack!");        break;
+    case 9:  uart2_send_str("#ApriltagSort!");     break;
+    case 10: uart2_send_str("#ApriltagStack!");    break;
+    case 11: uart2_send_str("#ApriltagTrack!");    break;
+    case 12: uart2_send_str("#ApriltagNumSort!");  break;
+    case 13: uart2_send_str("#NumTrack!");         break;
+    case 14: uart2_send_str("#GarbageSorting!");   break;
     default: break;
     }
 }

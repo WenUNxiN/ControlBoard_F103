@@ -63,7 +63,6 @@ void loop_oled(void)
         case 12: OLED_Print(32, 3, "Êý×Ö·Ö¼ð");       break;
         case 13: OLED_Print(32, 3, "Êý×Ö×·×Ù");       break;
         case 14: OLED_Print(32, 3, "À¬»ø·Ö¼ð");       break;
-        case 15: OLED_Print(53, 3, "ÊÖ±ú");           break;
         default: break;
     }
 }

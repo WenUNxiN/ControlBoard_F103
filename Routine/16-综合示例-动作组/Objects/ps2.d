@@ -31,3 +31,5 @@
 ..\objects\ps2.o: ..\Library\stm32f10x_wwdg.h
 ..\objects\ps2.o: ..\Library\misc.h
 ..\objects\ps2.o: ..\System\SysTick.h
+..\objects\ps2.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+..\objects\ps2.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h

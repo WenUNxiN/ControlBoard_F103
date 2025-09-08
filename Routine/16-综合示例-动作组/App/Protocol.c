@@ -50,11 +50,11 @@ void Voice_Cmd(char *cmd){
     }
     else if (pos = Str_Contain_Str(cmd, "#StartLed!"), pos)
     {
-
+        uart2_send_str("#StartLed!");
     } 
     else if (pos = Str_Contain_Str(cmd, "#StopLed!"), pos)
     {
-
+        uart2_send_str("#StopLed!");
     }
     else if (pos = Str_Contain_Str(cmd, "#RunStop!"), pos)
     {
@@ -100,10 +100,6 @@ void Voice_Cmd(char *cmd){
     {
         SetMode = 14;
     } 
-    else if (pos = Str_Contain_Str(cmd, "#Gamepad!"), pos)
-    {
-        SetMode = 15;
-    }
 }
 
 /***********************************************

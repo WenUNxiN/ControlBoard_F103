@@ -32,10 +32,10 @@
 ..\objects\app_ps2.o: ..\Library\stm32f10x_wwdg.h
 ..\objects\app_ps2.o: ..\Library\misc.h
 ..\objects\app_ps2.o: ..\System\SysTick.h
+..\objects\app_ps2.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+..\objects\app_ps2.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\objects\app_ps2.o: ..\Hardware\Uart.h
 ..\objects\app_ps2.o: ..\User\main.h
-..\objects\app_ps2.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-..\objects\app_ps2.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 ..\objects\app_ps2.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 ..\objects\app_ps2.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
 ..\objects\app_ps2.o: ..\App\Global.h

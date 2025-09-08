@@ -88,9 +88,11 @@ void AppPs2Run(void)
     /* 1. 50 ms 节拍 */
     if (Millis() - systick_ms_bak < 50) return;
     systick_ms_bak = Millis();
+    
+    SetPrintfUart(1);
 
-    /* 2. 读手柄 9 字节 */
-    Ps2_WriteRead();
+    /* 1. 热插拔状态机 → 数据有效才继续 */
+    if(!Ps2HotplugTask()) return;        // 离线或静止丢弃期间直接退出
 
     /* 3. 原有按键处理（不变） */
     if ((psx_button_bak[0] != psx_buf[3]) || (psx_button_bak[1] != psx_buf[4]))
@@ -100,7 +102,7 @@ void AppPs2Run(void)
         psx_button_bak[1] = psx_buf[4];
     }
 
-    SetPrintfUart(1);
+    
     /* 4. ===== 增量保持 + 变化才刷新 ===== */
     s8 joy_now[4];
     for (u8 i = 0; i < 4; ++i) joy_now[i] = (s8)(psx_buf[5 + i] - 128);

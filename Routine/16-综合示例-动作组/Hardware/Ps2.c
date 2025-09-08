@@ -1,9 +1,16 @@
 #include "Ps2.h"
 
+/* ---------------- 热插拔支持 ---------------- */
+static u8 ps2_hp_state   = 0;   // 0:OFF  1:PLUG  2:READY
+static u8 ps2_hp_loss    = 0;   // 连续丢失计数
+static u8 ps2_hp_stable  = 2;   // 静止帧计数
+
 /* 全局 9 字节缓冲区 */
 u8 psx_buf[9] = {0};
 
-/* 内部静态函数：单字节 SPI-like 收发，LSB 先行 */
+#define PS2_BIT_DLY  8       
+
+/* 单字节 SPI-like 收发，LSB 先行 */
 static u8 Ps2TransferByte(u8 tx)
 {
     u8 rx = 0;
@@ -12,8 +19,8 @@ static u8 Ps2TransferByte(u8 tx)
         PS2_CMD(tx & 0x01 ? Bit_SET : Bit_RESET);   // 输出位
         tx >>= 1;
 
-        PS2_CLK(1);  Delay_us(6);
-        PS2_CLK(0);  Delay_us(6);     // 下降沿输出
+        PS2_CLK(1);  Delay_us(PS2_BIT_DLY);
+        PS2_CLK(0);  Delay_us(PS2_BIT_DLY);     // 下降沿输出
         PS2_CLK(1);                   // 上升沿采样
 
         if (PS2_DAT()) rx |= (1 << i);
@@ -88,3 +95,94 @@ void Ps2_WriteRead(void)
     for (u8 i = 2; i < 9; i++) psx_buf[i] = Ps2TransferByte(0x00);
     PS2_CS(1);
 }
+
+/* 短探针：只发 0x01 0x42，返回 1=在线 */
+u8 Ps2Probe(void)
+{
+    u8 rx;
+    PS2_CS(0);
+    Ps2TransferByte(0x01);
+    rx = Ps2TransferByte(0x42);
+    PS2_CS(1);
+    return (rx == PS2_MODE_GRN || rx == PS2_MODE_RED) ? 1 : 0;
+}
+
+/* 重新握手，复用 Ps2_Init 里的配置序列 */
+void Ps2ReConfig(void)
+{
+    const u8 cfg[4][5] = {
+        {0x01,0x43,0x00,0x01,0x00},
+        {0x01,0x44,0x00,0x01,0x03},
+        {0x01,0x4F,0x00,0xFF,0xFF},
+        {0x01,0x43,0x00,0x00,0x00}
+    };
+    for(u8 i = 0; i < 4; i++)
+    {
+        PS2_CS(0);
+        for(u8 j = 0; j < 5; j++) Ps2TransferByte(cfg[i][j]);
+        PS2_CS(1);
+        Delay_ms(8);
+    }
+}
+
+/* 供外部 10 ms 调用，返回值：1=数据有效  0=离线 */
+u8 Ps2HotplugTask(void)
+{
+    switch(ps2_hp_state)
+    {
+    case 0:                     /* OFF */
+        if(Ps2Probe())
+        {
+            ps2_hp_loss = 0;
+            ps2_hp_state = 1;   /* 进入 PLUG */
+        }
+//        printf("OFF\n");
+        return 0;
+
+    case 1:                     /* PLUG */
+        if(!Ps2Probe() && ++ps2_hp_loss > 3)
+        {
+            ps2_hp_state = 0;
+            return 0;
+        }
+        Ps2ReConfig();          /* 握手 */
+        if(Ps2Probe())
+        {
+            ps2_hp_state = 2;
+            ps2_hp_loss  = 0;
+            ps2_hp_stable = 6;  /* 要求连续 6 帧静止 */
+        }
+//         printf("PLUG\n");
+        return 0;
+
+    case 2:                     /* READY */
+        if(!Ps2Probe() && ++ps2_hp_loss > 3)
+        {
+            ps2_hp_state = 0;
+            memset(psx_buf,0,9);
+            ps2_hp_stable = 6;
+            return 0;
+        }
+//        printf("READY\n");
+        
+        Delay_ms(1);
+        Ps2_WriteRead();        /* 读 9 字节 */
+
+        /* 前 6 帧必须全部通过死区才认为“人没动” */
+        if(ps2_hp_stable)
+        {
+            u8 all_zero = 1;
+            for(u8 i = 0; i < 4; i++)
+            {
+                s8 v = (s8)(psx_buf[5+i] - 128);
+                if(v > 8 || v < -8) { all_zero = 0; break; }
+            }
+            if(all_zero) ps2_hp_stable--;
+            else         ps2_hp_stable = 6;   /* 重新计数 */
+            return 0;                           /* 仍丢弃 */
+        }
+        return 1;                               /* 数据已有效 */
+    }
+    return 0;
+}
+
