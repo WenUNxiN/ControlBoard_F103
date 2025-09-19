@@ -60,3 +60,4 @@
 ..\objects\ultrasonic.o: ..\BSP\GY33T.h
 ..\objects\ultrasonic.o: ..\App\Function.h
 ..\objects\ultrasonic.o: ..\BSP\joystick.h
+..\objects\ultrasonic.o: ..\App\protocolConversion.h

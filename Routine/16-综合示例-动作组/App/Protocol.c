@@ -44,9 +44,13 @@ void Voice_Cmd(char *cmd){
     {
         SetMode = 3;
     }
-    else if (pos = Str_Contain_Str(cmd, "#SoundTouch!"), pos)
+    else if (pos = Str_Contain_Str(cmd, "#Touch!"), pos)
     {
         SetMode = 4;
+    }
+    else if (pos = Str_Contain_Str(cmd, "#Sound!"), pos)
+    {
+        SetMode = 5;
     }
     else if (pos = Str_Contain_Str(cmd, "#StartLed!"), pos)
     {
@@ -62,44 +66,45 @@ void Voice_Cmd(char *cmd){
     } 
     else if (pos = Str_Contain_Str(cmd, "#ColorSort!"), pos)
     {
-        SetMode = 5;
+        SetMode = 6;
     } 
     else if (pos = Str_Contain_Str(cmd, "#ColorStack!"), pos)
     {
-        SetMode = 6;
+        SetMode = 7;
     } 
     else if (pos = Str_Contain_Str(cmd, "#PTZColorTrace!"), pos)
     {
-        SetMode = 7;
+        SetMode = 8;
     } 
     else if (pos = Str_Contain_Str(cmd, "#FaceTrack!"), pos)
     {
-        SetMode = 8;
+        SetMode = 9;
     } 
     else if (pos = Str_Contain_Str(cmd, "#ApriltagSort!"), pos)
     {
-        SetMode = 9;
+        SetMode = 10;
     } 
     else if (pos = Str_Contain_Str(cmd, "#ApriltagStack!"), pos)
     {
-        SetMode = 10;
+        SetMode = 11;
     } 
     else if (pos = Str_Contain_Str(cmd, "#ApriltagTrack!"), pos)
     {
-        SetMode = 11;
+        SetMode = 12;
     } 
     else if (pos = Str_Contain_Str(cmd, "#ApriltagNumSort!"), pos)
     {
-        SetMode = 12;
+        SetMode = 13;
     } 
     else if (pos = Str_Contain_Str(cmd, "#NumTrack!"), pos)
     {
-        SetMode = 13;
+        SetMode = 14;
     } 
     else if (pos = Str_Contain_Str(cmd, "#GarbageSorting!"), pos)
     {
-        SetMode = 14;
+        SetMode = 15;
     } 
+
 }
 
 /***********************************************
@@ -115,6 +120,7 @@ void Parse_Action(char *Uart_ReceiveBuf)
     float pwm;
 //    UartAll_Printf(Uart_ReceiveBuf);
     Voice_Cmd(Uart_ReceiveBuf);// 语音指令解析
+    user_parse_ascii_command(Uart_ReceiveBuf);// 暗文转换
     
     // 调整偏差指令
     if (Uart_ReceiveBuf[0] == '#' && Uart_ReceiveBuf[4] == 'P' && Uart_ReceiveBuf[5] == 'S' && Uart_ReceiveBuf[6] == 'C' && Uart_ReceiveBuf[7] == 'K' && Uart_ReceiveBuf[12] == '!') // 带入偏差调节
@@ -188,32 +194,25 @@ void Parse_Action(char *Uart_ReceiveBuf)
                 i++;
             }
 
-            //  手爪限位
+            //  根据实际按照状态去设置舵机的限位
             if (index == 5)
             {
-                if (pwm >= 1900)
-                    pwm = 1900;
-                if (pwm <= 1300)
-                    pwm = 1300;
+                if (pwm >= 1700) pwm = 1700;
+                if (pwm <= 1200) pwm = 1200;
             }
             if (index == 3)
             {
-                if (pwm >= 1700)
-                    pwm = 1700;
+                if (pwm >= 1700) pwm = 1700;
             }
             if (index == 2)
             {
-                if (pwm >= 2100)
-                    pwm = 2100;
-                if (pwm <= 900)
-                    pwm = 900;
+                if (pwm >= 2100) pwm = 2100;
+                if (pwm <= 900) pwm = 900;
             }
             if (index == 1)
             {
-                if (pwm >= 2100)
-                    pwm = 2100;
-                if (pwm <= 900)
-                    pwm = 900;
+                if (pwm >= 2100) pwm = 2100;
+                if (pwm <= 900) pwm = 900;
             }
 
             // PWM舵机对应处理
@@ -441,19 +440,21 @@ void Parse_Cmd(char *cmd)
     }
     else if (pos = Str_Contain_Str(cmd, "$KMS:"), pos)
     {
+        SetPrintfUart(1);
+        printf("%s\r\n",cmd);
         if (sscanf((char *)cmd, "$KMS:%d,%d,%d,%d!", &int1, &int2, &int3, &int4))
         {
-            uart1_send_str("Try to find best pos:\r\n");
+//            uart1_send_str("Try to find best pos:\r\n");
             Pose target_pose = {
                         .x = (float)int1, .y = (float)int2, .z = (float)int3, 
                         .roll = 0.0f, .pitch = (float)-90, .yaw = (float)0};
             int kms_value = inverseKinematics(&target_pose, &solutions);
             if (kms_value == 0)
             {
-                printf("IK Solution found:\n");
+//                printf("IK Solution found:\n");
                 for (int i = 0; i < 5; i++)
                 {
-                    SetPrintfUart(1);
+//                    SetPrintfUart(1);
 //                    printf("Joint %d: %.2f degrees\n", i, solutions.theta[i]);
                 }
                 angle_to_PWM();
@@ -466,7 +467,7 @@ void Parse_Cmd(char *cmd)
             }
             else
             {
-                printf("Target pose is unreachable:%d.\n", kms_value);
+//                printf("Target pose is unreachable:%d.\n", kms_value);
             }
         }
         // 智能控制相关指令，

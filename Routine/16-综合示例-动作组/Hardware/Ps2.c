@@ -1,5 +1,13 @@
 #include "Ps2.h"
 
+/* 配置序列：进入配置→打开模拟→退出配置 */
+const u8 cfg[4][5] = {
+    {0x01, 0x43, 0x00, 0x01, 0x00},  // 进入配置模式
+    {0x01, 0x44, 0x00, 0x01, 0x03},  // 设置为模拟模式 Ox03 锁存设置，即不可通过按键“MODE”设置模式。0xEE 不锁存软件设置，可通过按键“MODE”设置模式。
+    {0x01, 0x4F, 0x00, 0xFF, 0xFF},  // 启用所有轴 后面两字节全部置 1（0xFF），相当于一次性把这 4 个轴的模拟采样功能全部打开
+    {0x01, 0x43, 0x00, 0x00, 0x00}   // 退出配置模式
+};
+
 /* ---------------- 热插拔支持 ---------------- */
 static u8 ps2_hp_state   = 0;   // 0:OFF  1:PLUG  2:READY
 static u8 ps2_hp_loss    = 0;   // 连续丢失计数
@@ -60,13 +68,7 @@ void Ps2_Init(void)
     PS2_CS(1); PS2_CLK(1); PS2_CMD(1);
     Delay_ms(50);      // 等待手柄上电
 
-    /* 3. 配置序列：进入配置→打开模拟→退出配置 */
-    const u8 cfg[4][5] = {
-        {0x01, 0x43, 0x00, 0x01, 0x00},  // enter config
-        {0x01, 0x44, 0x00, 0x01, 0x03},  // set mode (analog)
-        {0x01, 0x4F, 0x00, 0xFF, 0xFF},  // enable all axes
-        {0x01, 0x43, 0x00, 0x00, 0x00}   // exit config
-    };
+    /* 配置序列：进入配置→打开模拟→退出配置 */
     for (u8 i = 0; i < 4; i++)
     {
         PS2_CS(0);
@@ -107,15 +109,10 @@ u8 Ps2Probe(void)
     return (rx == PS2_MODE_GRN || rx == PS2_MODE_RED) ? 1 : 0;
 }
 
-/* 重新握手，复用 Ps2_Init 里的配置序列 */
+/* 重新握手 */
 void Ps2ReConfig(void)
 {
-    const u8 cfg[4][5] = {
-        {0x01,0x43,0x00,0x01,0x00},
-        {0x01,0x44,0x00,0x01,0x03},
-        {0x01,0x4F,0x00,0xFF,0xFF},
-        {0x01,0x43,0x00,0x00,0x00}
-    };
+    /* 配置序列：进入配置→打开模拟→退出配置 */
     for(u8 i = 0; i < 4; i++)
     {
         PS2_CS(0);

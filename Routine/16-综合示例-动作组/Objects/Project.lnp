@@ -8,6 +8,7 @@
 "..\objects\servopid.o"
 "..\objects\kinematics.o"
 "..\objects\function.o"
+"..\objects\protocolconversion.o"
 "..\objects\oled.o"
 "..\objects\ultrasonic.o"
 "..\objects\gy33t.o"

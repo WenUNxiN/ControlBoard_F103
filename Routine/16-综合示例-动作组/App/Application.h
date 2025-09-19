@@ -37,6 +37,7 @@
 #include "GY33T.h"          // GY33 颜色传感器
 #include "Function.h"       // 颜色/摇杆/超声/声音任务
 #include "joystick.h"       // 摇杆 ADC 与按键
+#include "protocolConversion.h"
 
 /* ========================================================
  * 系统级初始化（一次性）
@@ -47,6 +48,8 @@ void Parameter_Init(void);      // 从 W25Q64 读取参数
 void ServoState_Init(void);     // 舵机上电初始位置
 void setup_run_action(void);    // 执行开机动作组
 
+#define clampNum    1600    //夹爪夹取PWM
+#define loosenNum   1200    //夹爪松开PWM
 /* ========================================================
  * 工具函数（跨文件使用）
  * ======================================================== */

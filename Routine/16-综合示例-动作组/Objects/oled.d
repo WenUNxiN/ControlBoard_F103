@@ -60,4 +60,5 @@
 ..\objects\oled.o: ..\BSP\GY33T.h
 ..\objects\oled.o: ..\App\Function.h
 ..\objects\oled.o: ..\BSP\joystick.h
+..\objects\oled.o: ..\App\protocolConversion.h
 ..\objects\oled.o: ..\BSP\OLEDFont.h

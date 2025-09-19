@@ -55,7 +55,7 @@ int inverseKinematics(const Pose *pose, JointAngles *solutions)
     };
 
     /* 调试用：打印末端工具 Z 轴在基坐标系下的方向向量 */
-    printf("Tool direction: [%f, %f, %f]\n", R[2][2], R[1][2], R[0][2]);
+//    printf("Tool direction: [%f, %f, %f]\n", R[2][2], R[1][2], R[0][2]);
 
     /******************** 1.3 计算腕部中心 (wrist center) ********************/
     float tool_length = dh_params[5].d;   // 法兰到工具尖的偏移
@@ -63,7 +63,7 @@ int inverseKinematics(const Pose *pose, JointAngles *solutions)
     float wx = pose->x - tool_length * R[2][2];
     float wy = pose->y - tool_length * R[1][2];
     float wz = pose->z - tool_length * R[0][2];
-    printf("wx:%f, wy:%f, wz:%f\n", wx, wy, wz);
+//    printf("wx:%f, wy:%f, wz:%f\n", wx, wy, wz);
 
     /******************** 2. 求 θ1（底座旋转） ********************/
     float theta1      = atan2f(wy, wx);                    // 主解
@@ -183,7 +183,7 @@ int inverseKinematics(const Pose *pose, JointAngles *solutions)
     /* 标准方法：从 R36 里按 ZYZ 欧拉角提取 */
     float theta4 = 0.0f;
     float theta3_4 = atan2f(d4, a3);  // 连杆几何固定角
-    printf("theta3_4:%f deg\n", RAD2DEG(theta3_4));
+//    printf("theta3_4:%f deg\n", RAD2DEG(theta3_4));
 
     /* 简化版 θ5：让末端 Z 轴对齐目标，但 X/Y 方向不定 */
     float theta5 = PI - (theta2 - theta33 + theta3_4);
@@ -203,7 +203,7 @@ int inverseKinematics(const Pose *pose, JointAngles *solutions)
         if (solutions->theta[i] < joint_limits[i][0] ||
             solutions->theta[i] > joint_limits[i][1])
         {
-            printf("Joint %d out of limit: %f°\n", i, solutions->theta[i]);
+//            printf("Joint %d out of limit: %f°\n", i, solutions->theta[i]);
             return 2;  // 超限
         }
     }

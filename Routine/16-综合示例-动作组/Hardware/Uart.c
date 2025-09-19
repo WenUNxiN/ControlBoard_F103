@@ -18,8 +18,6 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "Application.h"
-
 /*------------- 全局变量 -------------*/
 u8  SW_Uart = 1;                        /* printf 重定向目标：1-UART1 2-UART2 3-UART3 */
 char Uart_ReceiveBuf[UART_BUF_SIZE];    /* 统一解析缓冲区，用于存放完整的一帧数据 */
@@ -277,6 +275,30 @@ void uart1_send_str(char *str)
     }
 }
 
+/**
+ * @brief   通过 USART2 发送任意长度字节流
+ * @param   data  待发送缓冲区首地址
+ * @param   len   待发送字节数
+ * @note    1. 先关闭接收中断，防止发送期间被 RX 打断
+ *          2. 逐字节等待 TXE 置位后写入
+ *          3. 发送完毕重新打开接收中断，恢复正常接收
+ */
+void uart2_send_bytes(uint8_t *data, int len)
+{
+    /*  Step1: 关闭接收中断，避免发送过程中被 RX 打断  */
+    USART_ITConfig(USART2, USART_IT_RXNE, DISABLE);
+
+    /*  Step2: 逐字节阻塞发送  */
+    for (int i = 0; i < len; i++)
+    {
+        USART_SendData(USART2, data[i]);            // 写
+        while (USART_GetFlagStatus(USART2, USART_FLAG_TXE) == RESET)
+            ;                                       // 等待发送寄存器空
+    }
+
+    /*  Step3: 重新打开接收中断，恢复串口接收  */
+    USART_ITConfig(USART2, USART_IT_RXNE, ENABLE);
+}
 /*==============================================================================
  * 名称：uart2_send_str
  * 功能：阻塞方式向串口2发送字符串（关闭接收中断，防止冲突）

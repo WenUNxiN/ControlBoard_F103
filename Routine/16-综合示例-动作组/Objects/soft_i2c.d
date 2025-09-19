@@ -60,3 +60,4 @@
 ..\objects\soft_i2c.o: ..\BSP\GY33T.h
 ..\objects\soft_i2c.o: ..\App\Function.h
 ..\objects\soft_i2c.o: ..\BSP\joystick.h
+..\objects\soft_i2c.o: ..\App\protocolConversion.h

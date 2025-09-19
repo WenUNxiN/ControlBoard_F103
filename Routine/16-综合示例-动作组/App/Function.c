@@ -91,9 +91,15 @@ void SoundTouchTask(void)
         action_state = IDLE;
     }
 
+    uint8_t touch_level;
+    uint8_t sound_level;
     /* 读取两个按键状态：触摸 & 声音 */
-    uint8_t touch_level = GPIO_ReadInputDataBit(TOUCH_KEY_PORT, TOUCH_KEY_PIN);
-    uint8_t sound_level = GPIO_ReadInputDataBit(SOUND_KEY_PORT, SOUND_KEY_PIN);
+    if(SetMode == 4){
+        touch_level = GPIO_ReadInputDataBit(TOUCH_KEY_PORT, TOUCH_KEY_PIN);
+    }
+    if(SetMode == 5){
+        sound_level = GPIO_ReadInputDataBit(SOUND_KEY_PORT, SOUND_KEY_PIN);
+    }
 
     /* 简易状态机消抖 */
     switch (key_state)
@@ -178,7 +184,7 @@ void JoystickTask(void)
         Delay_ms(1000);
 
         /* 夹爪闭合 */
-        PwmServo_DoingSet(5, 1750, 1000);
+        PwmServo_DoingSet(5, clampNum, 1000);
         Delay_ms(1000);
 
         /* 上升 */
@@ -193,7 +199,7 @@ void JoystickTask(void)
         Delay_ms(1000);
 
         /* 夹爪张开 */
-        PwmServo_DoingSet(5, 1300, 1000);
+        PwmServo_DoingSet(5, loosenNum, 1000);
         Delay_ms(1000);
 
         /* 上升 */
@@ -226,7 +232,7 @@ void UsTask(uint32_t interval_ms)
     printf("\nUs:%d\r\n", distance);
 
     /* 张开夹爪（保险） */
-    PwmServo_DoingSet(5, 1300, 1000);
+    PwmServo_DoingSet(5, loosenNum, 1000);
 
     /* 移动至物体上方 */
     sprintf((char *)cmd_return, "$KMS:%03d,0,100,1000!\r\n", distance);
@@ -241,7 +247,7 @@ void UsTask(uint32_t interval_ms)
     Delay_ms(1000);
 
     /* 夹取 */
-    PwmServo_DoingSet(5, 1750, 1000);
+    PwmServo_DoingSet(5, clampNum, 1000);
     Delay_ms(500);
 
     /* 搬运到指定位置 */

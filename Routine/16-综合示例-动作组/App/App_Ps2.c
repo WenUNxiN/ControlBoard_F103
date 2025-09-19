@@ -10,11 +10,6 @@
 
 #define PSX_BUTTON_NUM  16      /* 按键个数 */
 
-static s32 pos_x = 150, pos_y = 0, pos_z = 120;   /* 全局坐标，单位 mm */
-#define POS_MIN     -200
-#define POS_MAX     200
-#define SCALE       1          /* 灵敏度，越大越快 */
-
 // 绿灯模式下按键的配置
 const char *pre_cmd_set_grn[PSX_BUTTON_NUM] = {
 	// 手柄按键功能字符串 红灯模式下使用
@@ -31,7 +26,7 @@ const char *pre_cmd_set_grn[PSX_BUTTON_NUM] = {
     "<PS2_GRN09:$DJR!>",					// SE
     "<PS2_GRN10:>",							// AL
     "<PS2_GRN11:>",							// AR
-    "<PS2_GRN12:{#000P1500T2000!#001P1500T2000!#002P1500T2000!#003P1500T2000!#004P1500T2000!#005P1500T2000!}^#001PDST!>",	// ST
+    "<PS2_GRN12:{#000P1500T2000!#001P1500T2000!#002P1500T2000!#003P1500T2000!#004P1500T2000!#005P1500T2000!}>",	// ST
     
 	"<PS2_RED13:#001P0600T2000!^#001PDST!>", // LU
 	"<PS2_GRN14:#000P0600T2000!^#000PDST!>",																			  // LR
@@ -100,41 +95,6 @@ void AppPs2Run(void)
         ParsePsx_Buf(psx_buf + 3, psx_buf[1]);
         psx_button_bak[0] = psx_buf[3];
         psx_button_bak[1] = psx_buf[4];
-    }
-
-    
-    /* 4. ===== 增量保持 + 变化才刷新 ===== */
-    s8 joy_now[4];
-    for (u8 i = 0; i < 4; ++i) joy_now[i] = (s8)(psx_buf[5 + i] - 128);
-
-    /* 死区 */
-    for (u8 i = 0; i < 4; ++i)
-        if (abs_int(joy_now[i]) <= DEAD_ZONE) joy_now[i] = 0;
-
-    /* 速度→增量 */
-    s16 dx = -joy_now[3] * SCALE / 40;   /* LX 左正 */
-    s16 dy = -joy_now[2] * SCALE / 40;   /* LY 前正 */
-    s16 dz =  joy_now[1] * SCALE / 40;   /* RY 前负 */
-
-    /* 累加 */
-    pos_x += dx;
-    pos_y += dy;
-    pos_z += dz;
-
-    /* 限幅 */
-    if (pos_x < POS_MIN) pos_x = POS_MIN; else if (pos_x > POS_MAX) pos_x = POS_MAX;
-    if (pos_y < POS_MIN) pos_y = POS_MIN; else if (pos_y > POS_MAX) pos_y = POS_MAX;
-    if (pos_z < 0) pos_z = 0; else if (pos_z > POS_MAX) pos_z = POS_MAX;
-
-    /* 有变化才发命令 */
-    if (dx | dy | dz)
-    {
-        char buf[64];
-        sprintf((char*)buf, "$KMS:%d,%d,%d,1000!", pos_x, pos_y, pos_z);
-        /* 可选调试信息 */
-        printf("%s\r\n",buf);
-        Parse_Cmd(buf);
-
     }
 }
 

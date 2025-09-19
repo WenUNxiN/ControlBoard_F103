@@ -23,6 +23,7 @@ void setup_app(void)
     LED_Init();                 // 状态指示灯
     ADC_Joystick_Init();        // 摇杆 ADC
     Uart_Init();                // 串口1/2/3
+    
     US_Init();                  // HC-SR04 超声波
     SoftI2C_init();             // 软件 I2C
     OLED_Init();                // SSD1306 OLED
@@ -153,7 +154,7 @@ void loop_key(void)
         break;
     case KEY_PRESSED:
         uart1_send_str("$KEY_PRESS!");
-        SetMode = (SetMode + 1) % 15;
+        SetMode = (SetMode + 1) % 16;
         printf("%d\n", SetMode);
         state = KEY_WAIT_RELEASE;
         break;
@@ -184,10 +185,7 @@ void loop_Joystick_key(void)
     JOYSTICK_LED_ON(); // 摇杆指示灯
 
     uint8_t pin_level = GPIO_ReadInputDataBit(JOYSTICK_KEY_PORT, JOYSTICK_KEY_PIN);
-
-    clampMode = 0;                 // 每次循环强制清零（调试）
-    SetPrintfUart(1);
-
+    
     switch (state1)
     {
     case KEY_IDLE:
@@ -239,6 +237,7 @@ void LoopMode(void)
     case 2: JoystickTask();                 break; // 摇杆
     case 3: if (UsMode == 1) UsTask(1000);  break; // 超声波
     case 4: SoundTouchTask();               break; // 声音/触摸
+    case 5: SoundTouchTask();               break; // 声音/触摸
     default: break;
     }
 }
@@ -265,16 +264,16 @@ void LoopVisionMode(void)
     
     switch (SetMode)
     {
-    case 5:  uart2_send_str("#ColorSort!");        break;
-    case 6:  uart2_send_str("#ColorStack!");       break;
-    case 7:  uart2_send_str("#PTZColorTrace!");    break;
-    case 8:  uart2_send_str("#FaceTrack!");        break;
-    case 9:  uart2_send_str("#ApriltagSort!");     break;
-    case 10: uart2_send_str("#ApriltagStack!");    break;
-    case 11: uart2_send_str("#ApriltagTrack!");    break;
-    case 12: uart2_send_str("#ApriltagNumSort!");  break;
-    case 13: uart2_send_str("#NumTrack!");         break;
-    case 14: uart2_send_str("#GarbageSorting!");   break;
+    case 6:  uart2_send_str("#ColorSort!");       uart2_send_str("#ColorSort!");       break;
+    case 7:  uart2_send_str("#ColorStack!");      uart2_send_str("#ColorStack!");      break;
+    case 8:  uart2_send_str("#PTZColorTrace!");   uart2_send_str("#PTZColorTrace!");   break;
+    case 9:  uart2_send_str("#FaceTrack!");       uart2_send_str("#FaceTrack!");       break;
+    case 10: uart2_send_str("#ApriltagSort!");    uart2_send_str("#ApriltagSort!");    break;
+    case 11: uart2_send_str("#ApriltagStack!");   uart2_send_str("#ApriltagStack!");   break;
+    case 12: uart2_send_str("#ApriltagTrack!");   uart2_send_str("#ApriltagTrack!");   break;
+    case 13: uart2_send_str("#ApriltagNumSort!"); uart2_send_str("#ApriltagNumSort!"); break;
+    case 14: uart2_send_str("#NumTrack!");        uart2_send_str("#NumTrack!");        break;
+    case 15: uart2_send_str("#GarbageSorting!");  uart2_send_str("#GarbageSorting!");  break;
     default: break;
     }
 }

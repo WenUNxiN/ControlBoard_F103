@@ -52,17 +52,18 @@ void loop_oled(void)
         case 1:  OLED_Print(10, 3, "传感器颜色分拣"); break;
         case 2:  OLED_Print(53, 3, "摇杆");           break;
         case 3:  OLED_Print(42, 3, "超声波");         break;
-        case 4:  OLED_Print(30, 3, "声音/触摸");      break;
-        case 5:  OLED_Print(20, 3, "视觉颜色分拣");   break;
-        case 6:  OLED_Print(32, 3, "颜色码垛");       break;
-        case 7:  OLED_Print(32, 3, "颜色追踪");       break;
-        case 8:  OLED_Print(32, 3, "人脸追踪");       break;
-        case 9:  OLED_Print(22, 3, "二维码分拣");     break;
-        case 10: OLED_Print(25, 3, "二维码码垛");     break;
-        case 11: OLED_Print(25, 3, "二维码追踪");     break;
-        case 12: OLED_Print(32, 3, "数字分拣");       break;
-        case 13: OLED_Print(32, 3, "数字追踪");       break;
-        case 14: OLED_Print(32, 3, "垃圾分拣");       break;
+        case 4:  OLED_Print(53, 3, "触摸");           break;
+        case 5:  OLED_Print(53, 3, "声音");           break;
+        case 6:  OLED_Print(20, 3, "视觉颜色分拣");   break;
+        case 7:  OLED_Print(32, 3, "颜色码垛");       break;
+        case 8:  OLED_Print(32, 3, "颜色追踪");       break;
+        case 9:  OLED_Print(32, 3, "人脸追踪");       break;
+        case 10: OLED_Print(22, 3, "二维码分拣");     break;
+        case 11: OLED_Print(25, 3, "二维码码垛");     break;
+        case 12: OLED_Print(25, 3, "二维码追踪");     break;
+        case 13: OLED_Print(32, 3, "数字分拣");       break;
+        case 14: OLED_Print(32, 3, "数字追踪");       break;
+        case 15: OLED_Print(32, 3, "垃圾分拣");       break;
         default: break;
     }
 }

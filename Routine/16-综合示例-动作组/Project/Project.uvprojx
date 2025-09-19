@@ -439,6 +439,11 @@
               <FileType>1</FileType>
               <FilePath>..\App\Function.c</FilePath>
             </File>
+            <File>
+              <FileName>protocolConversion.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\App\protocolConversion.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

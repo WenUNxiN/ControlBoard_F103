@@ -78,6 +78,9 @@ void UartAll_Printf(char *str);
 /* 阻塞方式向UART1发送字符串（不经过printf） */
 void uart1_send_str(char *str);
 
+/* 通过 USART2 发送任意长度字节流（阻塞式） */
+void uart2_send_bytes(uint8_t *data, int len);
+
 /* 阻塞方式向UART2发送字符串（发送时关闭接收中断防止冲突） */
 void uart2_send_str(char *s);
 

@@ -60,3 +60,4 @@
 ..\objects\joystick.o: ..\BSP\GY33T.h
 ..\objects\joystick.o: ..\App\Function.h
 ..\objects\joystick.o: ..\BSP\joystick.h
+..\objects\joystick.o: ..\App\protocolConversion.h

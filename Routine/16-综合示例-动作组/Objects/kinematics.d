@@ -60,3 +60,4 @@
 ..\objects\kinematics.o: ..\BSP\GY33T.h
 ..\objects\kinematics.o: ..\App\Function.h
 ..\objects\kinematics.o: ..\BSP\joystick.h
+..\objects\kinematics.o: ..\App\protocolConversion.h
